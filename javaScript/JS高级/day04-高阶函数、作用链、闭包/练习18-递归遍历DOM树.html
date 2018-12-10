@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>遍历DOM树</title>
+</head>
+
+<body>
+    <h1>遍历 DOM 树</h1>
+    <p style="color: green;">Tip: 可以在遍历的回调函数中任意定制需求</p>
+    <div>
+        <ul>
+            <li>123</li>
+            <li>456</li>
+            <li>789</li>
+        </ul>
+        <div>
+            <div>
+                <span>haha</span>
+            </div>
+        </div>
+    </div>
+    <div id="demo_node">
+        <ul>
+            <li>123</li>
+        </ul>
+        <p>hello</p>
+        <h2>world</h2>
+        <div>
+            <p>dsa</p>
+            <h3>
+                <span>dsads</span>
+            </h3>
+        </div>
+    </div>
+
+    <script>
+        //递归遍历DOM树
+
+        // 获取页面根元素节点-html元素
+        var root = document.documentElement;
+        //输出html元素的标签名--调用第3个函数
+        getNodeName(root);
+
+        //封装函数1--根据父节点，获取所有的子节点
+        function forDOM(root) {
+            var children = root.children;
+            // return children;
+            //遍历所有的子节点---调用第2个函数
+            forChild(children);
+
+        }
+        // var children=forDOM(root);
+
+        //封装函数2---遍历获取到的所有子节点
+        function forChild(children) {
+            for (var i = 0; i < children.length; i++) {
+                var child = children[i];
+                //调用第三个函数--输出子节点的节点名
+                getNodeName(child);
+                //如果子元素节点也有子元素节点--递归结束条件
+                if (child.children) {
+                    // forDOM(child.children);---错误
+                    //则根据这个子节点来获取其所有的子节点--调用第1个函数
+                    forDOM(child);
+                }
+            }
+        }
+
+        //封装函数3---输出对应元素节点的节点名
+        function getNodeName(node) {
+            console.log("标签节点的名字为："+node.nodeName);
+        }
+
+        //调用第1个函数
+        forDOM(root);
+    </script>
+
+</body>
+
+</html>

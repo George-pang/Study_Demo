@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery初体验</title>
+		<style type="text/css">
+			div{
+				height: 200px;
+				margin-bottom: 10px;
+				background-color: pink;
+				display: none;
+			}
+		</style>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script>
+			// 入口函数
+//			$(document).ready(function(){
+//				$("#btn1").click=function(){      //不能用=
+////					jquery隐式迭代特性，不用for循环
+//                  $("div").show(1000);
+//				};
+//
+//              $("#btn2").click=function(){
+//                  $("div").text("我是内容！");
+//              };
+//			});
+
+			$(document).ready(function(){
+				$("#btn1").click(function(){
+//					jquery隐式迭代特性，不用for循环
+                    $("div").show(1000);  //jQuery show三组基本动画之一,1000ms内显示完毕
+				});
+
+                $("#btn2").click(function(){
+                    $("div").text("我是内容！"); //jQuery text方法写入文本内容
+                });
+			});
+            console.log(typeof $);//控制台输出$符号的数据类型，发现是function
+		</script>
+
+	</head>
+	<body>
+		<input type="button" id="btn1" value="显示" />
+		<input type="button" id="btn2" value="写入内容" />
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

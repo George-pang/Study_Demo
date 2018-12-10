@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+
+    ul {
+      list-style: none;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 1150px;
+      height: 400px;
+      margin: 50px auto;
+      border: 1px solid red;
+      overflow: hidden;
+    }
+
+    div li {
+      width: 240px;
+      height: 400px;
+      float: left;
+    }
+
+    div ul {
+      width: 1300px;
+    }
+
+
+  </style>
+</head>
+<body>
+<div id="box">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<script>
+
+  //获取任意一个元素的任意一个属性的当前的值---当前属性的位置值
+  function getStyle(element, attr) {
+    return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currentStyle[attr] || 0;
+  }
+  //缓动动画函数
+  function animate(element, json, fn) {
+    clearInterval(element.timeId);//清理定时器
+    //定时器,返回的是定时器的id
+    element.timeId = setInterval(function () {
+      var flag = true;//默认,假设,全部到达目标
+      //遍历json对象中的每个属性还有属性对应的目标值
+      for (var attr in json) {
+        //判断这个属性attr中是不是opacity
+        if (attr == "opacity") {
+          //获取元素的当前的透明度,当前的透明度放大100倍
+          var current = getStyle(element, attr) * 100;
+          //目标的透明度放大100倍
+          var target = json[attr] * 100;
+          var step = (target - current) / 10;
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          current += step;//移动后的值
+          element.style[attr] = current / 100;
+        } else if (attr == "zIndex") { //判断这个属性attr中是不是zIndex
+          //层级改变就是直接改变这个属性的值
+          element.style[attr] = json[attr];
+        } else {
+          //普通的属性
+          //获取元素这个属性的当前的值
+          var current = parseInt(getStyle(element, attr));
+          //当前的属性对应的目标值
+          var target = parseInt(json[attr]);
+          //移动的步数
+          var step = (target - current) / 10;
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          current += step;//移动后的值
+          element.style[attr] = current + "px";
+        }
+        //是否到达目标
+        if (current != target) {
+          flag = false;
+        }
+      }
+      if (flag) {
+        //清理定时器
+        clearInterval(element.timeId);
+        //所有的属性到达目标才能使用这个函数,前提是用户传入了这个函数
+        if (fn) {
+          fn();
+        }
+      }
+      //测试代码
+      console.log("目标:" + target + ",当前:" + current + ",每次的移动步数:" + step);
+    }, 20);
+  }
+
+
+  var box=document.getElementById("box");
+  var lis=document.getElementsByTagName("li");
+  //为每个li添加背景图片
+  for (var i = 0; i < lis.length; i++) {
+      lis[i].style.backgroundImage="url(images/"+(i+1)+".jpg)";
+      //为每个li注册鼠标移入和移出事件
+      lis[i].onmouseover=mouseoverHandle;          //遍历里用命名函数-节省性能
+      lis[i].onmouseout=mouseoutHandle;
+  }
+  function mouseoverHandle() {
+      //排他--先所有的宽度都设为100，再单独设当前对象的宽度
+      for (var j = 0; j <lis.length; j++) {
+          animate(lis[j],{"width":100});  //json对象键 值 都加双引号
+      }
+      animate(this,{"width":800});
+  }
+  function mouseoutHandle() {
+      //所有li宽度变为240px
+      for (var j = 0; j <lis.length; j++) {
+          animate(lis[j],{"width":"240px"});  //这里，给定的目标值是字符串，所以封装函数中获取目标值操作得加个整数转换
+      }
+  }
+
+
+
+
+
+</script>
+
+</body>
+</html>

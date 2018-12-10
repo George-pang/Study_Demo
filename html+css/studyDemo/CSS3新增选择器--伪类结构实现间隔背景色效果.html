@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3--伪类结构选择器实现间隔背景色效果</title>
+		<style type="text/css">
+			ul :nth-child(2n){
+				background-color: pink;
+			}
+			ul :nth-child(2n+1){
+				background-color: green;
+			}
+			ul :nth-child(even){ /*偶数行*/
+				font-size: 20px;
+			}
+			ul :nth-child(odd){ /*奇数行*/
+				color: red;
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+         <ul>
+         	<li>红豆生南国，</li>
+         	<li>春来发几枝。</li>
+         	<li>愿君多采撷，</li>
+         	<li>此物最相思！</li>
+         	<li>情之一物，</li>
+         	<li>委实让人难以琢磨！</li>
+         </ul>
+	</body>
+</html>

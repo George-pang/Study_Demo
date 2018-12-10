@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="itcast.js"></script>
+  <script src="jquery-1.12.4.js"></script>  <!--jq引入要写在后面，这样$符号的控制权在jq身上（覆盖）-->
+  <script>
+    
+    console.log($);  //jq中的$符号，jQuery的缩写，实质上是个函数
+    
+    //jQuery释放$的控制权
+    $.noConflict();
+    console.log($);   //此时的$就是itcast.js中封装的$对象
+    
+    jQuery(function () { //不用$缩写，直接用jQuery
+      
+    });
+    //jQuery释放$的控制权，并给新的符号(比如$$)
+    var $$=$.noConflict();
+    $$(function () {
+        
+    });
+    
+  </script>
+</head>
+<body>
+
+</body>
+</html>

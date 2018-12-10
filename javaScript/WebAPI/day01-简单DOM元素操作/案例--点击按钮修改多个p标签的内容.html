@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例--点击按钮修改多个p标签的内容</title>
+</head>
+<body>
+    <input type="button" value="点击修改" id="btn"/>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <p>这是一个p标签</p>
+    <script>
+        //获取点击对象，注册点击事件，绑定事件处理函数
+        document.getElementById("btn").onclick=function () {
+            var pObjs=document.getElementsByTagName("p");//获取的是一个伪数组，即使只有一个也是伪数组
+            // 设置每一个p的内容，需要遍历
+            for(var i=0;i<pObjs.length;i++){
+                pObjs[i].innerText="我是一个p！"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model指令实现简易计算器</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <input type="text" v-model="n1"/>
+        <select name="" id="" v-model="fh">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model="n2"/>
+        <input type="button" value="=" @click="cau"/>
+        <input type="text" v-model="result"/>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:".app",
+            data:{
+                n1:0,
+                fh:"+",
+                n2:0,
+                result:0
+            },
+            methods:{
+                cau(){
+                    // switch (this.fh) {
+                    //     case "+":
+                    //         this.result=parseInt(this.n1)+parseInt(this.n2);
+                    //         break;
+                    //     case "-":
+                    //         this.result=parseInt(this.n1)-parseInt(this.n2);
+                    //         break;
+                    //     case "*":
+                    //         this.result=parseInt(this.n1)*parseInt(this.n2);
+                    //         break;
+                    //     case "/":
+                    //         this.result=parseInt(this.n1)/parseInt(this.n2);
+                    //         break;
+                    // }
+
+                    // 另一种写法：
+                    // var resultStr=this.n1+this.fh+this.n2;
+                    var resultStr=parseInt(this.n1)+this.fh+parseInt(this.n2);
+                    this.result=eval(resultStr);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

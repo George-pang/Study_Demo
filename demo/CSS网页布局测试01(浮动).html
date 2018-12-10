@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS网页布局测试01(浮动)</title>
+		<style type="text/css">
+			.head,.container,.content,.side,.foot{
+				margin: 10px auto;
+				padding:10px;
+				width:900px;
+				border: 1px gray solid;
+				text-align: center;
+			}
+			.container{
+				border: 0;
+				height: 500px;
+			}
+			.content{
+				width:600px;
+				float: left;
+				height: 480px;
+				
+			}
+			.side{
+				width:150px;
+				float: right;
+				height:480px;
+				
+				
+			}
+			.foot{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">head</div>
+		<div class="container">
+			<div class="content">content</div>
+			<div class="side">side</div>
+		</div>
+		<div class="foot">foot</div>
+	</body>
+</html>

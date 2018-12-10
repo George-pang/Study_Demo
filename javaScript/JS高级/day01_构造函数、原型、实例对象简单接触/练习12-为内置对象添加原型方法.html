@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr=[10,20,30,40,80,50,33];
+    arr.join("|");
+    console.dir(arr);
+
+    var str=new String("啊啊拉上来");        //String 构造函数
+    str.indexOf("拉");
+    console.dir(str);
+
+    var dt=new Date();
+    dt.getFullYear();
+    console.dir(dt);
+
+    //为Array构造函数的原型对象添加排序方法
+    Array.prototype.mySort=function () {
+        for (var i = 0; i < this.length-1; i++) {
+            for (var j = 0; j <this.length-1-i; j++) {
+                if (this[j]>this[j+1]){
+                    temp=this[j+1];
+                    this[j+1]=this[j];
+                    this[j]=temp;
+                }
+            }
+        }
+        return this;        //返回当前实例对象
+    };
+    console.log(arr.mySort());
+
+
+    //为String对象添加个原型方法
+    String.prototype.sayHi=function () {
+        console.log(this+"你好，晚饭吃了吗？");
+    }
+    var str2=new String("小杨");
+    str2.sayHi();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 所有的function都有arguments对象，其中包含函数调用时传入的所有实参 */
+        function f1(a,b){
+            // var a;var b----函数内部对形参隐式做了这步操作
+            if(f1.length==arguments.length){
+                console.log("形参个数与实参个数相等！")
+            }else if(f1.length>arguments.length){
+                console.log("形参个数大于实参个数！")
+            }else{
+                console.log("形参少于实参！");
+            }
+        }
+        console.log(f1.length);//函数名是函数代码的引用
+        console.dir(f1);//函数也是对象，它的length属性值为函数定义时形参的个数
+        f1(1,2,3,4);
+        // 形参与实参个数不等时不会报错，实参少于形参时，未传值的形参值为undefined；实参多余形参时，多余的实参赋给arguments[X]  
+    </script>
+</body>
+</html>

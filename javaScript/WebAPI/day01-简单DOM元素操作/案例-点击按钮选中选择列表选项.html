@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮选择选择列表选项-选择菜单</title>
+</head>
+<body>
+    <input type="button" value="点菜" id="btn1"/>
+    <select name="" id="sel">
+        <option value="">庆丰包子</option>
+        <option value="">全聚德烤鸭</option>
+        <option value="" id="op1">金百万烤鸭</option>
+        <option value="">六必居酱菜</option>
+        <option value="">稻香村糕点</option>
+        <option value="">御食园果脯</option>
+    </select>
+    <br/>
+    <br/>
+    <input type="button" value="修改文本" id="btn2"/>
+    <!--readonly只读，disabled禁用-->
+    <textarea name="" id="txt" cols="30" rows="10" readonly style="resize: none">
+    包子世界里最主流的还是肉包，每次吃肉包，我都要看看包子的肉馅，肉馅越新鲜越好吃；肥瘦比要注意，没有固定比例，要根据当地顾客喜欢来调整。
+    </textarea>
+    <input type="button" value="被禁用的按钮" id="btn3" disabled/>
+    <script>
+        function my$(id) {
+            return document.getElementById(id);
+        }
+        my$("btn1").onclick=function () {
+            my$("op1").selected=true;
+        }
+        my$("btn2").onclick=function () {
+            my$("txt").value="我就是爱吃包子！庆丰大包子！";//最终页面中文本域中的显示
+            my$("txt").innerText="我爱吃包子！";//标签内的文本
+        }
+    </script>
+</body>
+</html>

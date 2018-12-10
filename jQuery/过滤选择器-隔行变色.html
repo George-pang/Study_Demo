@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery过滤选择器-隔行变色案例</title>
+</head>
+<body>
+<ul>
+    <li>这是第1个li</li>
+    <li>这是第2个li</li>
+    <li>这是第3个li</li>
+    <li>这是第4个li</li>
+    <li>这是第5个li</li>
+    <li>这是第6个li</li>
+    <li>这是第7个li</li>
+    <li>这是第8个li</li>
+    <li>这是第9个li</li>
+    <li>这是第10个li</li>
+</ul>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        //错误写法，不能对jq对象使用js对象的方法
+        // $("li:odd").style.backgroundColor="pink";//下标为奇数
+        // $("li:even").style.backgroundColor="hotpink";//下标为偶数
+
+        //正确写法
+        $("li:odd").css("backgroundColor","pink");
+        // $("li:even").css(backgroundColor,hotpink);//下标奇数
+        $("li:even").css("backgroundColor","hotpink");//下标偶数
+        $("li:gt(3)").css("fontSize","30px"); //下标大于3
+        $("li:lt(3)").css("fontSize","18px"); //下标小于3
+        $("li:eq(3)").css("fontSize","24px"); //下标等于3
+    });
+</script>
+</body>
+</html>

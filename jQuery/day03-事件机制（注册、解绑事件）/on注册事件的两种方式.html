@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>on注册事件的两种方式</title>
+    <style type="text/css">
+        /*清除默认样式*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            height: 400px;
+            width: 400px;
+            background-color: pink;
+        }
+        #btn{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="创建p元素" id="btn"/>
+    <div>
+        <p>111</p>
+        <p>222</p>
+        <p>333</p>
+        <p>444</p>
+        <p>555</p>
+    </div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //方式一：给自己注册事件（简单事件）--不带选择器参数
+            $("p").on("click",function () {        //动态创建的元素不支持自动绑定事件
+                alert("Hello world!");
+            });
+            // 方式二：给父元素注册委托事件，但最终执行function的是选择器选中的子元素--带选择器参数--原理:事件冒泡
+            $("div").on("click","p",function () { //支持动态创建的元素自动绑定事件
+                alert("耗油跟");
+                console.log(this);//注意：虽然注册委托事件的是父元素，但this对象是子元素（最终执行的）
+            });
+            $("#btn").click(function () {
+                $("<p>这是一个新的p元素</p>").appendTo($("div"));
+            });
+        });
+        //委托事件：给父元素注册委托事件，子元素执行function，但子元素本身并没有注册事件
+    </script>
+</body>
+</html>

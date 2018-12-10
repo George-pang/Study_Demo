@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>day02作业</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*	本金10000元存入银行，年利率是千分之三，
+				每过1年，将本金和利息相加作为新的本金。
+				计算5年后，获得的本金是多少？*/
+            var money=10000;
+            var rate=0.003;
+            for (var i=1;i<=5;i++) {
+            	money=money+money*rate;
+            }
+            console.log(money);
+            
+            //复习：表格版乘法口诀表
+            document.write("<table border='1' cellpadding='5' cellspacing='1'>");
+            	for (var i=1;i<=9;i++) {
+            	   document.write("<tr>");
+            		for (var j=1;j<=9;j++) {
+//          		for (var j=1;j<=i;j++) {       画三角形乘法表
+            			document.write("<td>");
+                        document.write(j+"*"+i+"="+i*j);
+ 						document.write("</td>");
+            		}
+                   document.write("</tr>");            		
+            	}
+            document.write("</table>");
+		</script>
+	</body>
+</html>

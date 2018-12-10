@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web存储之localStorage初体验</title>
+    <style>
+        #inputTxt{
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+   <input type="text" id="inputTxt">
+   <br/> 
+   <input type="button" value="设置数据" id="setBtn">
+   <input type="button" value="获取数据" id="getBtn">
+   <input type="button" value="移除数据" id="removeBtn">
+   <input type="button" value="清空数据" id="clearBtn">
+   <script>
+       var setBtn=document.getElementById("setBtn");
+       var getBtn=document.getElementById("getBtn");
+       var removeBtn=document.getElementById("removeBtn");
+       var clearBtn=document.getElementById("clearBtn");
+
+        // 找到对象，注册简单事件，添加事件处理函数
+
+        // 存储数据
+       setBtn.onclick=function(){
+           var value_1=document.getElementById("inputTxt").value;
+        //    window.localStorage.setItem("name",value_1);
+           localStorage.setItem("name",value_1); //window可省略
+           window.localStorage.setItem("userage",22);
+       }
+
+        //获取数据
+        getBtn.onclick=function(){
+            alert(window.localStorage.getItem("name"));
+        };
+
+        //移除数据
+        removeBtn.onclick=function(){
+            window.localStorage.removeItem("name");
+        };
+
+        //清空数据
+        clearBtn.onclick=function(){
+            window.localStorage.clear();
+        };
+
+        /* 
+            localStorage特性：最大存储空间20M,同一浏览器可以多页面共享数据，数据永久有效(页面关闭不会删除数据)，必须手动去删除
+        */
+   </script>
+</body>
+</html>

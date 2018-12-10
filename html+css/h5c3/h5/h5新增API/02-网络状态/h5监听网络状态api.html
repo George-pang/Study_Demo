@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .network-state{
+            margin: 100px auto;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+        }
+    </style>
+    <script src="../jquery.js"></script>
+</head>
+<body>
+    <p class="network-state"></p>
+
+    <script>
+        /* online和offline事件
+            h5监听网络状态是监听window对象的online和offline事件
+        */
+        $(function(){
+            $(window).on("online",function(){
+                $(".network-state").text("网络已连接！").fadeIn().delay(500).fadeOut();
+            })
+            $(window).on("offline",function(){
+                $(".network-state").text("网络已断开！").fadeIn().delay(500).fadeOut();
+            })
+
+            //通过window.navigator.onLine来检测用户当前的网络状况，返回一个布尔值， 但是不同浏览器会存在差异
+            alert(window.navigator.onLine);
+        });
+    </script>
+
+</body>
+</html>

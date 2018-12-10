@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>width方法与height方法</title>
+    <style type="text/css">
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 5px solid #cccccc;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //思路分析：
+             console.log($(window).width());//页面可视区域的宽高，不包含滚动条和菜单、工具栏
+             console.log($(window).height());
+             //获取页面可视区域的宽高
+             $(window).resize(function () {
+                 console.log($(this).width()); //width方法获取jq对象width属性的值（不包括padding、border或margin）
+                 console.log($(this).height());   //页面可视区域的高度，不包含滚动条和菜单、工具栏
+             });
+             console.log($("div").width());         //width值
+             console.log($("div").innerWidth());    //width+padding
+             console.log($("div").outerWidth());    //默认参数是false,width+padding+border
+             console.log($("div").outerWidth(true)); //参数为true时，width+padding+border+margin
+         });
+    </script>
+</body>
+</html>

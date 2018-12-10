@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴案例</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 200px;
+        }
+        .wrap>ul>li{
+            width: 100%;
+            border: 1px solid #cccccc;
+        }
+        .wrap>ul>li>span{
+            display: block;
+            width: 100%;
+            background-color: pink;
+            text-align: center;
+            cursor: pointer;
+        }
+        .wrap>ul>li>div{
+            display: none;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <span>第一个</span>
+                <div>
+                    第一个内容
+                </div>
+            </li>
+            <li>
+                <span>第二个</span>
+                <div>
+                    第二个内容
+                </div>
+            </li>
+            <li>
+                <span>第三个</span>
+                <div>
+                    第三个内容
+                </div>
+            </li>
+            <li>
+                <span>第四个</span>
+                <div>
+                    第四个内容
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        //入口函数--页面所有标签加载完成后再执行
+        $(function () {
+            // $(".wrap>ul>li").children("div").slideDown(200);
+            $(".wrap>ul>li>span").click(function () {
+                //链式编程：在jQuery里面，方法可以一直调用下去,因为jQuery方法总会返回一个jq对象。
+                $(this).next("div").slideDown(200);
+                $(this).parent().siblings("li").children("div").slideUp(200);
+                //简化到一行来写
+                // $(this).next().slideDown(200).parent().siblings().children("div").slideUp(200);
+            });
+        });
+
+    </script>
+</body>
+</html>

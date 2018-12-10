@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="来张图" id="btn" />
+    <div id="dv"></div>
+
+    <script>
+        //引号里如果是字符串,外双内单,外单内双，如果是变量，外双内双，外单内单
+        var btnObj=document.getElementById("btn");
+        btnObj.onclick=function () {
+            document.getElementById("dv").innerHTML="<img src='images/linzhiling.jpg' alt='加载失败'/>";
+        }
+    </script>
+</body>
+</html>

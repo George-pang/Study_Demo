@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #dv{
+            width: 150px;
+            height: 150px;
+            border: 1px  solid red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="隐藏" id="btn"/>
+    <div id="dv"></div>
+    哈哈
+    <script>
+        var btnObj=document.getElementById("btn");
+        var dvObj=document.getElementById("dv");
+        btnObj.onclick=function () {
+            //1、设置显示类型--隐藏后不占位
+          // dvObj.style.display="none";
+            //2、设置可见性--占位
+            // dvObj.style.visibility="hidden";
+            //3、透明度--占位
+            // dvObj.style.opacity=0;
+            //4、设置高度为0、边框为0---占位
+            dvObj.style.height="0px";
+            dvObj.style.border="0px";
+
+        };
+    </script>
+</body>
+</html>

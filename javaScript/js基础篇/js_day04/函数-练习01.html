@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--练习--01</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1.求2个数的最大值
+			function getMax(x,y){
+				if(x>y){
+					return x;
+				}else{
+					return y;
+				}
+				//  return x>y?x:y; 这种写法也行
+			}
+			console.log(getMax(4,9));
+			
+			//2.求3个数的最大值
+//			function getThreeMax(x,y,z){
+//				var arr2=[x,y,z];
+//				var max=arr2[0];
+//				for (var i=0;i<3;i++) {
+//					if(max<arr2[i]){
+//						max=arr2[i];
+//					}
+//				}
+//				return max;
+//			}
+
+            function getThreeMax(x,y,z){
+            	return x>y?(x>z?x:z):(y>z?y:z);//嵌套三目表达式
+            }
+			console.log(getThreeMax(4,109,63));
+			
+			//3.判断一个数是否是素数  返回true或false
+			function isPrimeNumber(x) {   //多留意这种命名
+				for(var i = 2; i < x; i++) {
+					if(x % i == 0) {
+						return false; //return后面的代码不执行了
+					}
+				}
+				return true;
+			}
+			console.log(isPrimeNumber(9)?"是素数":"不是素数");
+		</script>
+	</body>
+</html>

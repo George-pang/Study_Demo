@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #im{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/bird.png" alt="" id="im"/>
+    <script>
+        //事件参数对象兼容代码
+        //clientX兼容代码---实际是事件参数对象的兼容
+        //clientY兼容代码
+        //向上卷去距离兼容代码
+        //向左卷去距离兼容代码
+        //pageX兼容代码(若浏览器支持，就用pageX，否则就用clientX+scrollLeft)
+        //pageY兼容代码
+
+        //方法封装到一个对象上
+        var evt={
+          //事件参数对象兼容代码
+            getEvent:function (evt) {
+                return window.event||evt;
+            },
+            getClientX:function (evt) {
+                return this.getEvent(evt).clientX;
+            },
+            getClientY:function (evt) {
+                return this.getEvent(evt).clientY;
+            },
+            getScrollTop:function () {
+                return window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop||0;
+            },
+            getScrollLeft:function () {
+                return window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft||0;
+            },
+            getPageX:function (evt) {
+               return this.getEvent(evt).pageX?this.getEvent(evt).pageX:this.getClientX(evt)+this.getScrollLeft();
+            },
+            getPageY:function (evt) {
+               return this.getEvent(evt).pageY?this.getEvent(evt).pageY:this.getClientY(evt)+this.getScrollTop();
+            }
+        };
+        
+        var imgObj=document.getElementById("im");
+        document.onmousemove=function (e) {
+            //获取鼠标在页面的横/纵坐标，传给图片
+            imgObj.style.left=evt.getPageX(e)+"px";
+            imgObj.style.top=evt.getPageY(e)+"px";
+        }
+    </script>
+</body>
+</html>

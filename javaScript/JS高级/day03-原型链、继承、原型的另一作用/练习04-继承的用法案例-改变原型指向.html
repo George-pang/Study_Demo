@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //动物有名字,有体重,有吃东西的行为
+    //小狗有名字,有体重,有毛色, 有吃东西的行为,还有咬人的行为
+    //哈士奇名字,有体重,有毛色,性别, 有吃东西的行为,还有咬人的行为,逗主人开心的行为
+
+    //动物的构造函数
+    function Animal(name, weight) {
+        this.name = name;
+        this.weight = weight;
+    }
+    Animal.prototype.eat = function () {
+        console.log("我爱吃肉！");
+    };
+
+    //小狗的构造函数
+    function Dog(color) {
+        this.color = color;
+    }
+    //改变Dog构造函数的原型对象指向--实现继承
+    Dog.prototype=new Animal("来福",100);
+    //先改变指向，再添加原型方法--方法会出现在原型对象内
+    Dog.prototype.yaoRen=function () {
+        console.log("好狗不咬人，咬人不是好狗！");
+    };
+
+    //二哈的构造函数
+    function erHa(sex) {
+        this.sex = sex;
+    }
+
+    erHa.prototype=new Dog("white");
+    erHa.prototype.play=function () {
+      console.log("逗主人开心！");
+    };
+
+    //实例化对象，并初始化
+    var erha=new erHa("公");
+    console.log(erha.name,erha.weight,erha.color);
+    erha.eat();
+    erha.yaoRen();
+    erha.play();
+
+
+</script>
+</body>
+</html>

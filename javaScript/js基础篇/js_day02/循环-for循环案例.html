@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for循环的案例</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		 //向浏览器页面画五角星
+		 for(var i=0;i<5;i++){//纵向循环五次-二维  控制有多少行（执行多少次就有多少行）
+			 for(var j=0;j<5;j++){
+			 document.write("★");//该循环体执行5次 控制一行有几个星星
+			 }
+			 document.write("<br/>")
+		 }
+		 
+		 //画三角形的星星
+		 for(var i=0;i<5;i++){      //控制行数
+		 	for (var j=0;j<=i;j++) {//j<=i 随着行数i增加，每行星星也在增加
+		 		document.write("★"); //在所在行执行i次
+		 	}
+		 	document.write("<br/>")//换行
+		 }
+          
+         //画乘法口诀表
+         for (var i=1;i<=9;i++) {     //控制行数
+         	for (var j=1;j<=9;j++) { //控制每行的个数
+         		document.write(j+"*"+i+"="+i*j+"&nbsp;&nbsp;");
+         	}
+         	document.write("<br/>")
+         }
+         
+         //画三角形的乘法口诀表
+         for (var i=1;i<=9;i++) {
+         	for (var j=1;j<=i;j++) {
+         		document.write(j+"*"+i+"="+i*j+"&nbsp;&nbsp;")
+         	}
+         	document.write("<br/>")
+         }
+        
+         //挑战：画表格版的乘法口诀表
+         document.write("<table border='1' cellpadding='5' cellspacing='1'>");
+         	for (var i=1;i<=9;i++) {
+         		document.write("<tr>");//注意document.write()内部的这种写法
+         		for (var j=1;j<=9;j++) {
+         			document.write("<td>");
+         			document.write(j+"*"+i+"="+i*j);
+         			document.write("</td>") //开始标签与结束标签分开两次写，否则无法向其中写入内容
+         		}
+         		document.write("</tr>");
+         	}
+         document.write("</table>");
+         
+         //画三角形的表格版乘法口诀表
+         document.write("<table border='1' cellpadding='5' cellspacing='1'>");
+         for (var i=1;i<=9;i++) {
+         	document.write("<tr>");
+         	for (var j=1;j<=i;j++) {
+         		document.write("<td>");
+         		document.write(j+"*"+i+"="+i*j);//td标签内容
+         		document.write("</td>");
+         	}
+         	document.write("</tr>");
+         }
+         document.write("</table>");
+         
+		</script>
+	</body>
+</html>

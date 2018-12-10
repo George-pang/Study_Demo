@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+input {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+.cal-container {
+  margin: 100px auto;
+  width: 332px;
+  padding: 40px 20px 20px;
+  background-color: #000;
+}
+.cal-container .cal {
+  width: 100%;
+}
+.cal-container tr td {
+  height: 80px;
+  width: 83px;
+  /*浏览器中为啥少了3px*/
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.cal-container tr .operator {
+  background-color: #f88f0a;
+}
+.cal-container tr .spe-operator {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+.cal-container input {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+  font-size: 24px;
+  background-color: rgba(100, 100, 100, 0.6);
+}
+#tr1 td input {
+  background-color: #000;
+  color: #fff;
+  text-align: right;
+  font-size: 45px;
+  border-radius: 0;
+}
+#tr6 td #zero {
+  text-align: left;
+  padding-left: 26px;
+}
+/*# sourceMappingURL=calculator.css.map */

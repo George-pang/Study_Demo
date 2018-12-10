@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>遍历DOM树</title>
+</head>
+
+<body>
+    <h1>遍历 DOM 树</h1>
+    <p style="color: green;">Tip: 可以在遍历的回调函数中任意定制需求</p>
+    <div>
+        <ul>
+            <li>123</li>
+            <li>456</li>
+            <li>789</li>
+        </ul>
+        <div>
+            <div>
+                <span>haha</span>
+            </div>
+        </div>
+    </div>
+    <div id="demo_node">
+        <ul>
+            <li>123</li>
+        </ul>
+        <p>hello</p>
+        <h2>world</h2>
+        <div>
+            <p>dsa</p>
+            <h3>
+                <span>dsads</span>
+            </h3>
+        </div>
+    </div>
+
+    <script>
+        //递归遍历DOM树
+
+        //第一个封装函数：根据父节点，获取所有的子节点
+        function getChildren(parentNode){
+            var children=parentNode.children;   //children是个类数组
+            //调用第二个封装函数来遍历得到的所有子节点
+            traversalChildren(children);
+        }
+
+        //第二个封装函数：遍历获取到的所有子节点
+        function traversalChildren(children){
+            for(var i=0;i<children.length;i++){
+                var child=children[i];
+                //调用第三个函数获取每个子节点的节点名
+                getNodeName(child);
+                //判断每个子节点是否存在自己的子节点
+                if(child.children){
+                    //调用第一个封装函数---递归
+                    getChildren(child);
+                }
+            }
+        }
+
+        //第三个封装函数：获取元素节点的节点名
+        function getNodeName(node){
+            console.log("标签名为："+node.nodeName);
+        }getChildren
+
+        //获取页面根元素节点---html
+        var root=document.documentElement;
+        //输出html的标签名
+        getNodeName(root);
+
+        //调用函数
+        getChildren(root);
+
+    </script>
+
+</body>
+
+</html>

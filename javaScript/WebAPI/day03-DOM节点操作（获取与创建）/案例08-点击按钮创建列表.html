@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 150px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="创建元素" id="btn"/>
+    <div id="dv">
+
+    </div>
+    <script>
+        var btnObj=document.getElementById("btn");
+        // btnObj.onclick = function () {
+        //     // document.getElementById("dv").innerHTML="<ul style='list-style: none'><li>北乔峰</li><li>南慕容</li><li>段誉</li><li>虚竹</li><li>段正淳</li></ul>";
+        //     var str="<ul style='list-style: none'><li>北乔峰</li><li>南慕容</li><li>段誉</li><li>虚竹</li><li>段正淳</li></ul>";
+        //     document.getElementById("dv").innerHTML=str;
+        // };
+
+
+        //利用数组循环写入li，减少代码量
+        btnObj.onclick=function () {
+            var names=["小龙女","龙灵儿","刘亦菲","郑爽","林志玲","赵丽颖","唐雪见"];
+            var str = "<ul style='list-style: none;margin-top: 10px'>";
+            for (var i=0;i<names.length;i++){
+                str+="<li>"+names[i]+"</li>";
+            }
+            str += "</ul>";
+
+            document.getElementById("dv").innerHTML=str;
+
+            //为创建好的数组注册鼠标移入移出事件
+            var list=document.getElementById("dv").getElementsByTagName("li");
+            console.log(list);
+            for (var j=0;j<list.length;j++){
+                console.log("GAGA");
+                list[j].onmouseenter = function () {
+                    console.log("hahaha");
+                    this.style.backgroundColor = "green";
+                };
+                list[j].onmouseleave = function () {
+                    this.style.backgroundColor = "";
+                };
+            }
+
+        };
+
+        // //为创建好的数组注册鼠标移入移出事件----放在这里没有效果，因为这在页面加载完成时已经执行过了，得放在点击事件内部
+        // var list=document.getElementById("dv").getElementsByTagName("li");
+        // console.log(list);
+        // for (var j=0;j<list.length;j++){
+        //     console.log("GAGA");
+        //     list[j].onmouseenter = function () {
+        //         console.log("hahaha");
+        //         this.style.backgroundColor = "green";
+        //     };
+        //     list[j].onmouseleave = function () {
+        //         this.style.backgroundColor = "";
+        //     };
+        // }
+
+
+    </script>
+</body>
+</html>

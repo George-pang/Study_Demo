@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--arguments对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//计算函数所有传入参数的和--参数个数可变
+			function f1(){
+				var sum=0;
+				//所有函数都内置了arguments对象，存储了调用时传递的所有实参，可以把它看作伪数组，可以遍历
+				for(var i=0;i<arguments.length;i++){
+					sum+=arguments[i];
+				}
+				return sum;
+			}
+			console.log(f1(32,32,43,42));
+		</script>
+	</body>
+</html>

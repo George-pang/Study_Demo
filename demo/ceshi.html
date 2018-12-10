@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>边框颜色透明测试</title>
+		<style type="text/css">
+		i{
+			display: block;
+			width: 100px;
+			height: 100px;
+			margin: 20px auto;
+			background-color: #3388FF;
+			border: 20px solid #FF0000;
+			border-radius: 50%;
+		}
+		/*得出结论:当边框透明时,块的背景色就是显示出来的边框颜色*/
+		/*盒子的实际大小为：border+width+padding(box-sizing:content-box)*/
+		.trans{
+			border: 20px solid transparent; 
+		}
+		</style>
+	</head>
+	<body>
+		<i></i>
+		<i class="trans"></i>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>仿携程手机端-首页-多倍图缩放</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/*当html不设置背景时，body的背景将作为整个浏览器的背景色，铺满整个屏幕，而不是body标签自己的背景色*/
+			/*html{
+				background-color: purple;
+			}*/
+			body{
+				min-width: 320px;
+				max-width: 540px;
+				margin: 0 auto;
+				background-color: #f2f2f2;
+				font: normal 14px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;
+			}
+			.banner{
+				height: 108px;
+			}
+			.banner img{
+				height: 100%;
+				width: auto;
+			}
+			.local-nav{
+				display: flex;
+				margin: 4px 5px;
+				padding: 7px 0;
+				border-radius: 8px;
+				background-color: #fff;
+				align-items: center;
+			}
+			li{
+				list-style: none;
+				flex: 1;
+				text-align: center;
+			}
+			.flex-column{
+				display: flex;
+				flex-direction: column;
+			}
+			.flex-column a{
+				height: 100%;
+			}
+			.flex-column span{
+				flex: 1;
+				
+			}
+			.flex-column span[class^="icon-"]{
+				width: 32px;
+				height: 32px;
+				background-size: 32px auto;
+				background: url(img/un_ico_localnav_v7.12@2x.png)no-repeat 0 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<img src="img/banner.jpg"/>
+		</div>
+		<ul class="local-nav">
+			<li class="flex-column">
+				<a href="#">
+					<span class="icon-local-scenic"></span>
+					<span>景点.玩乐</span>
+				</a>
+			</li>
+			<li class="flex-column">周边游</li>
+			<li class="flex-column">美食林</li>
+			<li class="flex-column">一日游</li>
+			<li class="flex-column">当地攻略</li>
+		</ul>
+	</body>
+</html>

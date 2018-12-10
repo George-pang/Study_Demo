@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--预解析</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//变量预解析--例子1
+			var num=20;
+			f1();//函数调用
+			function f1 () {
+				console.log(num);//undefined
+				var num=40;//局部变量
+			}
+			
+				//预解析后代码执行顺序如下：
+	//			var num=20;
+	//			function f1(){//函数声明提前
+	//				var num;//变量声明提前了，但变量赋值没有提前
+	//				console.log(num);//先从当前作用域寻找变量num，故值为undefined
+	//				num=40;
+	//			}
+	//			f1();
+
+            //变量预解析--例子2：
+                 //按照正常代码执行顺序，下面第一行代码应该报错，但实际上是undefined
+            console.log(num2);//undefined
+            var num2=30;
+                 //预解析后执行过程为：
+		//          var num2;//预解析 变量声明提前
+		//          console.log(num2);//undefined
+		//          num2=30;
+
+		</script>
+	</body>
+</html>

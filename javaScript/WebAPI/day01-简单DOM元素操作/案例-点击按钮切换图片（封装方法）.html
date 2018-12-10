@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮切换图片</title>
+</head>
+<body>
+    <input type="button" value="点击切换" id="btn"/>
+    <img src="img/1-small.jpg" alt="" id="im">
+    <script>
+        // document.getElementById("btn").onclick=function () {
+        //     document.getElementById("im").src="img/1.jpg";
+        // }
+
+        //将根据id获取对象的方法再次封装
+        function getById(id) {
+            return document.getElementById(id);//返回对象
+        }
+        getById("btn").onclick=function () {
+            getById("im").src="img/1.jpg";
+        }
+    </script>
+</body>
+</html>

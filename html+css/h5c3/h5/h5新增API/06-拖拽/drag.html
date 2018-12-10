@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>h5 拖拽api</title>
+    <style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	div {
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+		float: left;
+		margin: 10px;
+	}
+	div:nth-child(2) {
+		border: 1px solid green;
+	}
+	div:nth-child(3){
+		border: 1px solid blue;
+	}
+	p {
+		height: 25px;
+		background-color: pink;
+		line-height: 25px;
+		text-align: center;
+        border: 1px solid green;
+        margin-top: 2px;
+	}
+    </style>
+</head>
+<body>
+    <div>
+        <!-- 首先，设置元素允许被拖拽 -->
+        <p id="p1" draggable="true">p1</p>
+        <p id="p2" draggable="true">p2</p>
+        <p id="p3" draggable="true">p3</p>
+        <p id="p4" draggable="true">p4</p>
+    </div>
+    <div></div>
+    <div></div>
+
+
+    <script>
+        /* 源对象拖拽 start ---document对象注册事件是为了事件委托，给子元素动态绑定事件*/
+        document.ondragstart=function(event){
+            console.log("源对象"+event.target+"开始被拖拽！");
+            console.dir(event);
+            /* ondragstart 属性调用了一个函数，drag(event)，它规定了被拖动的数据。事件对象的dataTransfer.setData() 方法设置被拖数据的数据类型和值： */
+            event.dataTransfer.setData("Text",event.target.id);
+        }
+        document.ondrag=function(event){
+            console.log("源对象"+event.target+"拖拽过程中！");
+        }
+        document.ondragend=function(event){
+            console.log("源对象"+event.target+"被拖拽结束！");
+        }
+        /* 源对象拖拽 end */
+        
+        /* 源对象被拖拽到目标对象 start */
+            document.ondragenter=function(event){
+                console.log("源对象被拖拽到进入目标对象"+event.target);
+            }
+            document.ondragover=function(event){
+                console.log("源对象被拖拽到悬停在目标对象上"+event.target);
+                // 默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+                event.preventDefault();
+            }
+            document.ondragleave=function(event){
+                console.log("源对象被拖拽着离开了目标对象"+event.target);
+            }
+            document.ondrop=function(event){
+                console.log("源对象被拖拽着到目标对象上释放!"+event.target);
+                event.target.appendChild(document.getElementById(event.dataTransfer.getData("Text")));
+            }
+        /* 源对象被拖拽到目标对象 end */
+
+    </script>
+</body>
+</html>

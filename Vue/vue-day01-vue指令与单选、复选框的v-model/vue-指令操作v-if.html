@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue条件判断</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--把数据绑定到DOM结构-->
+<!--v-if每次都需要重新创建或删除元素，所以有较高的切换性能消耗-->
+    <div id="app-3">
+        <!--这里， v-if 指令将根据表达式 see 的值(true 或 false )来决定是否插入 p 元素-->
+        <p v-if="see">有条新消息！</p>    <!--see在这里是标识符的作用-->
+    </div>
+    <script>
+        var app3=new Vue({
+            el:"#app-3",
+            data:{
+                see:true
+            }
+        })
+        // app3.see=false  //隐藏
+    </script>
+</body>
+</html>

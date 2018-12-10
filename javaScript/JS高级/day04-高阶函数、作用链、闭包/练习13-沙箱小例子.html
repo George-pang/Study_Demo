@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="点我" id="btn" />
+    <script>
+        var str = "小白喜欢小黑！"
+        console.log(str.substr(2));
+
+        //沙箱
+        (function () {
+            console.log(str); //undefined---原因：预解析，变量声明提前，但尚未赋值
+            var str = "小白喜欢小红！";
+            console.log(str.substr(2));
+        }());
+        console.log(str); //小白喜欢小黑！-----沙箱内部的变量不会对外部造成影响，但却可以访问外部的全局变量
+
+
+        //小例子---点击事件函数代码放在沙箱内 
+        (function () {
+            var btnObj = document.getElementById("btn");
+            btnObj.onclick = function () {
+                console.log("我被点击了！")
+            };
+        }());
+    </script>
+</body>
+
+</html>

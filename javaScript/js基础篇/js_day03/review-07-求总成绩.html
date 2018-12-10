@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组案例--求总成绩</title>
+	</head>
+	<body>
+		<script>
+			var perScores=[];
+			var sum=0;
+			var avg=0;
+			var perCount=parseInt(prompt("请输入学生人数："));
+			for (var i=0;i<perCount;i++) {
+				perScores[perScores.length]=parseInt(prompt("请输入第"+(i+1)+"个学生的成绩："));
+			}
+			var max=perScores[0];
+			var min=perScores[0];
+			for(var i=0;i<perCount;i++){
+				sum +=perScores[i];
+				if(max<perScores[i]){
+					max=perScores[i];
+				}
+				if(min>perScores[i]){
+					min=perScores[i];
+				}	
+			}
+			avg=sum/perCount;
+			console.log(sum);
+			console.log(avg);
+			console.log(max);
+			console.log(min);
+		</script>
+	</body>
+</html>

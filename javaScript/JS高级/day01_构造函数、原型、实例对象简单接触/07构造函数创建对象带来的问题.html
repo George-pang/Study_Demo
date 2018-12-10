@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+//    function Person(name,age) {
+//      this.name=name;
+//      this.age=age;
+//      this.eat=function () {
+//        console.log("今天吃红烧土豆");
+//      }
+//    }
+//    var per1=new Person("小白",20);
+//    var per2=new Person("小黑",30);
+//
+//    console.dir(per1);
+//    console.dir(per2);
+//
+//    per1.eat();
+//    per2.eat();
+//    //不是同一个方法
+//    console.log(per1.eat==per2.eat);  //false--看起来一样，但是在堆中是两个不同的空间存储的
+//
+//    for(var i=0;i<100;i++){
+//      var per=new Person("嘎嘎",20);
+//      per.eat();   //内存（堆中）中开辟了100个空间存储eat()方法，消耗了大量内存
+//    }
+
+
+function myEat() {
+  console.log("吃大榴莲");
+}
+var myEat=10;//命名冲突
+function Person(name,age) {
+  this.name=name;
+  this.age=age;
+  this.eat=myEat;
+}
+var per1=new Person("小白",20);
+var per2=new Person("小黑",30);
+
+console.dir(per1);
+console.dir(per2);
+console.log(per1.eat==per2.eat);  //true,指向同一个构造函数外的方法
+//通过原型来解决---------数据共享,节省内存空间,作用之一
+
+
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

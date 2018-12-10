@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串中正则表达式的使用</title>
+    <script>
+        //正则表达式中:g 表示的是全局模式匹配
+        //正则表达式中:i 表示的是忽略大小写
+
+
+        var str="中国移动:10086,中国联通:10010,中国电信:10000";
+        //把里面所有的数字全部显示出来
+        //当一个字符串与一个正则表达式匹配时， match()方法在字符串中检索匹配项。
+        str=str.match(/\d{5}/);  //没有g全局模式匹配，返回第一个匹配到的子字符串数组，并且拥有input和index属性
+        console.log(str);
+/*       如果正则表达式不包含g标志，则str.match()会返回和RegExp.exec()相同的结果。
+        而且返回的Array拥有一个额外的input属性，该属性包含被解析的原始字符串。
+        另外，还拥有一个index属性，该属性表示匹配结果在原字符串中的索引（以0开始）。
+        如果正则表达式包含g标志，则该方法返回一个Array，它包含所有匹配的子字符串而不是匹配对象。捕获组不会被返回(即不返回index属性和input属性)。
+        如果没有匹配到，则返回null*/
+
+
+        //返回字符串中的所有邮箱
+           var str2 = "123123@xx.com,fangfang@valuedopinions.cn 286669312@qq.com 2、emailenglish@emailenglish.englishtown.com 286669312@qq.com...";
+           var array2 = str2.match(/\w+@\w+\.\w+(\.\w+)?/g);  //g全局模式匹配，返回的是所有匹配的子字符串数组
+           console.log(array2);
+
+
+        //提取这里的日--第3个分组
+           var str3="2017-11-12";
+           var array3=str3.match(/(\d{4})[-](\d{2})[-](\d{2})/g);
+           console.log(array3);
+           //正则表达式对象.$3
+           console.log(RegExp.$3);  //从左往右，一个左半边括号就是一个分组
+           console.log(RegExp.$2);
+           console.log(RegExp.$1);
+
+
+        //    var email="shuaiyangtaishuaile@itcast.com.cn";
+        //    email.match(/([0-9a-zA-Z_.-]+)[@]([0-9a-zA-Z_-]+)(([.][a-zA-Z]+){1,2})/);
+        //    console.log(RegExp.$1);//用户名
+        //    console.log(RegExp.$2);//126
+        //    console.log(RegExp.$3);//域名
+
+
+           var str4="小苏好帅哦,真的是太帅了,帅,就是真帅";
+           str4=str4.replace(/帅/g,"猥琐");   //replace()方法第一个参数对应的内容会被第2个所替换
+           console.log(str4);
+
+        //    var str="  哦买噶的    ,太幸福了  ";
+        //    str=str.trim();
+        //    console.log("==="+str+"===");
+
+
+           var str5 = "  哦买噶的    ,太幸福了  ";
+           str5 = str5.replace(/\s+/g, ""); //利用正则 \s 去除所有的空白符
+           console.log("===" + str5 + "===");
+
+
+        //所有的h都替换成S  //i 忽略大小写
+           var str6="HhpphH";//SSppSS
+           str6=str6.replace(/[h]/gi,"S");
+           console.log(str6);
+
+
+        //    var reg = new RegExp(/[h]/gi);
+        //    var str = "HhpphH";//SSppSS
+        //    str = str.replace(reg, "S");
+        //    console.log(str);
+
+
+           var str7 = "中国移动:10086,中国联通:10010,中国电信:10000";
+           //把里面所有的数字全部显示出来
+           //var array = str.match(/\d{5}/g);
+           //正则表达式对象.exec方法传入字符串
+           var reg7=/\d{5}/g;
+        //通过正则表达式对象的exec()方法匹配这个字符串
+           var array7=reg7.exec(str7);  //RegExp.prototype.exec()方法只在字符串中匹配一次.与用非全局匹配模式的正则作为参数的match方法类似
+           console.log(array7);
+           console.log(reg7.exec(str7));//通过反复调用exec()函数遍历字符串中的所有匹配,   --结果10010,带input和index属性
+           console.log(reg7.exec(str7));        //--结果10000,带input和index属性
+           console.log(reg7.exec(str7));//超出了最大匹配个数，返回null //结果 null
+           console.log(reg7.exec(str7));//但之后又重新开始匹配        //结果10086,带input和index属性
+
+
+        //利用循环来遍历左右匹配的字符串
+        var str = "中国移动:10086,中国联通:10010,中国电信:10000";
+        var reg=/\d{5}/g;
+        //通过正则表达式匹配这个字符串
+        var array=reg.exec(str);
+        while (array!=null){    //当匹配到子字符串时
+            //输出匹配的内容
+            console.log(array[0]);  //只显示字符串中数字部分，不显示index和input属性
+            array=reg.exec(str); //反复调用来遍历字符串中的所有匹配
+        }
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>

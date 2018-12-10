@@ -1,0 +1,305 @@
+/*京东首页--main部分样式*/
+.jd{
+/*	height: 480px;*/ /*不设置高度,由元素内容撑开*/
+/*	background-color: pink;*/
+	position: relative;
+}  
+  /*版心内容部分*/
+.jd_inner{
+/*	background-color: skyblue;*/
+	height: 480px;
+	position: relative; /*加这句是为了设置堆叠次序,只有定位才有z-index*/
+	z-index: 999;
+}
+ /*两侧图片广告链接部分*/
+.jd .ad{
+	position: absolute; /*转换为了行内块,默认宽度不占满父元素，得根据内容来定义宽度*/
+	top: 0;
+	left: 0;
+	width: 100%; /*强制显示宽度，这句一定要加,不然没有默认宽度-图片不显示*/
+	height: 480px;
+	background: url(../img/bg-2.png)no-repeat top center; /*为啥top center加上就刚好位于版心左右*/
+}
+.jd .ad a{
+	cursor: pointer;
+	display: block; /*块级显示才能设置高度*/
+	height: 480px;
+}
+ /*版心内容部分划分三列布局*/
+.jd_inner .jd_col1{
+	width: 190px;
+	height: 460px;/*这个高度为元素content高度*/
+	background-color: #fefefe;
+	float: left;
+	padding: 10px 0;
+}
+.jd_col1 li{
+	padding-left: 18px;
+	height: 27px;
+	line-height: 27px;
+	font-size: 14px;
+    color: #626262;
+}
+.jd_col1 li a{
+	color: #626262; ;
+}
+.jd_col1 li:hover{
+	background-color:  #999395 ;
+}
+.jd_col1 li a:hover{
+	color: #F10215 ;
+}
+.jd_inner .jd_col1 span{
+	font-size: 12px;
+	color: #636363;
+}
+
+.jd_inner .jd_col2{
+	width: 790px;
+	height: 480px;
+	float: left;
+	margin-left: 10px;
+/*	overflow: hidden;*/
+}
+	/*版心内容块左侧轮播图部分*/
+.jd_col2 .focus_item_img{
+	/*background-color: salmon;*/
+	padding-top: 10px;
+	margin-right: 10px;
+	width: 590px;
+	height: 470px;
+	float: left;
+	position: relative;
+	
+}
+      /*轮播图下方轮播指示器*/
+.focus_item_img ol{
+	position: absolute;
+	bottom: 20px;
+	left: 46px;;
+	margin-left: 0 !important;	
+	width: 180px;
+	height: 20px;
+    background: rgba(255, 255,255, 0.3);
+    border-radius: 10px;	
+    padding: 0;
+}
+.focus_item_img ol li{
+	/*width: 18px;
+	height: 18px;
+	float: left;
+	margin:3px 3px;
+	border-color: #FFFFFF;
+	border-radius: 50%;*/ /*这为啥不行呢？*/
+	width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    float: left;
+    margin: 4px 5px;
+    cursor: pointer;
+}
+.focus_item_img ol .current{
+	background-color: #F10215;
+}
+      /*轮播图两侧滑动控制*/
+.slider_control{
+	position: absolute;
+	top: 50%;
+	margin-top: -20px; /*，值为height/2，因为盒子有高度，向上再移动半个盒子的距离才真正垂直居中*/
+	width: 24px;
+	height: 40px;
+	line-height: 40px; /*垂直居中*/
+	font-family: icomoon;
+	font-size: 20px;
+	font-style: normal;
+	text-align: center; /*水平居中*/
+	color: hsla(0,0%,100%,.4);
+    background: rgba(0, 0, 0, 0.3);
+}
+.slider_control_prev{
+	left:0;
+}
+.slider_control_next{
+	right:0;
+}
+  	/*版心内容块右侧三个图片广告部分*/
+.jd_col2 .bd{  
+    width:190px;
+    height: 480px;
+/*    background-color: khaki;*/
+    float: left;
+}
+.bd div{
+	width: 190px;
+	height:150px;
+	margin-top: 10px;
+
+}
+.bd img{
+    width: 100%;
+    height: 100%;
+}
+
+    /*版心右侧第三列 用户信息服务部分*/
+.jd_inner .jd_col3{
+	width: 190px;
+	height: 470px;
+	padding-top: 10px;
+/*	background-color:yellowgreen;*/
+	float: right;
+	background-color: #fff;
+}
+      /*用户信息部分*/
+.jd_col3 .user_inner{
+	padding-top: 62px;   /*为头像定位预留空间*/
+	height: 78px;
+/*	background-color: navajowhite;*/
+    position: relative;
+}
+.user_inner .user_avator{
+	position: absolute;
+	top:-10px ;
+	left: 50%;
+	margin-left:-32.5px;
+	width: 65px;
+	height: 65px;
+}
+.user_avator a{
+	display: block;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 5px solid #e3e1df; /*来自官网样式*/
+	box-shadow: 3px 6px 25px #c3c3c3;
+}
+.user_avator a img{
+	width: 100%;
+	height: 100%;
+}
+
+.user_inner .user_show p{
+ 	margin: 0;
+ 	text-align: center;
+ 	font-size: 12px;
+ 	line-height: 20px;
+ }
+.user_show .user_tip{
+	color: #888;
+}
+.user_show a{
+    color: #666;
+}
+.user_show a:hover{
+    color: #F10215;
+}
+.user_inner .user_profit{
+	margin-top: 10px;
+    height: 25px;
+    text-align: center;
+}
+.user_profit a{
+	display: inline-block;
+	width: 75px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 12px;
+    margin:0 5px;
+    padding: 0;
+    border-radius: 13px; /*设置圆角边框阴影效果*/
+    box-shadow: 6px 8px 20px rgba(45,45,45,.15);  
+}
+.user_profit_lk{
+	color:#F10215;
+}
+.user_profit_lk_plus{
+	background: #363634;
+    color: #e5d790;
+}
+     /*news新消息部分*/
+.jd_col3 .news{
+	margin-top: 3px;
+	height:130px;
+/*	background-color: cornsilk;*/
+}
+.news_tab{
+	font-size: 12px;
+	line-height: 18px;
+	padding-top: 8px;
+	position: relative;
+}
+.news_tab a{
+	color: #333;
+    padding-right: 15px;
+    padding-left: 15px;
+
+}
+.news_tab .cuxiao{
+    border-right: 1px solid #dfe0e1;
+}
+.new_tab_active{
+	position: absolute;
+	bottom:-1px;
+	left: 0;
+	margin-left: 13px;
+	width: 27px;
+	height: 2px;
+	background-color: #db192b;
+}
+.news_tab .news_more{
+    position: absolute;
+	top: 8px;
+	right: 12px;
+	padding: 0;
+}
+.news_content{
+	margin: 0 15px;
+	padding-top: 8px;
+	height:88px;
+}
+.news_content ul{
+	font-size: 12px;
+	line-height: 22px;
+}
+.news_content li a{
+	color:#666666;
+}
+
+.service_split{
+	width: 160px;
+	height: 1px;
+	margin:1px auto;
+	background-color:#ebeaea;
+}
+   /*便捷服务部分*/
+.jd_col3 .jd_service{
+	height: 165px;
+	padding: 18px 11px 11px;
+/*	background-color: burlywood;*/
+}
+
+.jd_service li{
+	float: left;
+	width: 42px;
+	height: 51px;
+	padding-top: 6px;
+	font-size: 12px;
+	text-align: center;
+	overflow: hidden;
+}
+.jd_service li i{
+	font-family: icomoon;
+	display: block;
+	color: #bea68d;
+	width: 20px;
+	height: 20px;
+	margin:0 auto ; /*定宽块级元素水平居中,左右外边距auto*/
+	font-style: normal;
+}
+.jd_service li p{
+	margin: 0;
+	width: 42px;
+	color: #bea68d;
+	height: 25px;
+	line-height: 25px;
+	border-bottom: 2px solid #fff;;
+}

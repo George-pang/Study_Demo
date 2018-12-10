@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name, sex, height) {
+        this.name = name;
+        this.sex = sex;
+        this.height = height;
+    }
+
+    Person.prototype.eat = function () {
+        console.log("吃饭");
+    };
+
+    //借用构造函数实现继承
+    function Student(name, sex, height, age) {
+        Person.call(this, name, sex, height); //this--当前Student的实例对象
+        this.age = age;
+    }
+
+    var stu1=new Student("小米","男",110,18);
+    console.log(stu1.name,stu1.sex,stu1.height,stu1.age);
+
+    var stu2=new Student("小红","女",100,19);
+    console.log(stu2.name,stu2.sex,stu2.height,stu2.age);
+
+    var stu3=new Student("小莉","女",120,20);
+    console.log(stu3.name,stu3.sex,stu3.height,stu3.age);
+    stu3.eat();//报错---方法没有继承过来
+</script>
+</body>
+</html>

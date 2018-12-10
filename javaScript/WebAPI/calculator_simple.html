@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery制作最简单的网页版计算器</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .cal-container{
+            width: 300px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            background-color: pink;
+        }
+        table{
+            width: 300px;
+            height: 200px;
+        }
+        tbody,tr{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        td{
+            text-align: center;
+            vertical-align: center;
+        }
+        .operator input{
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cal-container">
+        <form action="">
+            <table border="1px">
+                <tbody>
+                <tr>
+                    <td>第一个数：</td>
+                    <td><input type="text" id="num1" /></td>
+                </tr>
+                <tr>
+                    <td>第二个数：</td>
+                    <td><input type="text" id="num2" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="operator">
+                        <input type="button" value="+" id="jia"/>
+                        <input type="button" value="-" id="jian"/>
+                        <input type="button" value="×" id="cheng"/>
+                        <input type="button" value="÷" id="chu"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>结果为：</td>
+                    <td><input type="text" id="resultIpt" /></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("#jia").on("click",function () {
+                var num1=$("#num1").val();
+                var num2=$("#num2").val();
+                var num3 = eval(num1) + eval(num2);
+                console.log(eval(num1));
+                $("#resultIpt").val(num3);
+            });
+            $("#jian").on("click",function () {
+                var num1=$("#num1").val();
+                var num2=$("#num2").val();
+                var num3 = eval(num1) - eval(num2);
+                $("#resultIpt").val(num3);
+            });
+            $("#cheng").on("click",function () {
+                var num1=$("#num1").val();
+                var num2=$("#num2").val();
+                var num3 = eval(num1) * eval(num2);
+                $("#resultIpt").val(num3);
+            });
+            $("#chu").on("click",function () {
+                var num1=$("#num1").val();
+                var num2=$("#num2").val();
+                var num3 = eval(num1) / eval(num2);
+                $("#resultIpt").val(num3);
+            });
+            // var num1=$("#num1").val();//字符串
+            // var num2=$("#num2").val();
+            // $("#jia").on("click",function () {
+            //     var num3 = eval(num1) + eval(num2);
+            //     console.log(eval(num1));
+            //     $("#resultIpt").val(num3);  //结果为：NaN，因为num1/num2 页面加载后就获取了，此时为空字符串
+            // });
+            // $("#jian").on("click",function () {
+            //     var num3 = eval(num1) - eval(num2);
+            //     $("#resultIpt").val(num3);
+            // });
+            // $("#cheng").on("click",function () {
+            //     var num3 = eval(num1) * eval(num2);
+            //     $("#resultIpt").val(num3);
+            // });
+            // $("#chu").on("click",function () {
+            //     var num3 = eval(num1) / eval(num2);
+            //     $("#resultIpt").val(num3);
+            // });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实践题 - 选项卡-js更改classname实现样式更改</title>
+    <style type="text/css">
+        *{padding:0px;margin: 0px;font:12px normal "microsoft yahei";}
+        #tabs {width:290px;padding:5px;height:150px;margin:20px;}
+        #tabs ul{
+        	list-style:none;display: block;height:30px;line-height:30px;
+            border-bottom:2px saddlebrown solid;
+        }
+        #tabs ul li{
+            background:#fff;cursor:pointer;float:left;list-style:none;height:28px;line-height:28px;
+            margin:0px 3px;border:1px solid #aaaaaa;border-bottom:none;
+            display:inline-block;width:60px;text-align: center;
+        }
+        #tabs ul li.on{border-top:2px solid saddlebrown;border-bottom: 2px solid #fff;}
+        #tabs div{height:120px;line-height: 25px;border:1px solid #336699;border-top:none;padding:5px;}
+        .hide{display: none;}
+    </style>
+    <script type="text/javascript">
+         window.onload = function(){
+         	//获取最外层div节点
+             var oTab = document.getElementById("tabs");
+            //获取第一个ul节点
+             var oUl = oTab.getElementsByTagName("ul")[0];
+            //获取ul节点中的所有li节点
+             var oLis = oUl.getElementsByTagName("li");
+            //获取所有最外层div中的所有div节点
+             var oDivs= oTab.getElementsByTagName("div");
+
+             for(var i= 0;i<oLis.length;i++){
+                 oLis[i].index = i; //这一句代码是否是必须的？
+                 oLis[i].onclick = function() {
+           //表面上的需求是点哪个变哪个，实际的实现是清空所有，再变点的那个
+                     for(var n= 0;n<oLis.length;n++){  //通过classname来控制css样式的显示与否？
+                         oLis[n].className = "";//将所有li标签设置为非on类样式
+                         oDivs[n].className = "hide"; //将所有的div标签设置为hide类样式   清空所有样式
+                     }
+                     this.className = "on";  //当前点击li对象赋 on类样式
+                     oDivs[this.index].className = "";  //当前对应索引的div对象 取消hide类样式
+                 }
+             };
+         }
+    </script>
+
+</head>
+<body>
+<div id="tabs">
+    <ul>
+        <li class="on">房产</li>
+        <li>家居</li>
+        <li>二手房</li>
+    </ul>
+    <div>
+        275万购昌平邻铁三居 总价20万买一居<br>
+        200万内购五环三居 140万安家东三环<br>
+        北京首现零首付楼盘 53万购东5环50平<br>
+        京楼盘直降5000 中信府 公园楼王现房<br>
+    </div>
+    <div class="hide">
+        40平出租屋大改造 美少女的混搭小窝<br>
+        经典清新简欧爱家 90平老房焕发新生<br>
+        新中式的酷色温情 66平撞色活泼家居<br>
+        瓷砖就像选好老婆 卫生间烟道的设计<br>
+
+    </div>
+    <div class="hide">
+        通州豪华3居260万 二环稀缺2居250w甩<br>
+        西3环通透2居290万 130万2居限量抢购<br>
+        黄城根小学学区仅260万 121平70万抛!<br>
+        独家别墅280万 苏州桥2居优惠价248万<br>
+
+    </div>
+</div>
+
+</body>
+</html>

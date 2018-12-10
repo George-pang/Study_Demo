@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类QQ空间背景装扮更换效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("images/1.jpg");
+        }
+
+        #mask {
+            background-color: rgba(255, 255, 255, 0.3);
+            height: 200px;
+            text-align: center;
+        }
+
+        #mask img {
+            width: 200px;
+            margin-top: 35px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body id="bd">
+    <div id="mask">
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+    </div>
+
+    <script>
+        var imgObjs=document.getElementById("mask").children;
+        for (var i=0;i<imgObjs.length;i++){
+            imgObjs[i].onclick=function () {
+                document.body.style.backgroundImage="url("+this.src+")";  //字符串的值根据变量取值得这么写
+                // document.body.style.backgroundImage="url('this.src')"; //这么写,url就是一个固定的字符串
+            };
+        }
+    </script>
+
+</body>
+</html>

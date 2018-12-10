@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作业</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//	* 三种方式各2遍  调用Object 自定义  字面量
+//  * 工厂模式一遍
+//  *
+//  * 创建一个电脑对象,有颜色,有重量,有品牌,有型号,可以看电影,可以听音乐,可以打游戏,可以敲代码
+//  *
+//  * 创建一个按钮对象,宽,高,背景颜色,点击行为,按钮有鼠标进入的行为
+//  *
+//  *
+//  * 创建一个车的对象,有重量,颜色,牌子,可以载人,拉货
+//  *
+//  * Math对象讲的方法---三遍
+
+ //  * 创建一个电脑对象,有颜色,有重量,有品牌,有型号,可以看电影,可以听音乐,可以打游戏,可以敲代码
+     //1.系统构造函数方法
+     var computer=new Object();
+      computer.color="black";
+      computer.weight=100;
+      computer.brand="惠普";
+      computer.model="暗夜精灵2";
+      computer.watch=function (){
+      	console.log("可以看电影！");
+      };
+      computer.listen=function (){
+      	console.log("可以听音乐！");
+      };
+      computer.code=function (){
+      	console.log("可以敲代码！");
+      };
+      computer.watch();
+      
+      //2.自定义构造函数创建对象
+      function Computer(color,weight,brand,model){
+      	this.color=color;//this
+      	this.weight=weight;
+      	this.brand=brand;
+      	this.model=model;
+      	this.watch=function (){
+      		console.log("可以看电影！");
+      	};
+      	this.listen=function (){
+      		console.log("可以听音乐！");
+      	};
+      	this.code=function (){
+      		console.log("还可以敲代码！");
+      	};	
+      }
+      var computer=new Computer("green","5kg","惠普","暗夜精灵2");
+      console.log(computer.brand);//computer.brand,点语法，有这个属性就读取，没有就声明一个未赋值的新属性
+      
+      //3.字面量方式创建对象
+      var computer={
+      	color:"yellow",//字面量方式用的是逗号
+      	weight:"5kg",
+      	brand:"惠普",
+      	model:"暗夜精灵2",
+      	wacth:function(){
+      		console.log("可以看电影！");
+      	},//逗号，注意字面量方式 对象方法的这种写法
+      	listen:function(){
+      		console.log("可以听音乐！");
+      	},
+      	code:function(){
+      		console.log("可以敲代码！");
+      	}
+      }
+      computer.code();
+      
+      //拓展：工厂模式批量创建对象
+      function createComputer(color,weight,brand,model){
+      	var obj=new Object();
+      	obj.color=color;
+      	obj.weight=weight;
+      	obj.brand=brand;
+      	obj.model=model;
+      	obj.watch=function (){
+      		console.log("可以看电影！");
+      	};
+      	obj.listen=function (){
+      		console.log("可以听音乐！");
+      	};
+      	obj.code=function (){
+      		console.log("可以敲代码！");
+      	};
+      	return obj;//这一句话千万不能漏掉
+      }
+      var computer1=createComputer("green","5kg","惠普","暗夜精灵2");
+      var computer2=createComputer("black","3kg","外星人","外星人2代");
+      console.log(computer1.color);
+      console.log(computer2.model);
+      
+      //Math对象的常用方法和属性
+      console.log(Math.PI);
+      console.log(Math.E);
+      console.log(Math.abs(-8.9));//绝对值
+      console.log(Math.ceil(8.9));
+      console.log(Math.ceil(8.1));
+      console.log(Math.floor(9.9));
+      console.log(Math.floor(9.1));
+      console.log(Math.random());
+      console.log(Math.random()*5);
+      console.log(parseInt(Math.random()*5));//0~4的随机整数
+      console.log(parseInt(Math.random()*5+1));//1~5随机整数
+      console.log(Math.round(5.5));
+      console.log(Math.round(5.1));
+      console.log(Math.round(5.9));
+      console.log(Math.pow(2,4));//x的y次方
+      console.log(Math.sqrt(36));//开方
+      
+		</script>
+	</body>
+</html>

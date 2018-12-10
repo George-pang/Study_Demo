@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用CSS伪类来设置超链接样式</title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			a{   
+
+				font-size: 30px;
+			}
+			a:link{
+				text-decoration: none;
+			}
+			a:hover{
+				background-color: red;
+				text-decoration: underline;
+			}
+			a:visited{
+				background-color: yellow;
+				
+			}
+			ol{
+			
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="http://www.baidu.com"><button>百度一下</button></a>
+		<ol start="10">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ol>
+	</body>
+</html>

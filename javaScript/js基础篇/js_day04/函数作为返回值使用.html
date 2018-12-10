@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数作为返回值使用</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function f1 () {
+				console.log("函数也可以作为返回值使用！");
+				return function(){
+					console.log("这个函数作为返回值使用了!");
+				}
+			}
+			var ff=f1();//调用函数f1并赋值给变量ff，是把函数的返回值赋给变量
+			ff();
+		</script>
+	</body>
+</html>

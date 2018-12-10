@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-class操作</title>
+    <style>
+        .bigger{
+            font-size: 36px;
+        }
+        .bg{
+            background-color: pink;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+     <input type="button" id="btn1" value="添加类">
+     <input type="button" id="btn2" value="移除类">
+     <input type="button" id="btn3" value="判断类">
+     <input type="button" id="btn4" value="切换类">
+     <ul>
+         <li>1</li>
+         <li>2</li>
+         <li>3</li>
+         <li>4</li>
+     </ul>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //思路分析：
+            $("#btn1").click(function () {
+                $("li").addClass("bigger");
+            })
+            $("#btn2").click(function () {
+                $("li").removeClass("bigger");
+            });
+            $("#btn3").click(function () {
+                console.log($("li").hasClass("bigger"));
+            });
+            $("#btn4").click(function () {
+                $("li").toggleClass("bigger");
+            });
+
+         });
+    </script>
+</body>
+</html>

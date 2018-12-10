@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  
+  
+  //$其实就是一个函数，以后用$的时候，记得跟小括号 $(); 调用$函数
+  //参数不同，功能就不同
+
+  //3种用法
+  //1. 参数是一个匿名function, 入口函数
+  $(function () {
+    
+  });
+  console.log(typeof $);//控制台输出$符号的数据类型，发现结果是function
+  
+  //2. $(domobj)  把dom对象转换成jquery对象
+//  $(document).ready(function () {
+//
+//  });
+  
+  //3. 参数是一个字符串,用来找对象
+  //$("div") $("div ul")   $(".current")
+
+
+
+  //$的实质：是一个function
+
+  //  console.log($ === jQuery);   //true,证明$全等于jQuery
+  //  下面这么写也没错
+  //  jQuery(function () {
+  //
+  //  });
+</script>
+</body>
+</html>

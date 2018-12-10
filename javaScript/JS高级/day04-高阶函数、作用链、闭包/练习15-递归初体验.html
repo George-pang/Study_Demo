@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function f1(){
+        //     console.log("函数被调用啦！");
+        //     f1();   //递归----没有结束条件，陷入死循环
+        // }
+        // f1();
+
+        var num = 1;
+
+        function f1() {
+
+            console.log("函数被调用啦！");
+            num++;
+            // 递归要有结束条件
+            if (num >= 5) {
+                return false;
+            }
+            f1();
+        }
+        f1();
+    </script>
+</body>
+
+</html>

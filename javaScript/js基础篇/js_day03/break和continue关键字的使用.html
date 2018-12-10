@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>break和continue关键字的使用</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//测试
+			for(var i=0;i<10;i++){
+				while (true){//此时，条件 恒成立，不设置break会无穷循环
+					console.log("Hello World！");
+					break;	//break跳出当前while循环，但for循环仍在执行
+				}
+			}
+			
+			//输出100-200之间第一个能被7整除的数字
+			for(var i=100;i<=200;i++){
+				if(i%7==0){
+					console.log(i);
+					break;//找到第一个即跳出当前for循环
+				}
+			}
+			
+			//求100-200之间所有奇数的和
+			//法1. for循环
+			//for循环，里面有continue结束此次循环，是会继续i++，进行下一次循环的
+			var sum=0;
+			for(var i=100;i<=200;i++){
+				if(i%2==0){
+				 continue;//循环体后面的代码不执行了，但for循环（）中的i++依然执行
+				}
+				sum +=i;
+			}
+			console.log(sum);
+		    //法2. while循环
+		    var sum1=0;
+		    var j=100;
+		    while (j<=200){
+		    	if(j%2==0){
+		    		j++;//这里的j++不加，当j为100时就陷入死循环
+		    		continue;
+		    	}
+				sum1 +=j;
+				j++;//这里的j++不加，当j为101时就陷入死循环
+		    }
+		    console.log(sum1);
+		    
+		</script>
+	</body>
+</html>

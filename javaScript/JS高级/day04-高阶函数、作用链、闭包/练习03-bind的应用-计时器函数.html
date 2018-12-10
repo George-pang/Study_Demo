@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bind的应用--改变计时器函数体内部的this指向</title>
+</head>
+<body>
+    <script>
+        function ShowRandom(){
+            this.number=parseInt(Math.random()*10+1);
+        }
+        ShowRandom.prototype.show1=function(){
+            // setInterval(function(){
+            //     this.show2();//报错---因为计时器函数中的this指向window对象
+            // },1000);
+
+            // setInterval(this.show2(),1000);
+
+                //改变了定时器中的this的指向了,本来应该是window,现在是实例对象了
+            setInterval(this.show2.bind(this),1000); //计时器函数回调函数内部的this原先指向的是window，但是bind(this)把当前实例对象传入，从而改变了内部的this指向
+        }
+        ShowRandom.prototype.show2=function(){
+            console.log(this.number);
+        }
+        var  show=new ShowRandom();
+        show.show2();
+        show.show1();
+    </script>
+</body>
+</html>

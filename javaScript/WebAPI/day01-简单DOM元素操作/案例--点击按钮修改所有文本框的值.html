@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例--点击按钮修改所有文本框的值</title>
+</head>
+<body>
+    <input type="button" value="点击修改" id="btn"/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <input type="text" name="" value=""/><br/>
+    <script>
+        //获取对象，注册点击事件，添加事件处理函数
+        document.getElementById("btn").onclick=function () {
+            var inputObjs=document.getElementsByTagName("input");   //返回一个元素对象的伪数组
+            for(var i=0;i<inputObjs.length;i++){
+                if (inputObjs[i].type!="button"){  //去除type类型为button的那个input
+                    inputObjs[i].value="所有文本框的值已经被改啦！";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

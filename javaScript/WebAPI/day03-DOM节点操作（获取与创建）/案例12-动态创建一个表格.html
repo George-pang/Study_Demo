@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 400px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="创建表格" id="btn"/>
+<div id="dv"></div>
+<script>
+    var arr = [
+        {name: "百度", href: "http://www.baidu.com"},
+        {name: "谷歌", href: "http://www.google.com"},
+        {name: "优酷", href: "http://www.youku.com"},
+        {name: "土豆", href: "http://www.tudou.com"},
+        {name: "快播", href: "http://www.kuaibo.com"},
+        {name: "爱奇艺", href: "http://www.aiqiyi.com"}
+    ];
+
+    var btnObj = document.getElementById("btn");
+    var divObj = document.getElementById("dv");
+    btnObj.onclick = function () {
+        var tableObj = document.createElement("table");
+        tableObj.border=1;
+        tableObj.style.borderCollapse="collapse";
+        divObj.appendChild(tableObj);
+        //循环创建tr
+        for (var i = 0; i < arr.length; i++) {
+            var trObj = document.createElement("tr");
+            tableObj.appendChild(trObj);
+            //向tr中创建第一个td
+            var td1Obj = document.createElement("td");
+            td1Obj.innerHTML = arr[i].name;
+            td1Obj.style.textAlign="center";
+            trObj.appendChild(td1Obj);
+            //向tr中创建第二个td
+            var td2Obj = document.createElement("td");
+            td2Obj.innerHTML = "<a href=" + arr[i].href + ">"+arr[i].name+"</a>";
+            td2Obj.style.textAlign="center";
+            trObj.appendChild(td2Obj);
+        }
+    }
+
+</script>
+</body>
+</html>

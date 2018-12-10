@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr=[10,20,30,40,50,60];
+    // console.log(arr.pop());   //pop方法-删除数组中的最后一个元素，并返回这个元素,不影响原数组
+    // console.log(arr);
+    // console.log(arr.push(60));//push方法-追加元素，返回的是追加后的数组长度
+    // console.log(arr);
+
+    console.log(arr.shift()); //shift方法-删除数组中的第一个元素，并返回这个元素
+    console.log(arr);
+    console.log(arr.unshift(10));//插入数组，返回的是插入元素后的数组长度
+    console.log(arr);
+
+    arr.push(arr.pop());
+    console.log(arr);
+</script>
+</body>
+</html>

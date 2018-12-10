@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注意js运算符优先级和js隐式类型转换</title>
+</head>
+<body>
+    <script>
+    window.onload=function(){
+        console.log(false+1);//1
+        console.log(typeof(a));//undefined
+        if(typeof(a)&&-true+(+undefined)+""){ //true
+            document.write("基础扎实");
+        }
+        if(!!" "+!!""+!!false||document.write("你觉得能打印你就是猪！")){
+            console.log(!!" "+!!""+!!false||document.write("你觉得能打印你就是猪！"));
+        }
+
+    };    
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <!-- 2. 自定义两组样式，来控制 transition 内部的元素实现动画 -->
+    <style type="text/css">
+        /*如果你使用一个没有名字的 <transition>，则 v- 是这些类名的默认前缀。*/
+        /*如果你使用了 <transition name="my-transition">，那么 v-enter 会替换为 my-transition-enter。*/
+
+        /* v-enter 【这是一个时间点】 是进入之前，元素的起始状态，此时还没有开始进入 */
+        /* v-leave-to 【这是一个时间点】 是动画离开之后，离开的终止状态，此时，元素 动画已经结束了 */
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+
+        /* v-enter-active 【入场动画的时间段】 */
+        /* v-leave-active 【离场动画的时间段】 */
+        .v-enter-active,
+        .v-leave-active{
+            transition:all .8s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="toggle" @click="flag=!flag"/>
+
+    <!-- 1. 使用 transition 元素，把 需要被动画控制的元素，包裹起来 -->
+    <!-- transition 元素，是 Vue 官方提供的 -->
+    <transition>
+         <h3 v-show="flag">不用动画的显示隐藏</h3>
+    </transition>
+</div>
+
+<script>
+    //初始化Vue实例
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            flag:false,
+        }
+    });
+
+    //疑问：
+    //1.当flag为true时，设置入场动画起始状态opacity为0，但依然是显示的
+    //2.只设置了起始状态，没设结束状态，没什么就会实现来回的左右位移呢？
+</script>
+</body>
+</html>

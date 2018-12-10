@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+    // 练习1：
+        console.log(bar());
+        function bar(){
+            foo=10;
+            function foo(){
+
+            }
+            var foo=11;
+            return foo;//11
+        }
+
+        //预编译过程分析：
+        /*1、bar（）执行前
+            AO{
+                foo: f foo(){}
+            }
+        2、执行foo=10,
+            AO{
+                foo:10,
+            }
+        3、执行foo=11
+            AO{
+                foo：11,
+            }      
+        */
+    </script>
+
+</body>
+</html>

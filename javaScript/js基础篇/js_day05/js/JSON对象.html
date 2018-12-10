@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JSON</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var json={
+				"name":"小猫",//json对象 属性名和属性值都用双引号括起来
+				"age":"18",
+				"sex":"女"
+			}
+			//json对象的遍历
+			for(var key in json){//定义一个key变量，存储了json对象中所有属性的名字
+				console.log(key+"-----"+json[key]);
+//				console.log(key+"-----"+json.key);//错误，因为js是门动态类型语言，点什么，加什么
+	//所以json.key在没有key属性的时候给json对象创建了key属性，但是没赋值，所以undefined
+			}
+		</script>
+	</body>
+</html>

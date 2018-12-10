@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--小练习</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//输出任意两个数的最大值
+			function maxNum(x,y){
+				if(x>y){
+					return x;
+				}else{
+					return y;
+				}
+			}
+			console.log(maxNum);//直接输出函数名（不加括号），会在控制台原样打印出函数
+			console.log(maxNum());//这么写在控制台输出undefined			
+			console.log(maxNum(6,8));
+			
+			//输出任意两个数的和
+			function sum(x,y){
+				return x+y; //返回x+y
+			}
+//			console.log(sum(5,9));  下面两行代码的简写
+            sum1=sum(5,9);
+			console.log(sum1);
+			
+			//输出1-m之间所有数的和
+			function bothSum(m){
+				var sum=0;
+				for(var i=1;i<=m;i++){
+					sum+=i;
+				}
+				return sum;
+			}
+			console.log(bothSum(100));
+			
+			//输出n-m之间所有数的和
+			function bothSum2(n,m){
+				var sum=0;
+				for(var i=n;i<=m;i++){
+					sum+=i;
+				}
+				return sum;
+			}
+			console.log(bothSum2(20,90));
+			
+			//求圆的面积
+			function getS(r){
+				var s=Math.PI*r*r;  //Math.PI代表π
+				return s;
+			}
+			console.log(getS(6));
+			
+		</script>
+	</body>
+</html>

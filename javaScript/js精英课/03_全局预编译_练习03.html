@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+    // 练习1：
+        function bar(){
+            return foo;//f foo(){}
+            foo=10;
+            function foo(){
+
+            }
+            var foo=11;
+        }
+        console.log(bar());
+
+        //预编译过程分析：
+        /*1、bar（）执行前
+            AO{
+                foo: f foo(){}
+            }
+        2、return foo;函数内后面代码不再执行
+        3、console.log(bar())            
+        */
+    </script>
+
+</body>
+</html>

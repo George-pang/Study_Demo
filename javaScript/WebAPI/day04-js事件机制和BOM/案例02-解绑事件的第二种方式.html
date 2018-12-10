@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="小陈" id="btn"/>
+    <input type="button" value="解绑事件" id="btn2"/>
+
+    <script>
+        //第二种方式对应绑定事件的 对象.addEventListener("事件类型",事件处理函数,false)方式
+        //注意：这种方式，绑定事件时必须使用命名函数作为事件处理函数
+        function f1(){
+            console.log("小陈好猥琐！");
+        }
+        function f2(){
+            console.log("小陈超级猥琐！");
+        }
+        var btnObj=document.getElementById("btn");
+        var btn2Obj=document.getElementById("btn2");
+        btnObj.addEventListener("click",f1,false);
+        btnObj.addEventListener("click",f2,false);
+        btn2Obj.onclick=function () {
+            btnObj.removeEventListener("click",f1,false);
+        }
+    </script>
+</body>
+</html>

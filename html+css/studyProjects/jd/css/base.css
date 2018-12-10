@@ -1,0 +1,506 @@
+/*公用样式 京东--顶部和底部*/
+
+/*版心*/
+.w{
+	width: 1190px;
+	margin: auto;
+}
+
+.fr{
+	float: right;
+}
+
+.fl{
+	float: left;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+.style-red{
+	color: #f10215!important;
+}
+body{
+	background-color: #F6F6F6;
+}
+a{
+	text-decoration: none;
+}
+  /*去除图片底侧缝隙*/
+/*img{
+	vertical-align: top; 
+}*/
+
+.clearfix:before,.clearfix:after {   /*双伪元素清除浮动，见笔记*/
+  content:"";
+  display:table;  /* 这句话可以出发BFC BFC可以清除浮动,BFC我们后面讲 */
+}
+.clearfix:after {
+ clear:both;
+}
+.clearfix {
+  *zoom:1;
+}
+/*引用字体图标*/
+@font-face {
+	font-family: 'icomoon';
+	src: url('../fonts/icomoon.eot?dplgtl'); /*相对路径要根据文件夹位置更改*/
+	src: url('../fonts/icomoon.eot?dplgtl#iefix') format('embedded-opentype'), 
+		url('../fonts/icomoon.ttf?dplgtl') format('truetype'), 
+		url('../fonts/icomoon.woff?dplgtl') format('woff'), 
+		url('../fonts/icomoon.svg?dplgtl#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*京东顶部 start*/
+.J_event{
+	height: 80px;
+	background-color: #000;
+}
+.J_event a{
+	display: block;
+	height: 80px;
+	background: url(../img/top-bg.png)no-repeat;
+	position: relative;  /*子绝父相 定位*/
+}
+.J_event a i{
+	position: absolute;
+	right: 0;
+	top: 5px;
+	height: 20px;
+	width: 20px;
+	font-family: icomoon;
+	font-style: normal; /*取消斜体*/
+	font-size: 14px;
+	color: #FFF;
+    background: rgb(45,45,45);
+    opacity: .3;/*不透明度*/
+	line-height: 20px;
+	text-align: center;
+	
+}
+
+/*京东快捷导航栏*/
+	/*快捷导航栏左侧*/
+.shortcut{
+	height: 30px;
+	line-height: 30px; /*父元素高度确定的单行文本垂直居中 将父元素的height与line-height设置一致*/
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+	color: #666;
+	font-size:12px;
+}
+
+.location{
+	font-family: icomoon;
+	font-style: normal;
+	font-size: 14px;
+    color: #f10215;
+    margin-right: 4px;
+}
+/*.fl{
+	margin-left: 200px;  也行，只是这么写后续其他元素调用fl类会误用样式
+}*/
+
+.shortcut .fl li{
+	margin-left: 200px;
+	height: 30px;  /*高度固定为30px*/
+}
+
+	/*快捷导航栏右侧*/
+.shortcut .fr li{
+	float:left;
+}
+.shortcut .fr a{
+	color: #999;
+	text-decoration:none;
+}
+.spacer{
+	overflow: hidden;
+    margin: 11px 5px 0; /*三个时，为上 左右 下外边距，初始是紧贴这上面，所以上面加点边距*/
+    width: 1px;
+    height: 10px;/* li元素是块级元素,给行内元素设置宽高不起作用,行内元素的宽高是由元素内容撑起来的*/
+    background-color: #ccc; /*li是块级元素,所以这里设的是背景色*/
+}
+.dropdown{
+	padding-right: 15px;
+	position: relative; /*子绝父相*/
+}
+.dropdown i{
+	font-family: icomoon;
+	font-style: normal;
+	font-size: 12px;
+	position: absolute;
+	top:-2px;
+	right:0;
+}
+
+.qr_code{
+	position: relative;
+}
+.qrcode{
+	position: absolute;
+	top: 35px;
+	left: -8px;
+	width: 60px;
+    height: 60px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+/*header部分*/
+.header{
+	height: 140px;
+}
+.inner{
+	height: 140px;
+/*	background-color: pink;*/
+	position: relative; /*子绝父相*/
+}
+	/* logo部分*/
+.logo{
+	position: absolute;	
+	top: -30px;
+	left: 0;
+	width: 190px;
+	height: 170px;
+	background-color: purple;
+	box-shadow: 0 -12px 10px rgba(0,0,0,0.2); /*盒阴影效果*/
+
+}
+.logo h1{
+	margin: 0;
+}
+.logo h1 a{
+	text-decoration: none;
+	background:url(../img/logo.jpg)no-repeat;/*相对路径*/
+	display: block; /*显示类型为块,才可以对a设置宽和高*/
+	width: 190px;
+	height: 170px;
+	text-indent: -9999px;	/*缩进*/
+	overflow: hidden;
+}
+	/* 搜索框部分*/
+.search{
+	position: absolute;
+	top: 25px;
+	left: 320px;
+	width: 550px;
+	height: 35px;
+}
+.search input{  /*两个行内块之间默认有缝隙,浮动可以去除行内块间的缝隙*/
+	width: 450px;/*平常盒模型的width都是内容宽度，还需实际宽度减去内边距和边框*/
+	height: 25px;
+	border: 1px solid transparent;
+    padding: 4px 44px 4px 4px; 
+    float: left;
+}
+.search button{
+	width: 50px;
+	height: 35px;
+	padding: 0;
+	border: none;
+	float: left;
+	background-color: #f10215;
+}
+.search button i{
+	font-family: icomoon;
+	font-size: 20px;
+	font-style: normal;
+	color: #fff;
+	cursor: pointer; /*鼠标悬浮小手效果*/
+}
+.search em{
+	position: absolute;
+	top: 10px;
+	right: 65px;
+	width: 19px;
+	height: 15px;
+	background: url(../img/sprite-search.png)no-repeat;
+	cursor: pointer;
+}
+.search em:hover{ /*伪类选择器 悬浮状态*/
+/*	background-color: #f10215;*/
+    background-position: -30px 0; /*利用精灵图  两参数第一个水平位置，第二个垂直位置*/
+}
+
+     /*热搜词部分*/
+.hotwords{
+	position: absolute;
+	top: 70px;
+	left: 320px;
+}
+.hotwords li{
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	margin-right: 10px;
+}
+
+.hotwords li a{
+	font-size: 12px;
+	color: #999;	
+}
+.hotwords li a:hover{
+	color: #f10215;
+}
+
+	/*我的购物车部分*/
+.myCar{
+	position: absolute;
+	top: 25px;
+	right: 100px;
+	width: 188px;
+	height: 33px;
+	line-height: 33px; /*子元素垂直居中*/
+	text-align: center;
+	border: 1px solid transparent;
+	background-color: #FFFFFF;
+	font-size: 12px;
+	color:#F10215;
+}
+.myCar i{
+	font-family: icomoon;
+	font-style: normal;
+	color: #F10215;
+	margin-right: 3px;
+}
+.myCar s{
+	position: absolute;
+	top: 5px;
+	left: 140px;
+	height: 16px;
+	line-height: 16px;
+	padding:0 3px; /*o的背景加宽点*/
+	border-radius: 7px; /*圆角大小*/
+	text-decoration: none;
+	background-color: #F10215;
+	color: #FFFFFF;
+	
+}
+    /*购物车下图片链接跳转部分*/
+.J_promo_link{
+	position: absolute;
+	right: 0;
+	bottom:10px;
+	width: 190px;
+	height: 40px;
+	background: url(../img/J_promo_link.gif) no-repeat ;
+	cursor: pointer;
+}
+   /*导航栏信息部分*/
+ .navitems{
+ 	position: absolute;
+ 	left: 200px;
+ 	bottom: 0;	
+ }
+ .navitems ul{
+ 	float: left;
+ }
+ .navitems ul li{
+ 	float: left;
+ 	margin-left: 30px;
+ }
+ .navitems a{
+ 	font-size: 14px;
+ 	height: 40px; 
+ 	line-height: 40px;
+ 	display: block; /*a是行内元素,要设置高度得加上这句代码 */
+ 	color: #333;
+ }
+.navitems a:hover{
+ 	color: #F10215;
+ }
+.navitems .spacer{
+	float: left;
+	margin: 15px -10px 0 20px;  /*15px=(40px-10px)/2 这样10px高的小竖线就垂直居中啦*/
+}
+
+/*页面底部部分*/
+.footer{
+	height: 560px;
+	background-color: #EAEAEA;
+}
+   /*多快好省*/
+.footer-service{
+	border-bottom: 1px solid #DEDEDE ;
+}
+.footer-service-inner{
+/*	background-color: pink;*/ /*加颜色是为了在写页面代码时看起来结构比较清楚*/
+/*	height: 100px;*/
+    padding:30px 0;
+
+}
+.footer-service-inner li{
+	float: left;
+	width: 297px; /*1190/4*/
+	height: 42px;
+/*	background-color: purple;*/
+	
+}
+
+.footer-service-inner li .service_unit{
+	margin: 0 auto;
+	width: 225px;
+	height: 42px;
+	position: relative;
+	overflow: hidden;
+}
+.service_unit h5 {
+    width: 36px;
+    height: 42px; /*内容高度*/
+    position: absolute; /*h5脱离文档流了,所以p能和它一行显示*/
+    top: 0;
+    left: 0;
+    margin: 0; /*不将外边距设为0,h5实际高度会溢出元素框;*/
+    background: url(../img/ico.png) no-repeat;
+    text-indent: -999px;
+    overflow: hidden; /*超出元素框的隐藏掉*/
+}
+.service_unit .kuai{
+	background-position: 0 -44px;
+}
+.service_unit .hao{
+	background-position: 0 -86px;
+}
+.service_unit .sheng{
+	background-position: 0 -128px;
+}
+.service_unit p{
+	line-height: 42px; /*垂直居中*/
+    margin:0 0 0 45px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+  /*footer-help部分*/
+.help{
+	height:180px;  /*写了高度就不用担心子元素浮动导致高度塌陷的问题*/
+	/*background-color: pink;*/
+	padding-top: 20px;
+}
+.help dl{
+	width: 195px;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.help dl dt{
+    font-size: 14px;
+    font-weight: 700;
+    color: #666;
+    height: 30px;
+}
+.help dl dd{
+	margin: 0;
+	padding: 0;
+	height: 22px;
+	color: #727272;
+}
+.help dl dd a{
+	font-size: 12px;
+	color: #727272;
+}
+.help dl dd a:hover{
+	color: #F10215;
+}
+   /*help右侧京东覆盖区县*/
+.help .cover{
+	float: right;
+	width: 207px;
+	height: 150px;
+	background: url(../img/ico_footer.png)no-repeat;
+}
+.help .cover dt{
+	text-align: center;
+}
+.help .cover dd{
+	margin-top: 5px;
+	margin-left: 10px;
+	font-size: 12px;
+	height: 22px;
+	color: #727272;
+	width: 175px;
+}
+.help .cover .info{
+	height: 50px;
+	line-height: 18px;
+	
+}
+.help .cover .more{
+	text-align: right;
+}
+
+/*footer-版权部分*/
+.copyright{
+	padding: 15px 0;
+    border-top: 1px solid #e1e1e1;
+    text-align: center;
+}
+  /*版权--链接部分*/
+.copyright .links{
+	font-size: 12px;
+}
+.copyright .links a{
+	color: #666;
+}
+.copyright .links span{
+	margin: 0 8px;
+	color: #ccc;
+}
+  /*版权信息部分*/
+.copyright_info{
+	line-height: 22px;
+	font-size: 12px;
+	color: #999;
+}
+.copyright_info p{
+	margin: 0;
+}
+.copyright_info a{
+	color: #999;
+}
+.copyright_info a:hover{
+	color: #F10215;
+}
+.copyright_info .copyright_split{
+	margin: 0 8px;
+	color: #ccc;
+}
+.copyright_info .copyright_license{
+	margin-left: 16px;
+}
+
+  /*版权备案部分*/
+.copyright_auth{
+	text-align: center;
+	margin-top: 10px;
+}
+.copyright_auth a{
+	display: inline-block; /*a元素display类型改为行内块*/
+	margin: 0 3px;
+	width: 103px;
+	height: 32px;
+	background: url(../img/ico_footer.png)no-repeat 0px -151px;
+}
+.copyright_auth .kexin{
+	background-position: -104px -151px;
+}
+.copyright_auth .wangluo{
+	background-position: 0 -184px;
+}
+.copyright_auth .chengxin{
+	background-position: -104px -184px;
+}
+.copyright_auth .jubao{
+	background-position: 0 -217px;
+}
+.copyright_auth .app{
+	background-position: -104px -217px;
+}

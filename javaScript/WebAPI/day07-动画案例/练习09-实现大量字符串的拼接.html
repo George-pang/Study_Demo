@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="拼接" id="btn"/><br/>
+    <input type="text" value=""/><br/>
+    <input type="text" value=""/><br/>
+    <input type="text" value=""/><br/>
+    <input type="text" value=""/><br/>
+    <input type="text" value=""/><br/>
+
+    <script>
+        var btnObj=document.getElementById("btn");
+        var inputs=document.getElementsByTagName("input");
+        var  str=[];
+        btnObj.onclick=function () {
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type!=="button"){
+                    str.push(inputs[i].value);
+                }
+            }
+            str=str.join("|");  //join方法不会改变原数组，所以这里得变量接收
+            console.log(str);
+        };
+    </script>
+</body>
+</html>

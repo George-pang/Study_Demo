@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>apply和call改变this指向</title>
+</head>
+<body>
+    <script>
+        //何时使用？只要想要使用别的对象的方法，且方法是当前对象的，就可以使用apply()或者call()
+
+        //普通函数中this指向的改变
+        function f1(x,y){
+            console.log("普通函数其实是window对象的一个方法："+this+"==="+(x+y));
+        }
+        f1(10,20);
+
+        //apply和call的使用
+        window.f1.apply();
+        window.f1.call();
+        window.f1.apply(null,[10,20]);
+        window.f1.call(null,10,20);
+
+
+        console.log("==========");
+        //改变函数中this指向---换句话说表面上看似改变了方法所属的对象
+        var obj=new Object();
+        window.f1.apply(obj,[20,30]); //结果可以看出：函数体中的this指向已经改变了
+        window.f1.call(obj,20,30);
+
+
+        //对象方法中this指向的改变
+        function Person(name,sex){
+            this.name=name;
+            this.sex=sex;
+        }
+        Person.prototype.eat=function(x,y){
+            console.log("对象中的方法："+this.sex+"===>"+(x+y));
+        }
+        
+        function Student(age,sex){
+            this.age=age;
+            this.sex=sex;
+        }
+        
+        var per=new Person("张三","男");
+        var stu=new Student(18,"女性");
+        //apply或call改变方法中的this指向
+        per.eat(20,30);
+        per.eat(20,30);
+        per.eat.apply(stu,[20,40]);
+        per.eat.call(stu,20,40);
+
+    //apply和call的使用方法
+    /*
+    * apply的使用语法
+    * 函数名字.apply(对象,[参数1,参数2,...]);
+    * 方法名字.apply(对象,[参数1,参数2,...]);
+    * call的使用语法
+    * 函数名字.call(对象,参数1,参数2,...);
+    * 方法名字.call(对象,参数1,参数2,...);
+    *
+    * 作用:改变this的指向
+    * 不同的地方:参数传递的方式是不一样的
+    *
+    * 只要是想使用别的对象的方法,并且希望这个方法是当前对象的,那么就可以使用apply或者是call的方法改变this的指向
+    *
+    * */
+
+
+    //apply()和call()方法是谁的？
+    function f2(){
+        console.log("======>"+this);
+    }
+    console.dir(f2);
+    console.log(f2.__proto__);  // ƒ () { [native code] }
+    console.log(f2.__proto__==Function.prototype);  //true
+    console.dir(Function.prototype);
+
+    </script>
+</body>
+</html>

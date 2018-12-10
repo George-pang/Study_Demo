@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现随机的十六进制颜色值</title>
+		<style type="text/css">
+			#ceshi{
+				width:300px;
+				height:200px;
+				margin:0 auto;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ceshi"></div>
+		<script type="text/javascript">
+			//实现随机的十六进制颜色值
+			function getColor(){
+				var str="#";//颜色值是字符串数据，以#开头
+				var arr=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
+				for (var i=0;i<6;i++) {//颜色值6位制
+					var num=parseInt(Math.random()*16);//随机取0~15的整数；
+					str+=arr[num];//字符串连接
+				}
+				return str;
+			}//end function
+			
+			document.getElementById("ceshi").style.backgroundColor=getColor();
+		</script>
+	</body>
+</html>

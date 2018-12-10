@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>each（）方法</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #list{
+            list-style: none;
+        }
+        #list li{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            float: left;
+            margin: 10px;
+            text-align: center;
+            line-height: 200px;
+            overflow: hidden;
+            white-space: nowrap;
+            /*display: flex;*/
+            /*align-items: center;*/
+            /*justify-content: center;*/
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+        <li>什么都看不见啦</li>
+    </ul>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //思路分析：
+                // 遍历jq对象的两种方式
+             var $lis=$("#list>li");
+                    //方式一：for循环遍历--因为jq对象是个伪数组
+             // for(var i=0;i<$lis.length;i++){
+             //     $("#list>li").eq(i).css("opacity",(i+1)/10); //因为下标从0开始的，所以加1
+             // }
+                    //方式二：each（）方法--参数 callback
+             $lis.each(function (index,element) {    //function 两个形参 （下标 对应的DOM对象）
+                 $(element).css("opacity", (index + 1) / 10);  //把对应的DOM对象转成jq对象并设置样式
+             });
+
+         });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //自定义构造函数
+    function Person(name,sex) {
+        this.name=name;
+        this.sex=sex;
+        this.eat=function () {
+            console.log("构造函数中的吃！");
+        };
+    }
+
+    //通过原型对象来添加属性和方法--共享
+    Person.prototype.sex="女";
+    Person.prototype.age=19;
+    Person.prototype.eat=function () {
+        console.log("原型对象中的吃！");
+    };
+    Person.prototype.play=function () {
+        console.log("玩游戏！");
+    };
+
+    //实例化对象，并初始化
+    var per=new Person("小明","男");
+    console.log(per.sex);//男--使用的是构造函数中的sex属性
+    console.log(per.age);//19
+    per.eat();  //构造函数中的吃--使用的是构造函数中的eat()方法
+    per.play(); //玩游戏
+
+
+    //结论：
+    //实例对象使用的属性或者方法,先在实例中查找,找到了则直接使用,
+    // 找不到则去实例对象的__proto__属性指向的原型对象prototype中找,找到了则使用,找不到则报错
+
+</script>
+</body>
+</html>

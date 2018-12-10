@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function f1(){
+            var num=10;
+            function f2(){
+                num++;
+                console.log(num);
+            }
+            f2();
+        };
+        f1();//11
+        f1();//11
+        f1();//11
+        //每次都重新定义了num的值
+
+        //闭包缓存数据
+        function f3(){
+            var num=10;
+             return function f2(){
+                num++;
+                console.log(num);
+            }
+        }
+        var result=f3();
+        result();//11----只执行f2中的代码
+        result();//12
+        result();//13
+        //num的值缓存了，而非每次重新定义
+    </script>
+</body>
+</html>

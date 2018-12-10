@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html和text方法</title>
+</head>
+<body>
+    <div class="div1">
+        <p>这是一段测试jq对象html()方法的代码</p>
+    </div>
+    <div class="div2">
+        <p>测试text方法</p>
+    </div>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            // html:相当于js中的innerHTML,text相当于js中的innerText
+            console.log($("div").eq(0).html());
+            $("div").eq(0).html("<h3>这是一个标题</h3>");
+            console.log($("div").eq(1).text());    /*text方法只获取内容*/
+            $("div").eq(1).text("<p>这是一段测试text方法的代码</p>"); /*text方法不识别标签*/
+        });
+    </script>
+</body>
+</html>

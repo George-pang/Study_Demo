@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#div1 {width:198px; height:66px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script type="text/javascript">
+//在ondragover事件触发时阻止默认行为，允许drop
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+//在ondragstart事件触发时利用事件对象event.datatransfer.setData()方法存放被拖数据
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);//参数1：数据类型,参数2：事件目标对象（可拖动元素）的id属性值
+}
+//在ondrop事件触发时利用事件对象event.datatransfer.getData()方法获取被拖数据
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>请把 W3School 的图片拖放到矩形中：</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div> <!-- html事件属性，在行内绑定事件 -->
+<br />
+<img id="drag1" src="eg_dragdrop_w3school.gif" draggable="true" ondragstart="drag(event)" />
+
+</body>
+</html>

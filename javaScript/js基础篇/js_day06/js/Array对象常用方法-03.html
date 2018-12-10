@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Array对象常用方法-03</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	/* .forEach(函数)方法---遍历数组用,其回调函数最多有三个参数---相当于for循环-对数组的每个元素执行一次提供的函数。
+     * .indexOf(元素值);返回的是索引,没有则是-1
+     * .join("字符串");----返回的是一个字符串
+     * .map(函数);--->返回一个新数组，参数为回调函数，数组中的每个元素都要执行这个函数,把执行后的结果重新的全部的放在一个新的数组中
+     * .reverse();----->反转数组，改变了原来的数组
+     * .sort();---参数空或者是回调函数，排序的,可能不稳定,如果不稳定,请写MDN中的那个固定的代码
+     * .slice(开始的索引,结束的索引)：截取数组元素，把截取的数组的值放在一个新的数组中,但是不包含结束的索引对应的元素值
+     * .splice(开始的位置,要删除的个数,替换的元素的值):返回值是被删除的数组元素组成的数组，
+     *                                       一般是用于删除数组中的元素,或者是替换元素,或者是插入元素*/
+    
+    var arr=[10,20,30,40,50,60];
+    arr.forEach(function (ele,index){//.forEach()方法遍历数组用，相当于for循环--本例中的参数：当前元素，当前元素的索引
+//  	for(var i=0;i<arguments.length;i++){//查看函数调用的实参
+//  		console.log(arguments[i]);
+//  	}
+    	console.log(ele);
+    })
+    console.log(arr.indexOf(30));//数组元素首次出现的位置索引
+    console.log(arr.join("-"));//将数组元素连接为一个字符串，默认是逗号分开
+    
+    var arr1=[1,4,9,16,25];
+    var newArr1=arr1.map(Math.sqrt);//此处sqrt方法为何不要加()
+    console.log(newArr1);
+    
+    //反转数组
+    var arr2=[1,4,9,16,25];
+    console.log(arr2.reverse());//改变了原来的数组
+    console.log(arr2);
+    
+    var arr3=[2,3,1,4,6];
+    console.log(arr3.sort());//排序，不是很稳定
+    console.log(arr3.slice(3,6));//提取数组元素，不包括结束索引
+    
+   //.splice()
+// var arr4=["a","b","c","d","e"];//为啥这样写输出的是空字符串？。。。。
+// var newArr4=arr4.splice(3,0,"f");//因为.splie()方法返回值是被删除的元素组成的数组，这里没有删除元素，所以返回空数组
+// console.log(newArr4);
+// var neWArr4=arr4.splice(3,1);
+// console.log(newArr4);
+   
+   var arr4=["a","b","c","d","e"];//为啥输出的是空字符串。。。。
+   arr4.splice(3,0,"f");//在索引为3的数组元素后插入一个新元素"f"
+   console.log(arr4);
+   arr4.splice(3,1);//删除索引为3的数组元素
+   console.log(arr4);
+    
+  </script>
+
+    
+
+		</script>
+	</body>
+</html>

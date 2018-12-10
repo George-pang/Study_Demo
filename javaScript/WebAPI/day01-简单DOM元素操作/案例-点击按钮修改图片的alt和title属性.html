@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮修改图片的alt和title属性</title>
+</head>
+<body>
+<input type="button" value="点击修改" id="btn">
+<img src="img/cangjingkong.jpg" alt="苍老师" title="苍老师">
+<script>
+    //获取对象，注册点击事件，绑定事件处理函数
+    document.getElementById("btn").onclick=function () {
+        var imgObjs=document.getElementsByTagName("img");//即使获取到的只有一个，返回的也是伪数组
+        imgObjs[0].alt="苍姐姐";//所以这里要加索引
+        imgObjs[0].title="苍姐姐";
+    }
+</script>
+</body>
+</html>

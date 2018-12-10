@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环-for循环</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//输出10次
+			for(var i=0;i<10;i++){
+				console.log("Hello World！");
+			}
+			
+			//把for括号中的第一个初始化表达式拿到外面来
+//			    var i=0
+//				for(;i<10;i++){
+//				console.log("Hello World！");
+//			}
+			
+			//求1-100之间所有数的和
+			var sum=0;
+			for(var i=1;i<=100;i++){
+				sum=sum+i;
+			}
+			console.log(sum);
+			
+			//求1-100之间所有偶数的和
+			var sum1=0;//存储和
+			for(var i=1;i<=100;i++){
+				if(i%2==0){
+					sum1=sum1+i;
+				}
+				continue;
+			}
+			console.log(sum1);
+			
+			//求1-100之间所有奇数的和
+			var sum2=0;//存储和
+			for(var i=1;i<=100;i++){
+				if(i%2!==0){
+					sum2+=i;
+				}
+			}
+			console.log(sum2);	
+			//求1-100之间所有能被3整除的数的和
+			var sum3=0;//存储和
+			for(var i=1;i<=100;i++){
+				if(i%3==0){
+					sum3+=i;
+				}
+			}
+			console.log(sum3);	
+			
+		   //求1-100之间所有7的倍数的和
+			var sum4=0;//存储和
+			for(var i=1;i<=100;i++){
+				if(i%7==0){
+					sum4+=i;
+				}
+			}
+			console.log(sum4);	
+		</script>
+	</body>
+</html>

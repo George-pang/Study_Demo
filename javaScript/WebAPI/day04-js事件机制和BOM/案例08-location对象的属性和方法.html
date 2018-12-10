@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="刷新" id="btn"/>
+<input type="button" value="跳转1" id="btn2"/>
+<input type="button" value="跳转2" id="btn3"/>
+<input type="button" value="更换网址" id="btn4"/>
+<script>
+    //window前缀可省略
+    console.log(location);
+
+    //通信协议
+    console.log(window.location.protocol);
+    //主机名和端口号
+    console.log(window.location.host);
+    //主机名
+    console.log(window.location.hostname);
+    //端口号
+    console.log(window.location.port);
+    //路径
+    console.log(window.location.pathname);
+    //查询的内容--搜索输入关键字
+    console.log(window.location.search);
+    //#及后面的内容
+    console.log(window.location.hash);
+
+    window.onload=function () {  //页面加载事件--带on前缀
+        var btnObj=document.getElementById("btn");
+        var btn2Obj=document.getElementById("btn2");
+        var btn3Obj=document.getElementById("btn3");
+        var btn4Obj=document.getElementById("btn4");
+        btn.onclick=function () {
+            prompt("你好,请输入你的姓名：");
+            window.location.reload();                     //---重新加载页面/刷新
+        };
+        btn2.onclick = function () {
+            confirm("确认跳转嘛？");
+            window.location.href="http://www.jd.com";     //location对象的href属性
+        };
+        btn3.onclick = function () {
+            window.location.assign("http://www.jd.com");  //location对象的assign方法
+        };
+        btn4.onclick = function () {
+            alert("你正在改变当前网页的网址！");
+            window.location.replace("http://www.jd.com");  //不带历史记录，没有回退
+        };
+    }
+
+
+
+
+</script>
+</body>
+</html>

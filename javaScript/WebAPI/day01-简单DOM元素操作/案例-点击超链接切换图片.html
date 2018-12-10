@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击超链接切换图片</title>
+</head>
+<body>
+<a href="img/1.jpg" id="ak"><img src="img/1-small.jpg" alt="" id="im"/></a>
+<script>
+   document.getElementById("im").onclick=function () {
+       this.src=document.getElementById("ak").href;
+       return false;  //加了这句a不会跳转，不加这句会a会跳转，这句的作用应该是阻止浏览器默认行为
+   }
+</script>
+</body>
+</html>

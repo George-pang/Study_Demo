@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        div{
+            margin-top: 10px;
+            width: 200px;
+            height: 400px;
+            border: 1px dashed pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="创建列表" id="btn"/>
+    <div id="dv"></div>
+
+    <script>
+        var btnObj=document.getElementById("btn");
+        var divObj=document.getElementById("dv");
+        var kongfu=["降龙十八掌","打狗棒法","六脉神剑","九阳神功","一阳指","凌波微步","乾坤大挪移","移花接木"];
+        btnObj.onclick=function () {
+            //创建ul元素
+            var ulObj=document.createElement("ul");
+            //追加到div中去
+            divObj.appendChild(ulObj);
+            //循环创建li元素
+            for( var i=0;i<kongfu.length;i++){
+                var itemObj=document.createElement("li");
+                itemObj.innerHTML=kongfu[i];
+                divObj.getElementsByTagName("ul")[0].appendChild(itemObj);
+
+                //给每个li都注册鼠标移入移出事件
+                itemObj.onmouseover=mouseoverHandle;  //这里用命名函数，是为了节省空间,注意，不能带括号，js里带括号不等触发就执行啦。
+                //注册移出事件
+                itemObj.onmouseout=mouseoutHandle;   //用匿名函数的话，每次循环创建都得重新开辟个存储空间--为了性能优化，这里用命名函数
+            }
+
+        }
+
+       function mouseoverHandle(){
+            this.style.backgroundColor="yellow";
+       }
+       function mouseoutHandle() {
+           this.style.backgroundColor="";
+       }
+    </script>
+</body>
+</html>

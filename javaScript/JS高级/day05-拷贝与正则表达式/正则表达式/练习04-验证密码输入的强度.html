@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    #dv {
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        left: 300px;
+        top: 100px;
+    }
+
+    .strengthLv0 {
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv1 {
+        background: red;
+        height: 6px;
+        width: 40px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv2 {
+        background: orange;
+        height: 6px;
+        width: 80px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv3 {
+        background: green;
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+</style>
+<body>
+<div id="dv">
+    <label for="pwd">密码</label>
+    <input type="text" id="pwd" maxlength="16"><!--课外话题-->
+    <div>
+        <em>密码强度：</em>
+        <em id="strength"></em>
+        <div id="strengthLevel" class="strengthLv0"></div>
+    </div>
+</div>
+
+<script>
+
+    /*
+    * 密码: 数字,字母,特殊符号
+    *
+    * 密码: 只有数字- 或者是只有字母,或者是只有特殊符号---1级---弱
+    * 两两组合: 数字和字母, 数字和特殊符号, 字母和特殊符号   -----2级----中
+    * 三者都有: 数字和字母和特殊符号------3级-----强
+    *
+    * */
+
+    //注册键盘抬起事件
+    var pwdInput = document.getElementById("pwd");
+    var dvObj = document.getElementById("strengthLevel");
+
+    // pwdInput.addEventListener("keyup", function () {
+    //     //如果键盘弹起时输入长度大于等于6位，则判断密码强度级别
+    //     if (pwdInput.value.length >= 6) {
+    //         var num = getLevel(pwdInput.value);
+    //         if (num == 1) {
+    //             dvObj.className = "strengthLv1";
+    //         } else if (num == 2) {
+    //             dvObj.className = "strengthLv2";
+    //         } else if (num == 3) {
+    //             dvObj.className = "strengthLv3";
+    //         } else {
+    //             dvObj.className = "strengthLv0";
+    //         }
+    //     } else {
+    //         dvObj.className = "strengthLv0";
+    //     }
+    // }, false);
+
+    //简写版：
+    // pwdInput.addEventListener("keyup", function () {
+    //     if (this.value.length>=6){
+    //         dvObj.className="strengthLv"+getLevel(this.value);
+    //     } else{
+    //         dvObj.className="strengthLv"+0;
+    //     }
+    // }, false);
+
+
+    //简写 最终版：
+    pwdInput.addEventListener("keyup", function () {
+        dvObj.className="strengthLv"+(pwdInput.value.length >= 6?getLevel(pwdInput.value):0);
+    }, false);
+
+    // 获取密码强度级别函数封装
+    function getLevel(pwd) {
+        var level = 0; //初始化级别为0
+        if (/[0-9]/.test(pwd)) {      //字面量创建正则对象，调用test方法匹配字符串---如果密码中有数字
+            level++;
+        }
+        if (/[a-zA-Z]/.test(pwd)) {  //如果密码中有字母
+            level++;
+        }
+        if (/[^0-9a-zA-Z_]/.test(pwd)) {//如果密码中有特殊字符
+            level++;
+        }
+        return level;
+    }
+
+
+</script>
+
+
+</body>
+</html>

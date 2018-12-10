@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创建对象03--自定义构造函数方式</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//自定义一个构造函数
+			   //函数与构造函数的区别在于：首字母是否大写
+			function Person(name,age){
+				this.name=name;//属性名=变量名
+				this.age=age;
+				this.sayHi=function (){
+					console.log("我叫："+this.name+"，我今年："+this.age);
+				};
+			}//构造函数的函数体代码，省略了new和return语句。
+			var per1=new Person("小红",18);//实例化，与调用系统构造函数方法用法相同
+			var per2=new Person("小陈",38);
+			console.log(per1 instanceof Person);//判断per1是否是Person对象的一个实例
+			console.log(per2 instanceof Person);
+			
+			
+			function Dog(name,age,sex){
+				this.name=name;
+				this.age=age;
+				this.sex=sex;
+				this.walk=function (){
+					console.log("这是魔鬼的步伐！");
+				};
+			}
+			var dog=new Dog();
+			console.log(dog instanceof Person);//false ，dog不是Dog对象的一个实例
+			console.log(dog instanceof Dog);//true
+		</script>
+	</body>
+</html>

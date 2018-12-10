@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>对自己狠点</title>
+  <style>
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 180px;
+    }
+
+    input {
+      margin-left: 30%;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><img src="images/ly.jpg" alt=""><br /><input type="button" value="赞(1)"></li>
+    <li><img src="images/lyml.jpg" alt=""><br /><input type="button" value="赞(1)"></li>
+    <li><img src="images/fj.jpg" alt=""><br /><input type="button" value="赞(1)"></li>
+    <li><img src="images/bd.jpg" alt=""><br /><input type="button" value="赞(1)"></li>
+  </ul>
+  <script>
+    var btnObjs = document.getElementsByTagName("input");
+
+    //闭包缓存数据
+    function getLikes() {
+      //将缓存数据放在外层函数和内层函数之间----当外部函数执行后，缓存变量所占内存并不会释放，以达到嵌套的函数还可以访问的目的。
+      var value = 2;
+      //函数作为返回值使用
+      return function f2(){   
+        //this--当前触发事件的元素对象
+        this.value = "赞(" + (value++) + ")";      //++在后，先运算再自加--所以第一次点击时this.value为预设值
+      }
+    }
+
+    //原生js为每个按钮注册点击事件---利用for循环
+    for (var i = 0; i < btnObjs.length; i++) {
+      btnObjs[i].onclick = getLikes(); //注意：这里是将getLikes函数的返回值（函数）作为事件处理函数而不是getLikes函数本身---getLikes（）函数调用
+    }
+  </script>
+</body>
+
+</html>

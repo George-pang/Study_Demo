@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数-练习03</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//求一组数字的和
+			function getArraySum(array){
+				var sum=0;
+				for(var i=0;i<array.length;i++){
+					sum+=array[i];
+				}
+				return sum;
+			}
+			var arr=[22,23,324,43,52,36,99];
+			console.log(getArraySum(arr));
+			
+
+			//求一组数字的最大值、最小值以及数字的和     
+			//返回值也可以是数组，但一个函数只有一个返回值
+			/**
+			 * @param {Object} array 数组作为参数
+			 * 一个函数只能有一个返回值，所以这里用数组作为返回值
+			 */
+			function getArrayMaxAndMinAndSum(array){
+				var max=array[0];
+				var min=array[0];
+				var sum=0;
+				for(var i=0;i<array.length;i++){
+					sum+=array[i];
+					if(max<array[i]){
+						max=array[i];
+					}//end if
+					if(min>array[i]){
+						min=array[i];
+					}	
+				}//end for
+				var arr_restult=[max,min,sum];
+			    return arr_restult;//因为只能一个返回值，所以这里数组作返回值
+			}
+			var arr=[220,23,32,43,53,343,535,390,340,405];
+			var max=getArrayMaxAndMinAndSum(arr)[0];  //注意这种写法
+			var min=getArrayMaxAndMinAndSum(arr)[1];
+			var sum=getArrayMaxAndMinAndSum(arr)[2];
+			console.log("最大值为："+max);
+			console.log("最小值为："+min);
+			console.log("和为："+sum);
+			
+		</script>
+	</body>
+</html>

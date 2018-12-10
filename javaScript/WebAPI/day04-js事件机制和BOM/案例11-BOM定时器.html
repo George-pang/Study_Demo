@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="STOP" id="btn"/>
+
+<script>
+    //window前缀可省略
+    //参数1：回调函数;参数2：delay时间，返回值：id
+    var timeId = window.setInterval(function () {
+        alert("哈哈哈");
+    }, 3000);
+
+    document.getElementById("btn").onclick = function () {
+        clearInterval(timeId);    //清除计时器--根据设置计时器返回的id
+    }
+</script>
+</body>
+</html>

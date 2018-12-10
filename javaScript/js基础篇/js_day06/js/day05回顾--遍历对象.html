@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>day05回顾--遍历对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj={
+				name:"小猫",
+				age:18,
+				height:175,
+				weight:145
+			};
+			
+			//for-in方法遍历对象
+			for(var key in obj){//key是个变量，这里是所有的属性名字
+				console.log(key+"===>"+obj[key]);//键值对法访问属性
+			}
+		</script>
+	</body>
+</html>

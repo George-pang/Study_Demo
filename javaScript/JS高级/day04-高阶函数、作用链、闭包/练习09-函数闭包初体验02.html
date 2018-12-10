@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包</title>
+</head>
+
+<body>
+    <script>
+        //闭包
+        /*
+         * 闭包的概念:函数A中,有一个函数B,函数B中可以访问函数A中定义的变量或者是数据,此时形成了闭包(这句话暂时不严谨)
+         * 闭包的模式:函数模式的闭包,对象模式的闭包
+         * 闭包的作用:缓存数据,延长作用域链
+         * 闭包的优点和缺点:缓存数据
+         *
+         * 闭包的应用
+         *
+         *
+         * */
+
+        //函数模式的闭包---函数内有个函数B，函数B中访问了函数内定义的变量
+        function f1() {
+            var num = 10;
+             return function f2() {
+                console.log(num);
+                return num;
+            }
+        }
+        var res_1=f1(); //接收返回值
+        var res_2=res_1();        //返回值是个函数，调用
+        console.log(res_2);
+        
+
+        //对象模式的闭包---函数内有个对象，对象中访问了函数内定义的变量
+        function f3() {
+            var num = 30;
+            return {
+                age: num
+            }
+            console.log(obj.age);
+        }
+        var res_obj=f3();
+        console.log(res_obj.age);
+    </script>
+</body>
+
+</html>

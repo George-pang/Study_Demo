@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            margin-top: 10px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="显示效果" id="btn"/>
+    <input type="button" value="显示效果" id="btn2"/>
+    <p class="cls">我是一个p标签</p>
+    <p>我是一个p标签</p>
+    <span class="cls">我是一个span标签</span>
+    <span>我是一个span标签</span>
+    <div id="div1">我是一个div标签</div>
+    <div class="cls">我是一个div标签</div>
+    <div>我是一个div标签</div>
+
+    <script>
+        document.getElementById("btn").onclick=function () {
+            document.querySelector("#div1").style.backgroundColor="pink";
+        }
+        document.getElementById("btn2").onclick=function () {
+            var Objs=document.querySelectorAll(".cls");     //返回的是伪数组，需要循坏赋值
+            for(var i=0;i<Objs.length;i++){
+                Objs[i].style.backgroundColor="yellow";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String对象方法-03</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//.slice(开始的索引,结束的索引); 从索引5的位置开始提取,到索引为10的前一个结束,没有10，并返回这个提取后的字符串
+// .split("要干掉的字符串",切割后留下的个数);切割字符串
+// .substr(开始的位置,个数);返回的是截取后的新的字符串
+//.substring(开始的索引,结束的索引),返回截取后的字符串,不包含结束的索引的字符串
+
+			//字符串截取、字符串分割
+			var str1="如果有一天我变得邪恶了,请记得曾经我也是个好人！";
+			console.log(str1.length);//24
+			console.log(str1.slice(5,10));//不包括indexEnd
+			console.log(str1.substr(5,3));//从索引5开始,长度为3
+			console.log(str1.substring(5,10));//开始索引和结束索引,不包括结束的索引
+
+			console.log(str1.slice(5));//第二个参数可选,没有的话一直提取到字符串末尾
+			console.log(str1.substr(5));
+			console.log(str1.substring(5));
+			console.log(str1.substring(10,5));//如果 indexStart 大于 indexEnd，则 substring 的执行效果就像两个参数调换了一样。
+			
+			//第一个参数为负数
+            
+			console.log(str1.slice(-7,10));//如果indexStart值为负数，会被当做 sourceLength + beginSlice 看待，这里的sourceLength 是字符串的长度
+			console.log(str1.slice(12,10));//空字符串
+			
+			//如果 indexStart 为负值，则 substr 把它作为从字符串末尾开始的一个字符索引。(即字符串长度加上对应负数)
+			//如果 indexStart 为负值且 abs(indexStart) 大于字符串的长度，则 substr 使用 0 作为开始提取的索引。
+			console.log(str1.substr(-20,2));//abs(-20)<24,则第一个参数为24-20=4
+			console.log(str1.substring(-7));//第一个参数为负数,直接看作0
+			
+			
+			//字符串分割
+			var str2="林涛军|卢永进|陈瑞|丁海|寻妖|袁晓凯";
+			console.log(str2.split("|"));
+			console.log(str2.split("|",3));//第2个参数为可选参数，留几个的意思
+			var arr=str2.split("|");
+			for (var i=0;i<arr.length;i++){
+				console.log(arr[i]);
+			}
+			
+			var arr2=str2.split("|",3);
+			for (var i=0;i<arr2.length;i++){
+				console.log(arr2[i]);
+			}
+		</script>
+	</body>
+</html>

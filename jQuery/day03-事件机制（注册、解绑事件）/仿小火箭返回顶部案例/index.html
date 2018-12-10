@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿小火箭返回顶部案例</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 6000px;
+        }
+        .go-top{
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background-image: url("img/gotop.png");
+            background-size: cover;
+            display: none;
+            z-index: 100;
+            width: 150px;
+            height: 195px;
+        }
+        .go-top:hover{
+            background-image: url("img/gotop.gif");
+        }
+    </style>
+</head>
+<body>
+    <div class="go-top">
+
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //scorllTop():设置或者获取垂直滚动条的位置(滚动距离)
+        $(function () {
+            $(window).scroll(function () { //注册滚动事件
+                if($(this).scrollTop()>=1000){
+                    $(".go-top").fadeIn(1000);
+                }else {
+                    $(".go-top").fadeOut(1000);
+                }
+            });
+
+            //点击小火箭返回顶部，放在scroll事件外面，否则滚动一直触发
+            $(".go-top").click(function () {
+                //并集选择器是为了确保不同浏览器的兼容性，body兼容谷歌，html兼容IE6/7/8
+                $("html,body").stop().animate({scrollTop:0},300); //300ms后返回顶部
+                // $(window).scrollTop(0); //这种写法也行，但是不能设置动画时间，瞬间到顶部
+
+                //jQuery对象只有scrollTop（）方法，没有srollTop属性
+                //下面写法错误，因为window对象没有srollTop属性
+                // $(window).stop().animate({scrollTop:0},0);     //错误
+                //下面写法也是错误的，因为window对象的pageYoffset是只读属性，只能获取，不能设置
+                //$(window).stop().animate({pageYOffset:0},0);  //错误，只读属性，不能设置
+            });
+        });
+
+
+
+        // function getScroll(){
+        //     return {
+        //         left:window.pageYOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //         top:window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //     }
+        // }
+    </script>
+</body>
+</html>

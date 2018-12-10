@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分支结构</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//if分支语句
+			var num1=8;
+			if (num1>6) {
+				console.log(num1);			
+			}
+			
+			var num2=9,num3=11;
+			if (num2>num3) {
+				console.log(num2);
+			}
+			console.log("我执行了！");
+			
+	    // if...else 分支语句
+	        //提示用户输入年龄
+	        var age=parseInt(prompt("请输入您的年龄："));//把prompt方法返回的字符串转换为整数类型
+		    console.log(age);
+		    if (age>18) {
+		    	console.log("恭喜你！你可以去网吧开夜机啦！");
+		    } else{
+		    	console.log("未成年人不准入内！");
+		    }
+		    //练习2 判断一个数是奇数还是偶数
+		    var num4=parseInt(prompt("请输入一个数字："));
+		    if(num4%2==0){
+		    	console.log(num4+"这个数是个偶数");
+		    }else{
+		    	console.log(num4+"这个数是一个奇数");
+		    }
+		    
+
+		</script>
+	</body>
+</html>

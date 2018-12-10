@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+    <style>
+        div:-webkit-full-screen {
+            /* 注意兼容性问题  全屏显示伪类选择器 */
+            display: inline-block;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="pic1.png" height="300" alt="">
+        <button id="full">全屏显示</button>
+        <button id="cancelFull">取消全屏</button>
+        <button id="isFull">是否全屏</button>
+    </div>
+
+    <script>
+        /* 
+            h5全屏api有兼容性问题，IE9+不支持，高版本浏览器也要加浏览器前缀
+        */
+        // var div = document.querySelector("div");
+        var div = $("div"); //jQuery获取到的是DOM对象的类数组，即使只有一个元素访问页要加[0] 
+        console.dir(div);
+        $("#full").on("click", function () {
+            // 浏览器兼容代码
+            if(div[0].requestFullScreen){
+                div[0].requestFullScreen();
+            }else if(div[0].webkitRequestFullScreen){
+                div[0].webkitRequestFullScreen();
+            }else if(div[0].mozRequestFullScreen){
+                div[0].mozRequestFullScreen();
+            }else if(div[0].oRequestFullScreen){
+                div[0].oRequestFullScreen();
+            }else if(div[0].msRequestFullscreen){
+                div[0].msRequestFullscreen();//  ms内核浏览器 里面这样写msRequestFullscreen()     s是小写的  
+            }
+            console.log(111);
+        });
+        // var div = document.querySelector("div");
+        // // 1 单击全屏显示
+        // document.querySelector("#full").onclick = function () {
+        //     // div.webkitRequestFullScreen(); 开启全屏
+        //     // 能力检测  做一个兼容性的解决方法
+        //     if (div.requestFullScreen) { // 正常浏览器 
+        //         div.requestFullScreen();
+        //     } else if (div.webkitRequestFullScreen) { // webkit 内核
+        //         div.webkitRequestFullScreen();
+        //     } else if (div.mozRequestFullScreen) { // moz
+        //         div.mozRequestFullScreen();
+        //     } else if (div.msRequestFullscreen) { // ms 微软  这里面有个坑 别掉进去了
+        //         div.msRequestFullscreen(); //  ms 里面这样写msRequestFullscreen()     s是小写的  
+        //     } else { // 欧朋
+        //         div.oRequestFullScreen();
+        //     }
+        // }
+
+
+        // 取消全屏---注意：取消和检测是调用document对象
+        $("#cancelFull").on("click", function () {
+            document.webkitCancelFullScreen(); //注意：取消和检测是调用document对象
+            console.log(222);
+        });
+
+        // 检测是否是全屏
+        $("#isFull").on("click", function () {
+            // alert(document.webkitIsFullScreen());//报错--是属性，不是方法
+            alert(document.webkitIsFullScreen);
+
+        });
+    </script>
+</body>
+
+</html>

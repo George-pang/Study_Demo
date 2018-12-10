@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //工厂模式创建对象   实际上就是 将系统构造函数方法创建对象的基础上封装了一个可传参、可复用的函数
+
+    function createObject(name,age,sex) {
+        var obj=new Object();       //必须先系统构造函数实例化个对象
+        obj.name=name;              //当前创建的对象
+        obj.age=age;
+        obj.sex=sex;
+        obj.eat=function () {
+            console.log("吃肉肉！");
+        };
+        obj.play=function () {
+            console.log("打豆豆！");
+        };
+        return obj;              //---注意：必须要返回obj
+    }
+    var per1=createObject("小明",22,"男");     //变量接收返回值
+    console.log(per1.name);
+    per1.eat();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        /*取消图片底部3像素距离*/
+        .box {
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: pink;
+            /*border: 1px solid red;*/
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box ul li {
+            float: left;
+        }
+
+        .box ul {
+            width: 1500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="screen">
+    <ul>
+        <li><img src="images/img08/01.jpg" alt=""/></li>
+        <li><img src="images/img08/02.jpg" alt=""/></li>
+        <li><img src="images/img08/03.jpg" alt=""/></li>
+        <li><img src="images/img08/04.jpg" alt=""/></li>
+        <!--无缝切换实际比看起来要多一个图，第一张图和最后一张图一样，不加的话从最后一张切到第一张会有明显的切换跳跃感-->
+        <li><img src="images/img08/01.jpg" alt=""/></li>
+    </ul>
+</div>
+
+<script>
+    //获取相框
+    var box=document.getElementById("screen");
+    var imgWidth=box.offsetWidth;
+    var ulObj=box.children[0];
+    var lis=ulObj.children;
+
+    //自动轮播
+    var num=0;
+    var timeId=setInterval(f1,1000);
+    function f1(){
+        if (num==lis.length-1){ //先判断
+            num=0;
+            ulObj.style.left=0;
+        }
+        num++;
+        animate(ulObj,-num*imgWidth);
+    }
+
+    //鼠标移入暂停滑动
+    box.onmouseover=function () {
+        clearInterval(timeId);
+    };
+    //鼠标移出重设计时器
+    box.onmouseout=function () {
+      timeId=setInterval(f1,1000);
+    };
+
+    //参数1:元素对象;参数2：目标位置
+    function animate(ele, target) {
+        //清除重复的计时器
+        clearInterval(ele.timeId);  //利用对象属性点语法生成的特性,但不能直接用id,因为id属性原本就有
+        // var step = 10;           //每次移动的距离
+        ele.timeId = setInterval(function () {
+            var step = 10;           //每次移动的距离----必须放在这里，每次计时器都会初始化步数，否则回退时，步数会在正负间切换。
+            //获取元素对象当前的距离
+            var current = ele.offsetLeft;         //js三大家族，offset系列--页面的距离(返回的是数字)
+            console.log(current);
+            step = current < target ? step : -step;
+            // console.log(step);
+            if (Math.abs(target - current) > Math.abs(step)) {
+                current += step;
+                ele.style.left = current + "px";
+
+            } else {
+                clearInterval(ele.timeId);
+                current = target;
+                ele.style.left = current + "px";
+            }
+        }, 20);
+    }
+
+</script>
+
+</body>
+</html>

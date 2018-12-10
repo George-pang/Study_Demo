@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件修饰符</title>
+    <script src="vue.js"></script>
+    <style type="text/css">
+        .innerdiv{
+            height: 300px;
+            background-color: pink;
+        }
+        .outerdiv{
+            padding: 20px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--<div class="innerdiv"  v-on:click="divClick">-->
+            <!--<input type="button" value="点击" v-on:click="inputClick"/>   &lt;!&ndash;当点击此按钮时，事件冒泡，外层也触发啦&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--阻止事件冒泡修饰符.stop-->
+        <!--<div class="innerdiv"  v-on:click="divClick">-->
+            <!--<input type="button" value="点击" v-on:click.stop="inputClick"/>   &lt;!&ndash;当点击此按钮时，事件停止冒泡，外层没有触发&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--阻止浏览器默认行为.prevent-->
+        <a href="http://www.baidu.com" @click.prevent="aClick">面向百度编程</a>
+
+        <!--只对自身触发的点击事件作出响应.self-->
+        <!--<div class="innerdiv"  v-on:click.self="divClick">-->
+            <!--<input type="button" value="点击" v-on:click="inputClick"/>   &lt;!&ndash;当点击此按钮时，事件冒泡，但外层并没有触发&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--使用事件捕获模式.capture-->
+        <!--<div class="innerdiv"  v-on:click.capture="divClick">-->
+            <!--<input type="button" value="点击" v-on:click="inputClick"/>   &lt;!&ndash;当点击此按钮时，事件捕获，先触发外层的点击事件&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--事件只触发一次.once-->
+        <!--<div class="innerdiv"  v-on:click="divClick">-->
+        <!--<input type="button" value="点击" v-on:click.once="inputClick"/>   &lt;!&ndash;当点击此按钮时，内层点击事件只响应触发了一次&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--测试.self和.stop的区别-->
+        <div class="outerdiv" @click="div2Handler">
+            <div class="innerdiv" @click.self="div1Handler">   <!--当点击按钮时，这层没触发，但外层依旧触发-->
+                <input type="button" value="点击" @click="inputClick"/>
+            </div>
+        </div>
+
+        <!-- .self 只会阻止自己身上冒泡行为的触发，并不会真正阻止 冒泡的行为 -->
+        <!--<div class="outerdiv" @click="div2Handler">-->
+            <!--<div class="innerdiv" @click="div1Handler">-->
+                <!--<input type="button" value="点击" @click.stop="inputClick"/>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",  //控制的区域
+            data:{
+
+            },
+            methods:{
+                inputClick(){   //ES6写法
+                    console.log("内部input触发！");
+                },
+                divClick(){
+                    console.log("外部div触发！");
+                },
+                aClick(){
+                    console.log("测试.prevent事件修饰符");
+                },
+                div1Handler(){
+                    console.log("内层div触发");
+                },
+                div2Handler(){
+                    console.log("外层div触发");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

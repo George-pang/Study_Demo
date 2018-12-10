@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            margin-left: 50px;
+        }
+        body{
+            margin-left: 100px;
+        }
+        #out-div{
+            /*position: relative;*/
+            width: 200px;
+            height: 150px;
+            background-color: pink;
+            margin-left: 50px;
+            padding: 20px;
+            border: 20px solid green;
+        }
+        #in-div{
+            /*position: absolute;*/
+            /*left: 50px;*/
+            margin-left: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+        }
+    </style>
+</head>
+<body>
+<div id="out-div">
+    <div id="in-div">
+
+    </div>
+</div>
+<input type="button" value="显示效果" id="btn"/>
+
+<script>
+    // js中offsetLeft/offsetTop与jq中offset().left/offset().top的区别：
+    // 1.offsetLeft/offsetTop
+    //     在页面任一元素的offsetLeft总是找到离其最近的已经定位的父元素或祖先元素定位，如果没有，就根据根节点body定位，然后获取其left值。
+    // 2.offset().left/offset().top
+    //     返回或设置匹配元素相对于文档的偏移（位置）。 无论元素的父元素或祖先元素的position属性是什么，总是计算相对于文档的位置。
+
+
+    var outObj=document.getElementById("out-div");
+    var inObj=document.getElementById("in-div");
+    console.log(outObj.offsetLeft);
+    console.log(inObj.offsetLeft);  //210px --未脱离文档流时，父级元素margin+父级元素padding+父级元素的border+自己的margin+body的margin
+    // 相对html标签边框的偏移距离--因为html的margin无效，而body的margin有效
+
+
+</script>
+</body>
+</html>

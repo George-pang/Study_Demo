@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        /*取消图片底部3像素距离*/
+        .box {
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: pink;
+            border: 1px solid red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box ul li {
+            float: left;
+        }
+
+        .box ul {
+            width: 1500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="screen">
+    <ul>
+        <li><img src="images/img08/01.jpg" alt=""/></li>
+        <li><img src="images/img08/02.jpg" alt=""/></li>
+        <li><img src="images/img08/03.jpg" alt=""/></li>
+        <li><img src="images/img08/04.jpg" alt=""/></li>
+        <!--无缝切换实际比看起来要多一个图，第一张图和最后一张图一样，不加的话会有明显的切换跳跃感-->
+        <li><img src="images/img08/01.jpg" alt=""/></li>
+    </ul>
+</div>
+
+<script>
+    //获取相框
+    var boxObj = document.getElementById("screen");
+    //移动ul
+    var ulObj = boxObj.children[0];
+    //获取li
+    var liObjs = ulObj.children;
+    var liWidth = liObjs[0].offsetWidth;
+
+    //自动切换
+    var current = 0;  //计时器外面，所以只赋值了一次
+    var timeId = setInterval(f1, 20);
+    function f1(){
+        current -= 10;
+        ulObj.style.left = current + "px";
+        if (current < -liWidth * (liObjs.length-1)) {
+            ulObj.style.left = 0;
+            current = 0;
+        }
+    }
+
+    //鼠标移入暂停--清除计时器
+    boxObj.onmouseover=function () {
+        clearInterval(timeId);
+    };
+
+    //鼠标移除继续轮播--重新设置计时器
+    boxObj.onmouseout=function () {
+        timeId = setInterval(f1, 20);
+    }
+    //这里没有用动画函数，是因为并没有明确的目标位置。
+</script>
+
+</body>
+</html>

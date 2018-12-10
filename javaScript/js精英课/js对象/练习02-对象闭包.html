@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象闭包---对象中的方法被保存到了外部</title>
+</head>
+<body>
+    <script>
+        function Person(name,age,sex){
+            var a=0;
+            this.name=name;
+            this.age=age;
+            this.sex=sex;
+            function sss(){
+                a++;
+                document.write(a);
+            }
+            this.say=sss;
+        }    
+
+        var person=new Person("zhangsan",18,"男");
+        /* new构造函数实际在构造函数内部隐式做了三件事：1、创建this对象 { __proto__:Person.prototype }；2、this对象属性赋值、3、return this对象 */
+        // a来自于say方法的外部函数的AO(环境AO)---a=0
+        person.say();//1
+        person.say();//2
+        var person1=new Person("lisi",19,"女");
+        person1.say();//1
+        // 闭包作用：缓存数据
+
+    </script>
+</body>
+</html>

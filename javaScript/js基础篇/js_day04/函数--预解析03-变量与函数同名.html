@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数预解析--案例3</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 如果变量和函数同名的话，函数优先
+				console.log(a);//当变量和函数同名，函数优先，所以这里输出函数的代码
+				function a() {
+				  console.log("aaaaa");
+				}
+				var a = 1;
+				console.log(a);
+				
+			   //预解析后代码执行过程为：
+//			   var a;//先提升变量声明
+//			   function a(){//再提升函数声明
+//			   	 console.log("aaaaa");
+//			   }
+//			   console.log(a); //同名情况下，函数优先，故输出代码
+//			   a=1;
+//			   console.log(a);
+		</script>
+	</body>
+</html>

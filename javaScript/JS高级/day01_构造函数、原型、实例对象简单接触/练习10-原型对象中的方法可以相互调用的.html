@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //一、构造函数中的方法可以相互调用
+    //自定义构造函数
+    function Person(age) {
+        this.age = age; //this指当前的实例对象
+        this.eat = function () {
+            console.log("吃饭！");
+            this.sleep(); //调用当前实例对象的sleep方法
+        };
+        this.sleep = function () {
+            console.log("吃过饭后就可以午睡啦！");
+            this.play();
+        };
+        this.play = function () {
+            console.log("睡醒了就老实写代码吧！");
+        };
+    }
+
+    //实例化对象，并初始化
+    var per = new Person(19);
+    //调用方法
+    per.eat();          //从控制台结果证明：构造函数内的方法是可以相互调用的
+
+
+    //二、原型对象中的方法也是可以相互调用的
+    //自定义构造函数
+    function Animal(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    //通过构造函数中的原型对象添加方法
+    Animal.prototype.eat=function () {
+        console.log("动物爱吃肉！");
+        this.sleep();
+    };
+    Animal.prototype.sleep=function () {
+        console.log("吃饱了就爱睡觉！");
+        this.play();
+    };
+    Animal.prototype.play=function () {
+        console.log("吃饱睡醒之后就爱hi诶嘿嘿IE！");
+    };
+
+    //实例化对象，并初始化
+    var animal=new Animal("来福",6);
+
+    //调用方法--原型对象中的方法可以被实例对象直接访问
+    animal.eat();       //控制台输出结果证明：是可以相互调用的。
+
+</script>
+</body>
+</html>

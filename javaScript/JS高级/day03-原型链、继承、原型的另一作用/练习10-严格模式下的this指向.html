@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 严格模式下普通函数的this指向
+    "use strict";
+    function f2() {
+        console.log(this); //结果：undefined
+    }
+    f2();
+
+    "use strict";
+    function f3() {
+        console.log(this); //结果：window---严格模式下，普通函数调用需要加window.前缀，否则this指向undefined
+    }
+    window.f3();
+</script>
+</body>
+</html>

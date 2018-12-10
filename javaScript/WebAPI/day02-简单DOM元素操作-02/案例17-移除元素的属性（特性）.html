@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul{
+            list-style: none;
+        }
+        .cls{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="移除自定义属性" id="btn1"/>
+    <input type="button" value="移除系统原有属性" id="btn2"/>
+    <ul id="uu">
+        <li score="10" class="cls">小苏的成绩</li>
+        <li score="10" class="cls">小杨的成绩</li>
+        <li score="10" class="cls">小张的成绩</li>
+    </ul>
+
+    <script>
+        //移除自定义属性
+        document.getElementById("btn1").onclick=function () {
+            var lis=document.getElementsByTagName("li");
+            for (var i=0;i<lis.length;i++){
+                lis[i].removeAttribute("score");
+            }
+        }
+        //移除系统自带属性
+        document.getElementById("btn2").onclick=function () {
+            var lis=document.getElementsByTagName("li");
+            for (var i=0;i<lis.length;i++){
+                lis[i].removeAttribute("class");
+            }
+        }
+    </script>
+</body>
+</html>

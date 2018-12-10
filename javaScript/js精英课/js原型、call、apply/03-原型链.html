@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Grand.prototype.name="祖父";
+        function Grand(){
+
+        }
+        var grand=new Grand();
+        Father.prototype=grand;
+        /* 简写：Father.prototype=new Grand();
+            Father.prototype=this(当前实例对象)
+            new Grand()  =>function Grand(){
+                                var this.__proto__=Grand.prototype
+                            }
+            所以：Father.prototype.__proto__=Grand.prototype
+         */
+        function Father(){
+            this.identity="父亲";
+        }
+        var father=new Father();
+        Son.prototype=father;
+        function Son(){
+            this.role="儿子";
+        }
+        var son=new Son();
+        console.dir(son);
+    </script>
+</body>
+</html>

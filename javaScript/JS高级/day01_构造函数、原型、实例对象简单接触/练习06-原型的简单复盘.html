@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //自定义构造函数
+    function Person(sex,age) {
+        this.sex=sex;
+        this.age=age;
+    }
+    //原型创建个方法
+    Person.prototype.eat=function () {
+        console.log("我要吃肉肉！");
+    };
+
+    //实例化对象
+    var per1=new Person("女",18);
+    var per2=new Person("男",20);
+    console.dir(per1);              //控制台输出 实例对象   的结构信息
+    console.dir(Person);            //控制台输出 构造函数名字  的结构信息---本例的构造函数中并没有sex和age属性
+
+    console.log(per1.__proto__);        //实例对象的__proto__属性指向构造函数中的prototype对象
+    console.log(Person.prototype);      //控制台输出结构与上一行代码的输出结构一模一样，证明两者指向相同
+    console.log(per1.__proto__==Person.prototype);   //结果为true
+
+    console.log(per1.__proto__.constructor == Person.prototype.constructor); //结果为true
+
+
+
+    console.log(per1.eat==per2.eat);  //结果为true，证明通过原型创建的方法实例化对象后都是同一个方法
+    //所以：原型的作用之一：数据共享、节省空间
+
+
+    // 总结：
+    /*
+    *
+    * 实例对象中有个属性,__proto__,也是对象,叫原型,不是标准的属性（IE8就不支持）,浏览器使用的
+    * 构造函数中有一个属性,prototype,也是对象,叫原型,是标准属性,程序员使用
+    *
+    * 原型---->__proto__或者是prototype,都是原型对象,
+    * 原型的作用:共享数据,节省内存空间
+    *
+    *
+    *
+    *
+    * */
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--报错案例--函数表达式不提前</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+		    f1();//-----报错，声明提前，但函数定义没提前
+		   var f1=function () {
+		      console.log(a);
+		      var a=10;
+		    };
+		
+		    
+		    //预解析后代码执行过程
+//		        var f1;//变量声明提前
+//			    f1();//---不能调用--报错
+//			    f1=function () {//函数表达式不提前，所以上一句代码报错
+//	              var a;
+//			      console.log(a);
+//			      a=10;
+//			    };	    
+
+		</script>
+	</body>
+</html>

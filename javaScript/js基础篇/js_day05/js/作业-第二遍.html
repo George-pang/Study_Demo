@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作业第2遍</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//	* 三种方式各2遍  调用Object 自定义  字面量
+//  * 工厂模式一遍
+//  * 创建一个按钮对象,宽,高,背景颜色,点击行为,按钮有鼠标进入的行为
+//  * Math对象讲的方法---三遍
+ 
+//  * 创建一个按钮对象,宽,高,背景颜色,点击行为,按钮有鼠标进入的行为
+       //1.系统构造函数方法
+       var button=new Object();
+       button.width=200;
+       button.height=100;
+       button.backgroundColor="gray";
+       button.click=function(){
+       	console.log("快点击我！");
+       };
+       button.mouseOver=function (){
+       	console.log("鼠标移入了！");
+       };
+       button.mouseOver();
+       
+       //2.自定义构造函数方法
+       function Button(width,height,backgroundColor){
+       	this.width=width;//用this，因为这里没有new，没有明确的对象
+       	this.height=height;
+       	this.backgroundColor=backgroundColor;
+       	this.click=function (){
+       		console.log("快点击我！");
+       	};
+       	this.mouseOver=function (){
+       		console.log("鼠标移入了！");
+       	};
+       }
+       var button=new Button(100,200,"yellow");
+       button.click();
+       console.log(button.backgroundColor);
+       
+       //3、字面量方式
+     var button={
+     	width:200,//逗号隔开
+     	height:100,
+     	backgroundColor:"gray",
+     	click:function(){
+     		console.log("快快点击我!带你去往新世界！");
+     	},
+     	mouseOver:function (){
+     		console.log("鼠标移入了！");
+     	}
+     };
+     button.click();
+     console.log(button.width);
+     
+      //拓展：工厂模式
+      function createButton(width,height,backgroundColor){
+      	var button=new Object();//函数内部与调用系统构造函数结构基本相同
+      	button.width=width;
+      	button.height=height;
+      	button.backgroundColor=backgroundColor;
+      	button.click=function (){
+      		console.log("点击我带你进入新世界！");
+      	};
+      	button.mouseOver=function (){
+      		console.log("鼠标移进来了！");
+      	};
+      	return button;//这句千万不能漏掉，写代码时候老是忘掉这一句
+      }
+      var button1=createButton(200,100,"yellow");//函数赋值变量，是把函数的返回值赋给变量
+      var button2=createButton(150,80,"gray");
+      console.log(button1.backgroundColor);
+      button2.click();
+      
+      //Math对象常用方法和属性
+      console.log(Math.PI);
+      console.log(Math.E);
+      console.log(Math.abs(-8.4));//绝对值
+      console.log(Math.ceil(8.4));
+      console.log(Math.ceil(8.5));
+      console.log(Math.floor(9.9));
+      console.log(Math.floor(9.1));
+      console.log(Math.round(6.5));//四舍五入
+      console.log(Math.round(8.1));
+      console.log(Math.pow(2,5));//x的y次方
+      console.log(Math.sqrt(64));//开平方
+      console.log(Math.random());
+      console.log(Math.random()*5);
+      console.log(parseInt(Math.random()*5));//取整为0~4间的随机整数
+		</script>
+	</body>
+</html>

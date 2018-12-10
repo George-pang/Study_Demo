@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 200px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="追加元素" id="btn1"/>
+    <input type="button" value="移除第一个子元素" id="btn2"/>
+    <input type="button" value="移除所有元素" id="btn3"/>
+    <input type="button" value="替换元素" id="btn4"/>
+    <input type="button" value="前插入元素" id="btn5"/>
+    <div id="dv"></div>
+
+    <script>
+        //1、追加子元素 appendChild()
+        //2、移除子元素 removeChild()
+        //3、替换元素   replaceChild()
+        //4、在...之前插入元素  insertbefore()
+        var btn1Obj=document.getElementById("btn1");
+        var btn2Obj=document.getElementById("btn2");
+        var btn3Obj=document.getElementById("btn3");
+        var btn4Obj=document.getElementById("btn4");
+        var btn5Obj=document.getElementById("btn5");
+        var dvObj=document.getElementById("dv");
+        var i=0;
+        //1、追加子节点
+        btn1Obj.onclick=function () {
+            i++;
+            var newObj=document.createElement("input");
+            newObj.type="button";
+            newObj.value="按钮"+i;
+            dvObj.appendChild(newObj);
+        };
+
+        //2、移除第一个子元素
+        btn2Obj.onclick=function () {
+            dvObj.removeChild(dvObj.firstElementChild);
+        };
+
+        //3、移除所有子元素
+        btn3Obj.onclick=function () {
+            while(dvObj.firstElementChild){        //只要divObj存在第一个子元素
+                dvObj.removeChild(dvObj.firstElementChild);
+            }
+            i=0;
+
+        };
+
+        //4、替换子元素
+        btn4Obj.onclick=function () {
+            var nObj=document.createElement("input");
+            nObj.type="button";
+            nObj.value="新按钮";
+            dvObj.replaceChild(nObj,dvObj.firstElementChild);
+        };
+
+        //5、前面插入元素--注意，这个方法的对象还是父级元素，第一个参数是被插入的新元素，第二个参数是作为参考的元素
+        btn5Obj.onclick=function () {
+            var nObj=document.createElement("input");
+            nObj.type="button";
+            nObj.value="新按钮";
+            dvObj.insertBefore(nObj,dvObj.firstElementChild);
+        };
+
+
+
+    </script>
+</body>
+</html>

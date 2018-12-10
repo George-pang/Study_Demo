@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 预编译发生在函数执行的前一刻
+        function fn(a){
+            console.log(a);//ƒ a(){}
+            var a=123;
+            console.log(a);//123
+            function a(){}
+            console.log(a);//123
+            function b(){}
+            console.log(b);//ƒ b(){}
+            function d(){}
+        }
+        fn(1);
+
+        /*
+            预编译发生在函数执行的前一刻
+            1、创建AO对象(执行期上下文、变量声明存储空间)
+            2、找形参和变量声明，将变量和形参名作为AO属性名，值为undefined
+            3、将实参的值和形参统一（将实参的值传给形参名）
+            4、在函数体代码里找内部的函数声明，值为函数体
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组元素连接拼接成字符串，并用|分割开</title>
+	</head>
+	<body>
+		<script>
+//			法1:后加"|"
+			var str="";
+			var arr1=["张三","李四","王五","赵六"];
+			for(var i=0;i<arr1.length-1;i++){
+				str+=arr1[i]+"|";
+			}
+			console.log(str+arr1[arr1.length-1]);
+			
+//			法2:前加"|"
+			var str2="";
+			var arr2=["张三","李四","王五","赵六"];
+			for(var i=1;i<=arr2.length-1;i++){
+				str2+="|"+arr2[i];
+			}
+			console.log(arr2[0]+str2);
+			
+//			法三: 数组.join()方法
+			var str3="";
+			var arr3=["张三","李四","王五","赵六"];
+			    str3=arr3.join("|");
+			console.log(str3);
+		</script>
+	</body>
+</html>

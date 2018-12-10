@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴案例--练习</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 1200px;
+            height: 400px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul{
+            list-style:none;
+            width: 1300px;
+            height: 100%;
+            overflow: hidden;
+        }
+        li{
+            float: left;
+            width: 240px;
+            height: 100%;
+        }
+        li:nth-child(1){
+            background-image: url("img/1.jpg");
+        }
+        li:nth-child(2){
+            background-image: url("img/2.jpg");
+        }
+        li:nth-child(3){
+            background-image: url("img/3.jpg");
+        }
+        li:nth-child(4){
+            background-image: url("img/4.jpg");
+        }
+        li:nth-child(5){
+            background-image: url("img/5.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="js/jquery.accordion.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //思路分析：
+            //  var colors=["yellow","red","pink","purple","green"];
+             $("#box").accordion(100);
+         });
+    </script>
+</body>
+</html>

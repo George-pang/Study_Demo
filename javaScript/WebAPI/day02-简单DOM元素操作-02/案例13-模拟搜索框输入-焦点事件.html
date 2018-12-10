@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input{
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<input type="text" value="请输入搜索内容" id="input1"/>
+
+<script>
+    var inputObj= document.getElementById("input1");
+    inputObj.onfocus=function () {
+     if (this.value=="请输入搜索内容"){
+         this.value="";
+         this.style.color="#000";
+     }
+    };
+    inputObj.onblur=function () {
+        if (this.value.length==0){   //如果失去焦点时没有输入内容，回归初始状态
+            this.value="请输入搜索内容";
+            this.style.color="gray";
+        }
+    };
+
+</script>
+</body>
+</html>

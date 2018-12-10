@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-按钮的排他功能</title>
+</head>
+<body>
+    <input type="button" value="其实都一样"/>
+    <input type="button" value="其实都一样"/>
+    <input type="button" value="其实都一样"/>
+    <input type="button" value="其实都一样"/>
+    <input type="button" value="其实都一样"/>
+    <input type="button" value="其实都一样"/>
+    <input type="button" value="其实都一样"/>
+    <script>
+        var inputObjs=document.getElementsByTagName("input");
+        for (var i=0;i<inputObjs.length;i++){
+            //排他功能--实际上是先将所有的都设为初始状态，再单独设置当前的状态
+
+            inputObjs[i].onclick=function () {
+                for (var j=0;j<inputObjs.length;j++){
+                    inputObjs[j].value="其实都一样";
+                }
+                this.value="我们不一样" //这里不能用inputObjs[i]
+                //因为for循环在页面加载的时候就已经执行完毕（i=6），而点击事件需要触发执行，此时i的值已经为6
+            };
+        }
+    </script>
+
+</body>
+</html>

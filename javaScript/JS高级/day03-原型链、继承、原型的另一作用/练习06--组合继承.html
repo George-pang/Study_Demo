@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name, sex, age) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+    }
+
+    Person.prototype.eat = function () {
+        console.log("chifan!");
+    };
+
+    //借用构造函数继承
+    function Student(name, sex, age, height) {
+        Person.call(this, name, sex, age);
+        this.height = height;
+    }
+
+    //改变原型指向继承
+    Student.prototype=new Person();//只实例化对象，不传值初始化
+    Student.prototype.study=function () {
+        console.log("我说我爱学习！");
+    };
+
+    var stu1=new Student("小米","男","19",180);
+    console.log(stu1.name,stu1.sex,stu1.age,stu1.height);
+    stu1.eat();
+    stu1.study();
+
+    var stu2=new Student("小红","女","22",190);
+    console.log(stu2.name,stu2.sex,stu2.age,stu2.height);
+    stu2.eat();
+    stu2.study();
+</script>
+</body>
+</html>

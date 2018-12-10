@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>停止动画-案例</title>
+    <style type="text/css">
+        div{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="开始" id="btn1"/>
+    <input type="button" value="结束" id="btn2"/>
+    <div></div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("input").eq(0).click(function () {
+                $("div").slideDown(4000).slideUp(4000);//动画队列
+            });
+            $("input").eq(1).click(function () {
+                //stop:停止当前正在执行的动画
+                // 参数之一：clearQueue:是否清除动画队列 true  false
+                //参数之二：jumpToEnd:是否跳转到当前动画的最终效果 true false
+                // $("div").stop();              //停止动画，默认是.stop(false,false);
+                // $("div").stop(true,false);    //清除队列中的动画，但没有跳转到当前动画的最终效果--停住
+                // $("div").stop(false,true);    //直接跳转到当前动画的最终效果，并执行队列中的下个动画
+                $("div").stop(true,true);        //清除队列动画，直接跳到当前动画最终效果
+            });
+        });
+    </script>
+</body>
+</html>

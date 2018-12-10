@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义构造函数创建对象--练习</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	    //构造函数，首字母大写
+	   //例1、创建一个图片的对象,图片有宽,有高,有大小(4M),图片可以展示内容
+	   function Image(width,height,size){
+	   	this.width=width;
+	   	this.height=height;
+	   	this.size=size;
+	   	this.show=function (){
+	   		console.log("展示图片内容");
+	   	};
+	   }
+	   var image=new Image(200,300,"4M");
+	   console.log(image.size);
+	   image.show();
+			
+       //例2、创建一个小猫的对象,猫有颜色，体重，年龄,小猫可以抓耗子,可以打架
+       function Cat(color,weight,age){
+       	this.color=color;
+       	this.weight=weight;
+       	this.age=age;
+       	this.myCatch=function (){
+       		console.log("小猫可以抓耗子！");
+       	};
+       	this.fight=function (){
+       		console.log("小猫打架厉害得很啊！");
+       	};
+       }
+       var cat=new Cat("yellow",100,18);//实例化一个Cat对象
+       console.log(cat.color);
+       cat.fight();
+       cat.myCatch();
+       console.log(cat instanceof Image);//false cat不是Image对象的一个实例
+       console.log(cat instanceof Cat);//true
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="变色" id="btn"/>
+    <ul id="u-list">
+        <li>奔驰</li>
+        <li>宝马</li>
+        <li>奥迪</li>
+        <li>玛莎拉蒂</li>
+        <li>林肯</li>
+        <li>林肯</li>
+        <li>林肯</li>
+        <li>林肯</li>
+    </ul>
+<script>
+    document.getElementById("btn").onclick = function () {
+        var lis=document.getElementById("u-list").getElementsByTagName("li");
+        for (var i=0;i<lis.length;i++){
+            if(i%2==0){
+                lis[i].style.backgroundColor="pink";
+            }else {
+                lis[i].style.backgroundColor="green";
+            }
+        }
+
+    };
+</script>
+</body>
+</html>

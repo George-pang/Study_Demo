@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //案例01--递归计算一个数各位上数字的和
+        function getEveryNum(x){
+            if(x<10){
+                return x;
+            }
+            //递归---降位且每次都取个位上的数字
+            return x%10+getEveryNum(parseInt(x/10));
+        }
+        console.log(getEveryNum(193));
+
+        //案例02--递归计算斐波那契数列
+        function getFib(n){
+            //斐波那契数列第1、2位都是1
+            if(n==1||n==2){
+                return 1;
+            }
+            return getFib(n-1)+getFib(n-2);
+        }
+        console.log(getFib(5));
+
+    </script>
+</body>
+</html>

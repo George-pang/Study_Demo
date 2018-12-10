@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var f=(
+            function f(){
+                return "1";
+            },
+            function g(){
+                return 2;
+            }
+        )(); //()执行符前面是表达式，函数立即执行---逗号运算符，返回右操作数的值   
+        console.log(typeof(f)); //number
+
+        /* 
+        《javascript权威指南(6版)》说逗号运算符（,）：先计算左边的操作数，然后计算右边的操作数，最后返回右操作数的值。
+            比如 var a=(1+1,2+2,3+3); 结果是6。
+        */
+    </script>
+</body>
+</html>

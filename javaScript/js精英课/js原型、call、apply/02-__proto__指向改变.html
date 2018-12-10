@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Person.prototype.name = "sunny";
+
+        function Person() {
+
+        }
+        var per = new Person();
+        /* new时 构造函数内部隐式操作
+            function Person(){
+                var this={
+                    __proto__=Person.prototype
+                }
+            }
+         */
+         Person.prototype.name="chery"; //直接改变了实例对象__proto__指向对象的name属性值
+         console.log(per.name);//chery
+        
+        //改变了构造函数prototype属性所指向的对象
+        Person.prototype={
+            name:"张三"
+        }
+        console.log(per.name);//依然是chery。在new操作时，per.__proto__已经获得了Person.prototype所指向的对象
+        //后来虽然prototype属性指向的对象改变了，但per.__proto__依然指向原对象
+
+        var per1=new Person();
+        console.log(per1.name); //"张三"。new操作发生在Person.prototype指向的对象改变之后，所以per.__proto__获得了改变指向后的对象
+
+    </script>
+</body>
+
+</html>

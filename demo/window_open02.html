@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+  <script type="text/javascript">  
+    function openWindow(){  //花括号的对应位置，这里就因为后面代码没被花括号抱起来bug
+         var open=confirm("是否打开新窗口？");
+
+    // 新窗口打开时弹出确认框，是否打开
+    if(open){
+        var url=prompt("请输入新打开的网址：","http://www.imooc.com");
+        if(url!=null){
+        window.open(url,"mymin","width=400px,height=500px,menubar=no,toolbar=no")
+    // 通过输入对话框，确定打开的网址，默认为 http：//www.imooc.com/
+
+    //打开的窗口要求，宽400像素，高500像素，无菜单栏、无工具栏。
+        }else{alert("拜拜了你嘞！")}
+        
+               }else{alert("拜拜了你嘞！")}
+    }
+  
+  </script> 
+ </head> 
+ <body> 
+	  <input type="button" value="新窗口打开网站" onclick="openWindow()" /> 
+ </body>
+</html>

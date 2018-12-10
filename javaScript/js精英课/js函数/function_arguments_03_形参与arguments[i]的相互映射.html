@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function f2(a,b){
+            //var a;var b;--函数内部隐式做了这步操作
+            a=3;
+            console.log(arguments[0]); //当a重新赋值时，arguments[0]的值也随之改变
+            arguments[0]=99;
+            console.log(a);////当arguments[0]重新赋值时，a的值也随之改变---两者相互映射
+            // return; ---若没有显式定义return语句，函数内部最后会隐式return
+        }   
+        f2(2,3);
+
+        function f3(a,b){
+            b=888;
+            console.log(arguments[1]); //结果：undefined--证明：函数的实参个数在函数调用时已经固定，函数内部新增的不会与形参相互映射
+            a=999;
+            console.log(arguments[0]); //999--相互映射
+        }
+
+        f3(99);
+    </script>
+</body>
+</html>

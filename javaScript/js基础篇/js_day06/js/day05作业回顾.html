@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>day05作业回顾</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//	* 三种方式各2遍  调用Object 自定义  字面量
+//  * 工厂模式一遍
+//  * 创建一个车的对象,有重量,颜色,牌子,可以载人,拉货
+//  * Math对象讲的方法---三遍
+
+//  * 创建一个车的对象,有重量,颜色,牌子,可以载人,拉货
+
+          //方法1 系统构造函数
+          var car=new Object();
+          car.weight="200公斤";
+          car.color="white";
+          car.brand="奥迪";
+          car.zaiRen=function (){
+          	console.log("这辆车核载6人！");
+          };
+          car.laHuo=function (){
+          	console.log("可以拉1吨货！");
+          };
+          console.log(car.color);
+          car.zaiRen();
+          
+          //方法2 自定义构造函数
+          function Car(weight,color,brand){//构造函数，首字母大写
+          	this.weight=weight;//this 没有明确写出对象，根据语境判断，这里是当前对象
+          	this.color=color;
+          	this.brand=brand;
+          	this.zaiRen=function (){
+          		console.log("这辆车荷载7人！");
+          	};
+          	this.laHuo=function (){
+          		console.log("我可以一次拉2吨的货！");
+          	};
+          }
+          var car=new Car("300公斤","red","东风");
+          console.log(car.brand);
+          car.laHuo();
+          
+          //方法3 字面量方式
+          var car={
+          	weight:"400公斤",//逗号分割
+          	color:"yellow",
+          	brand:"长城",
+          	zaiRen:function (){
+          		console.log("我可以载7个人，多了就超载啦！");
+          	},
+          	laHuo:function (){
+          		console.log("要拉货，就找我！");
+          	}
+          };
+          car.laHuo();
+          console.log(car.color);
+          
+          //拓展：工厂模式
+          function createCar(weight,color,brand){
+          	var car=new Object();
+          	car.weight=weight;
+          	car.color=color;
+          	car.brand=brand;
+          	car.zaiRen=function (){
+          		console.log("超大容量，一次可载10人！");
+          	};
+          	car.laHuo=function (){
+          		console.log("拉货不找我，你会后悔的！");
+          	};//函数表达式
+          	return car;//必不可少
+          }
+          var car1=createCar("300公斤","green","哈弗");
+          var car2=createCar("400公斤","black","奔驰");
+          var car3=createCar("330公斤","black","宝马");
+          console.log(car1.color);
+          car2.zaiRen();
+          
+          
+          //Math对象
+           console.log(Math.PI);//ctrl shift r 复制到下一行
+           console.log(Math.E);
+           console.log(Math.abs(-8.2));//绝对值
+           console.log(Math.ceil(8.2));
+           console.log(Math.ceil(8.9));
+           console.log(Math.floor(8.9));
+           console.log(Math.floor(8.1));
+           console.log(Math.round(8.9));
+           console.log(Math.round(8.2));
+           console.log(Math.round(8.5));
+           console.log(Math.pow(2,3));
+           console.log(Math.sqrt(81));
+           console.log(Math.random());
+           console.log(Math.random()*5);
+           console.log(parseInt(Math.random()*5));
+           console.log(parseInt(Math.random()*5+1));
+           console.log(Math.max(20,30,40,50,300));//求最大值
+           console.log(Math.min(20,30,40,50,300));//求最小值
+           
+           
+
+       
+		</script>
+	</body>
+</html>

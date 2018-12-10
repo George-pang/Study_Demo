@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义动画--animate()方法</title>
+    <style type="text/css">
+        div{
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            position: absolute;
+        }
+        #box2{
+            margin-top: 130px;
+            background-color: hotpink;
+        }
+        #box3{
+            margin-top: 260px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="开始" id="btn1">
+    <input type="button" value="结束" id="btn2">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        //入口函数
+        $(function () {
+            $("#btn1").click(function () {
+                // $("#box1").animate({left:800px});//不能带单位px，或者left："800px"这么写
+                $("#box1").animate({left:800});//第一个参数必须的，设置动画效果，对象(可存储多个样式)
+                $("#box2").animate({left:800},1000,"swing"); //默认动画曲线是swing
+                $("#box3").animate({left:800},1000,"linear",function () {
+                    console.log("啊哈哈哈！")
+                });
+                // $("#box1").animate({left:800}, 8000);
+            });
+        });
+    </script>
+</body>
+</html>

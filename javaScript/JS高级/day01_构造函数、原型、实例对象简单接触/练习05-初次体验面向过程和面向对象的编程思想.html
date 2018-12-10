@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象编程思想初体验</title>
+    <style type="text/css">
+        #dv{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="点击" id="btn"/>
+<div id="dv"></div>
+<script>
+    //1、面向过程的编程思想
+    // var btnObj=document.getElementById("btn");
+    // var dvObj=document.getElementById("dv");
+    // btnObj.onclick=function () {
+    //   dvObj.style.backgroundColor="yellow";
+    // };
+
+
+    //2、面向对象的编程思想
+    //自定义构造函数-首字母大写
+    function ChangeStyle(Obj1,Obj2,json) {
+        this.obj1=Obj1;   //把传入的参数对象作为当前创建的实例对象的一个属性
+        this.obj2=Obj2;    //this 当前的实例对象
+        this.json=json;
+    }
+    
+    //通过原型添加方法--改变多个属性的值
+    ChangeStyle.prototype.init=function () {
+        var that=this;      //把当前实例对象传给that变量，避免与事件处理函数内部的this指向冲突
+        that.obj1.onclick=function () { //事件处理函数内部的this指向当前触发事件的对象，也就是this.obj1
+            for(var key in that.json){       //json对象的遍历
+                that.obj2.style[key]=that.json[key];
+            }
+        };
+    };
+
+    //实例化对象
+    var btnObj=document.getElementById("btn");
+    var dvObj=document.getElementById("dv");
+    var json={"width":"300px","height":"300px","backgroundColor":"pink"};  //json对象 键名和值都加引号
+    var changeStyle=new ChangeStyle(btnObj,dvObj,json);
+    changeStyle.init(); //实例对象调用方法
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String对象案例-01</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//String对象案例--截取指定字符串
+			var str="我叫庞小帅，我真的真的比陈屌丝要帅！";
+			var key1="庞小帅";
+			var index=str.indexOf(key1);
+			console.log(str.substr(index,3));
+			console.log(str.substring(index,index+3));
+			console.log(str.slice(index,index+3));
+			
+			//案例2--找到下列字符串中所有"o"字符出现的位置
+			var str2="hello world！I are Bob runoob！";
+			var index=0;
+			var key2="o";//将指定字符串存储在key2变量中
+			while ((index=str2.indexOf(key2,index))!=-1){//-1说明找完了但没有找到该字符串
+				console.log(index);
+				index+=key2.length;
+			}
+			
+			//案例3--找到字符串中每个字符串出现的次数
+			
+		</script>
+	</body>
+</html>

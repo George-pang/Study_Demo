@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>一元运算符 ++ --</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		// 前置++a与后置a++ 测试
+			var num1=10;
+			var sum1=num1++ +10;
+			console.log(sum1);//20 先运算
+			console.log(num1);//11	后自加
+			
+			var num2=10;
+			var sum2=++num2 +10;
+			console.log(sum2);//21 后运算
+			console.log(num2);//11	先自加
+			
+	    //结论：前置++a先自加，再计算（初始值为a+1）；后置a++先计算，后自加（初始值就是a）
+	    
+	    //前置--a和后置a--测试
+	       var num3=20;
+	       var sum3=num3-- -5;
+	       console.log(sum3);//15
+	       console.log(num3);//19
+	       
+	       var num4=20;
+	       var sum4=--num4 -5;
+	       console.log(sum4);//14 先自减，再计算
+	       console.log(num4);//19
+	       
+	       /*  如果++在后面:如: num++ +10参与运算
+		    *  先参与运算,运算结束后自身再加1
+		    *
+		    *  如果++在前面:如: ++num+10参与运算
+		    *  先自身加1,然后再参与运算
+            */
+	       
+		</script>
+	</body>
+</html>

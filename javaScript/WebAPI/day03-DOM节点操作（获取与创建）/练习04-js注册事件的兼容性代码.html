@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="点击按钮" id="btn"/>
+<script>
+    //js中注册事件不同浏览器的兼容性代码
+    //js注册事件的三种方式：
+        //1、对象.on事件类型=事件处理函数----同一元素的同一事件类型的事件处理函数会覆盖
+        //2、对象.addEventListener("事件类型",事件处理函数,false);----谷歌、火狐支持，IE8不支持
+        //3、对象.attachEvent("有on的事件类型",事件处理函数);----谷歌、火狐不支持,IE8支持
+
+    //兼容性代码
+
+    //为任意元素注册任意事件及其事件处理函数
+    function addEventListener(element,type,fn){
+        if (element.addEventListener){            //如果带括号，方法调用，就是判断其返回值是否true,而不是其方法是否支持
+            element.addEventListener(type,fn,false);
+        }else if (element.attachEvent) {
+            element.attachEvent("on"+type,fn);
+        }else{
+            element["on"+type]=fn;                //访问对象属性除点语法之外的另一种方式
+        }
+    }
+
+    //方法与函数的区别：方法属于对象，需要对象.方法调用,而函数可以直接调用
+
+    var btnObj=document.getElementById("btn");
+    addEventListener(btnObj,"click",function () {
+        console.log("小庞好帅！");
+    });
+    addEventListener(btnObj,"click",function () {
+        console.log("小庞超级帅！");
+    });
+    addEventListener(btnObj,"click",function () {
+        console.log("小庞真得帅！");
+    });
+    addEventListener(btnObj,"click",function () {
+        console.log("小庞帅爆了！");
+    })
+
+</script>
+</body>
+</html>

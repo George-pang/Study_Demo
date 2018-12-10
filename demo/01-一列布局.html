@@ -1,0 +1,69 @@
+<!DOCTYPE HTML >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>一列布局</title>
+		<style type="text/css">
+         body{margin: 0;padding: 0;} /*清除默认样式 不带边距*/
+        .top{
+        	height: 100px;
+        	background: blue;
+        }
+        .head{
+        	width:800px;
+        	height:400px;
+        	background: khaki;
+        	margin:0 auto;
+        }
+        .main{
+        	width:800px;
+        	height:400px;
+        	background: #CCCCCC;
+        	margin:0 auto;
+        }
+        .left{
+        	width:200px;
+        	height:400px;
+        	background:cyan;
+        	float: left;
+        }
+        .right{
+        	width:600px;
+        	height:400px;
+        	background:yellowgreen;
+        	float: right;
+        }
+        .sub_l{
+        	width:400px;
+        	height:400px;
+        	background:bisque;
+        	float: left;
+        }
+        .sub_r{
+        	width:200px;
+        	height:400px;
+        	background:sienna;
+        	float: right;
+        }
+        .foot{
+        	width:800px;
+        	height: 100px;
+        	background-color: #DDDDDD;
+        	margin:0 auto;
+        }
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			<div class="head"></div>
+		</div>
+		<div class="main">
+			<div class="left"></div>
+			<div class="right">
+				<div class="sub_l"></div>
+				<div class="sub_r"></div>
+			</div>
+		</div>
+		<div class="foot"></div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="小陈" id="btn"/>
+<input type="button" value="解绑事件" id="btn2"/>
+
+<script>
+    var btnObj=document.getElementById("btn");
+    var btn2Obj=document.getElementById("btn2");
+
+    //绑定事件的兼容代码
+    function addEventListener(element,type,fn){
+        if (element.addEventListener){
+            element.addEventListener(type,fn,false);
+        }else if(element.attachEvent){
+            element.attachEvent("on"+type,fn);
+        }else{
+            element["on"+type]=fn;
+        }
+    }
+
+
+    //对应的---解绑事件的兼容代码--注意：移除事件，要使用命名函数
+    function removeEventListener(element,type,fn){
+        if (element.removeEventListener){
+            element.removeEventListener(type,fn,false);
+        }else if(element.detachEvent){
+            element.detachEvent("on"+type,fn);
+        }else{
+            element["on"+type]=null;
+        }
+    }
+
+
+    function f1(){
+        console.log("小陈好猥琐！");
+    }
+    function f2(){
+        console.log("小陈超级猥琐！");
+    }
+
+    addEventListener(btnObj, "click", f1);
+    addEventListener(btnObj, "click", f2);
+
+    btn2Obj.onclick=function (){
+        removeEventListener(btnObj, "click", f1);
+    };
+
+</script>
+</body>
+</html>

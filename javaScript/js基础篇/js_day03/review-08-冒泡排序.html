@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>冒泡排序</title>
+	</head>
+	<body>
+		<script>
+			var arr=[10,30,40,50,60,70];
+			for(var i=0;i<arr.length-1;i++){ //比较arr.length-1轮
+				for (var j=0;j<arr.length-1-i;j++) { //每轮比较arr.length-1-i轮
+					if(arr[j]<arr[j+1]){
+						var temp=arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=temp;
+					}
+				}
+			}
+			console.log(arr);
+		</script>
+	</body>
+</html>

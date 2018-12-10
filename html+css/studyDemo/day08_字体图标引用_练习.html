@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>day08_字体图标引用_练习</title>
+		<style type="text/css">
+			@font-face {
+				font-family: 'icomoon';
+				src: url('fonts/icomoon.eot?ujh7nx'); /*?后面的是码，主要是浏览器兼容的，具体啥意思暂时不清楚*/
+				src: url('fonts/icomoon.eot?ujh7nx#iefix') format('embedded-opentype'), 
+					url('fonts/icomoon.ttf?ujh7nx') format('truetype'), 
+					url('fonts/icomoon.woff?ujh7nx') format('woff'), 
+					url('fonts/icomoon.svg?ujh7nx#icomoon') format('svg');
+				font-weight: normal;
+				font-style: normal; 
+			}
+			
+			span{
+				font-family: icomoon;
+				font-size: larger;
+				color: pink;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<span></span>
+	</body>
+</html>

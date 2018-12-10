@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Father.prototype.num=100;
+        function Father() {
+        }
+        var father = new Father();
+        Son.prototype = father;
+        function Son() {
+
+        }
+        var son = new Son();
+        console.log(son.num);//100
+        console.log(son.num++);//100 后++，先运算后自加
+        console.log(Father.prototype.num);//100
+        console.log(son.num);//101--son.num++ =>son.num=son.num+1,son实例对象新增了num属性，值为Father.prototype.num+1
+        console.dir(son);
+
+
+        Teacher.prototype.num=100;
+        Teacher.prototype.money={
+            card1:"visa",
+            card2:"master"
+        };
+        function Teacher() {
+        }
+        var teacher = new Teacher();
+        Student.prototype = teacher;
+        function Student() {
+
+        }
+        var student = new Student();
+        console.log(student.num);//100
+        console.log(student.money);//{card1: "visa", card2: "master"}
+        // 当祖先构造函数的prototype对象的某个属性(这里是money属性)的值为引用时，这种情况下可以在后代实例对象上更改其值
+        student.money.card2="银联";
+        student.card3="master";
+        console.log(student.money);//{card1: "visa", card2: "银联"}
+        student.num=999;
+        console.log(Teacher.prototype.num); //仍为100，并没有改变
+        console.dir(student);
+
+    </script>
+</body>
+
+</html>

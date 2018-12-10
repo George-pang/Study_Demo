@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="http://www.baidu.com" id="link">百度</a>
+    <script>
+        //获取元素对象，注册事件，添加事件处理函数
+        document.getElementById("link").onclick=function () {
+            alert("哈哈哈！");
+            return false;      //阻止a链接跳转，加return false
+        }
+    </script>
+</body>
+</html>

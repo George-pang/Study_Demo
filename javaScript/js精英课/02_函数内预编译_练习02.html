@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 预编译发生在函数执行的前一刻
+        function test(a,b){
+            console.log(a);//1
+            c=0;//c=0
+            var c;
+            a=3;//a=3
+            b=2;//b=2
+            console.log(b);//b=2
+            function b(){}
+            function d(){}
+            console.log(b);//2
+        }
+        test(1);
+        // 分析预编译的最后结果：     a:1，b:f b(){}，c:undefined，d:f d(){}
+
+        /*
+        1、创建AO对象（执行期上下文）
+        */
+        /*
+        2、找形参和变量声明，将变量和形参名作为AO属性名，值为undefined
+        AO{
+            a:undefined
+            b:undefined
+            c:undefined   
+        }
+        */
+        /*2、将实参的值和形参统一（将实参的值传给同名形参）
+        AO{
+            a:1
+            b:undefined
+            c:undefined   
+        }
+        */
+        /*3、在函数体代码里找内部的函数声明（注意函数表达式不算），值为函数体---即为最终预编译的结果
+        AO{
+            a:1
+            b:f b(){}
+            c:undefined   
+            d:f d(){}
+        }
+        */
+
+        /*
+            函数内预编译发生在函数执行的前一刻
+            1、创建AO对象(执行期上下文、变量声明存储空间)
+            2、找形参和变量声明，将变量和形参名作为AO属性名，值为undefined
+            3、将实参的值和形参统一（将实参的值传给同名形参）
+            4、在函数体代码里找内部的函数声明，值为函数体---四步结束即为预编译后的结果
+        */
+    </script>
+</body>
+</html>

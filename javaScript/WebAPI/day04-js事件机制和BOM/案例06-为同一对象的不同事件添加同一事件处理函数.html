@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="小陈" id="btn"/>
+<script>
+    //使用命名函数，并传入事件参数对象
+    var btnObj=document.getElementById("btn");
+    btnObj.onclick=f1;
+    btnObj.onmouseover=f1;
+    btnObj.onmouseout=f1;
+    function f1(e) {
+        console.log(e.type);  //事件对象类型前面没有on
+        switch (e.type) {
+            case "click":
+                this.style.fontSize="24px";
+                break;
+            case "mouseover":
+                this.style.backgroundColor="green";
+                break;
+            case "mouseout":
+                this.style.fontWeight=700;
+                break;
+        }
+    }
+</script>
+
+</body>
+</html>

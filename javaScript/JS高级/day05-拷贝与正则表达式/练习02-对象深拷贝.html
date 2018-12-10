@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //对象深拷贝,深:把一个对象中所有的属性或者方法,一个一个的找到.并且在另一个对象中开辟相应的空间,一个一个的存储到另一个对象中
+        var obj1 = {
+            name: "张三",
+            age: 28,
+            cars: ["奔驰", "宝马", "奥迪"],
+            dog: {
+                name: "来福",
+                age: 18,
+                sex: "公"
+            }
+        };
+
+        //封装函数--深拷贝对象a的属性，并赋给b
+        function extend(a, b) {
+            for (var key in a) {
+                //获取a对象每个属性的值
+                var item = a[key];
+                //判断这个属性的值是否是数组或者对象，抑或普通数据
+                if (item instanceof Array) {
+                    //如果是数组，则在b对象中添加一个新的属性（键名同），初始化值为空数组
+                    b[key] = [];
+                    //递归调用函数，把a对象中这个值为数组类型的属性值一个一个的复制到b对象的这个数组属性中去。
+                    extend(item, b[key]);
+                } else if (item instanceof Object) {
+                    //如果是对象，则在b对象中添加一个新的属性（键名同），初始化值为空对象
+                    b[key] = {};
+                    //递归调用函数，把a对象中这个值为对象类型的属性值一个一个的复制到b对象的这个对象属性中去。
+                    extend(item, b[key]);
+                } else {
+                    //如果属性值为普通数据，则直接复制给b对象
+                    b[key] = item;
+                }
+            }
+            // return b;
+        }
+
+        var obj2 = {};
+        extend(obj1, obj2);
+        console.dir(obj1);
+        console.dir(obj2);
+    </script>
+</body>
+
+</html>

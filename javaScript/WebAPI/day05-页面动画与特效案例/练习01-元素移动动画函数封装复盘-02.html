@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素移动动画函数封装</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #dv {
+            position: absolute;
+            top: 30px;
+            margin-top: 10px;
+            width: 150px;
+            height: 150px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动400px" id="btn1"/>
+<input type="button" value="移动800px" id="btn2"/>
+<div id="dv"></div>
+
+<script>
+    var btn1Obj = document.getElementById("btn1");
+    var btn2Obj = document.getElementById("btn2");
+    var divObj = document.getElementById("dv");
+    btn1Obj.onclick = function () {
+        animate(divObj, 400);
+    };
+    btn2Obj.onclick = function () {
+        animate(divObj, 800);
+    };
+
+
+    //封装元素水平移动的动画函数
+    //参数1：元素对象;参数2：目标位置
+    function animate(ele, target) {
+        //清除重复的计时器--避免多次点击影响效果
+        clearInterval(ele.timeId);     //利用对象属性点语法动态生成，无需声明后才能使用
+        ele.timeId = setInterval(function () {
+            var current = ele.offsetLeft;    //获取元素当前位置
+            var step = 10;   //设置每次移动步数
+            step = current < target ? step : -step;
+            if (Math.abs(target - current) > Math.abs(step)) {
+                current += step;
+                console.log(current);
+                ele.style.left = current + "px";
+            } else {
+                clearInterval(ele.timeId);   //到达目标位置后清除计时器必不可少
+                current = target;
+                ele.style.left = current + "px";
+            }
+        }, 20);
+
+    }
+
+</script>
+</body>
+</html>

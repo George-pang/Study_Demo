@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮选择性别和兴趣</title>
+</head>
+<body>
+    <input type="button" value="选择性别" id="btn1"/>
+    <!--注意：单选必须name属性一致才能实现单选功能-->
+    <input type="radio" name="sex" id="rad1"/>男
+    <input type="radio" name="sex" />女
+    <input type="radio" name="sex" />保密
+    <br/>
+    <br/>
+    <input type="button" value="选择兴趣" id="btn2"/>
+    <input type="checkbox" name="xingqu" id="xq1">吃饭
+    <input type="checkbox" name="xingqu" >睡觉
+    <input type="checkbox" name="xingqu" >打豆豆
+    <input type="checkbox" name="xingqu" id="xq2">读书
+    <input type="checkbox" name="xingqu" >看报
+    <script>
+        //封装document.getElementById()方法
+        function my$(id) {
+            return document.getElementById(id);  //返回对象，id变量-字符串类型
+        }
+        my$("btn1").onclick=function () {
+            my$("rad1").checked=true;  //"checked"和其他字符串一样，都被解析成true
+        };
+        my$("btn2").onclick=function () {
+            my$("xq1").checked=true;
+            my$("xq2").checked=true;
+        };
+
+        //规律:在表单标签中,如果属性和值只有一个,并且值是这个属性本身,那么
+        //那么,在写js代码的DOM操作的时候,这个属性的值用布尔类型就可以了
+        // （如checked/selected/disabled/readonly>）
+    </script>
+    </body>
+</html>

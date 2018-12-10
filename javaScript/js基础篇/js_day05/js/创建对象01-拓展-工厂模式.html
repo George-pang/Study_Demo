@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>判断一个变量是否是对象的实例、工厂模式创建对象(批量创建)</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//instanceof 用于判断一个变量是否是某个对象的实例
+			var person=new Object();//调用系统构造函数创建对象
+			person.name="小红";
+			person.age=18;
+			person.sex="nv";
+			person.sayHi=function (){
+				//在对象的方法里可以用this来代表当前对象，可以访问当前这个对象的属性值
+				console.log("你好，我叫小红，我今年："+this.age);
+			}
+			person.sayHi();//对象方法调用
+			console.log(person instanceof Object);//判断person变量是否是Object对象的实例
+			//为true，说明变量person是一个Object对象
+			
+			//如何一次性创建多个对象？把创建对象的代码封装到一个函数内
+			   //工厂模式创建对象(批量创建)-->有参数的函数
+               function createObject(name,age)	{//有变量作为参数，输出更灵活
+               	   var obj=new Object();
+               	   obj.name=name;
+               	   obj.age=age;
+               	   obj.sayHi=function (){//函数表达式定义函数
+               	   	console.log("我叫："+this.name+"，我今年："+this.age);//this 当前对象
+               	   };//分号要加上
+               	   return obj;//这句不能少
+               }//end function
+               var per1=createObject("小红",39);//实例化一个对象，赋给变量per1
+               var per2=createObject("小丽",18);
+               per1.sayHi();//调用对象方法
+               per2.sayHi();
+               
+		</script>
+	</body>
+</html>

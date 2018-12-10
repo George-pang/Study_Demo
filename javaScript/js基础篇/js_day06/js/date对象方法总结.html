@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>date对象方法总结</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var dt1=new Date();
+			
+        	var dt2=+new Date();//Date对象的一种特殊写法
+			console.log(dt2);
+			
+			console.log(dt1.toDateString());//英文 日期部分字符串写法
+			console.log(dt1.toLocaleDateString());//当地 日期部分字符串写法
+			console.log(dt1.toTimeString());//英文 时间部分字符串写法
+			console.log(dt1.toLocaleTimeString());//当地 时间部分字符串写法
+			
+			//.valueOf()方法的功能和 Date.prototype.getTime() 方法一样。
+			console.log(dt1.valueOf());//从1970年1月1日0时0分0秒（UTC，即协调世界时）到该日期的毫秒数。
+			
+			
+			//返回毫秒数
+			//Date.now()方法、 dt1.getTime()方法、dt1.valueOf()方法貌似都可以？
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(){
+            function b(){
+                function c(){
+
+                }
+                c();
+            }
+            b();
+        }
+        a();
+            /* 
+                函数a定义 ----函数对象属性[[scope]]作用域---隐式属性(仅供js引擎存取)  0：GO
+                函数a执行-----                0：aAO
+                                             1：GO
+                函数b定义                     0：aAO
+                                             1：GO
+                函数b执行                     0：bAO
+                                             1：aAO
+                                             2：GO
+                函数c定义                     0：bAO
+                                             1：aAO
+                                             2：GO
+                函数c执行                     0：cAO
+                                             1：bAO
+                                             2: aAO
+                                             3: GO
+             */
+            // 变量从作用域的顶部开始往下搜索，函数执行完销毁自己的执行期上下文
+    </script>
+</body>
+</html>

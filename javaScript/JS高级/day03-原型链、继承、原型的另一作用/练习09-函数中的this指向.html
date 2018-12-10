@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // * 普通函数中的this是谁?-----window
+    // * 对象.方法中的this是谁?----当前的实例对象
+    // * 定时器方法中的this是谁?----window
+    // * 构造函数中的this是谁?-----实例对象
+    // * 原型对象方法中的this是谁?---实例对象
+
+    function f1() {
+        console.log(this); //window
+    }
+    f1();
+    window.f1(); //普通函数可以是window对象的一个方法，只不过平常window对象都是省略的。
+
+    function Person() {
+        console.log(this); //当前的实例对象--有__proto__属性，没有prototype属性
+        this.sayHi=function () {
+            console.log(this);      //当前的实例对象
+        }
+    }
+    Person.prototype.do=function () {
+        console.log(this);  //当前的实例对象
+    };
+    var per1=new Person();
+    per1.sayHi();
+    per1.do();
+
+    //定时器
+    var timeId=setInterval(function () {
+        console.log(this); //指向window对象---window.setInterval()
+        clearInterval(timeId);
+    },200);
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #dv {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="平移400px" id="btn1"/>
+<input type="button" value="平移800px" id="btn2"/>
+<div id="dv">
+
+</div>
+<script>
+    var btn1Obj = document.getElementById("btn1");
+    var btn2Obj = document.getElementById("btn2");
+    var divObj = document.getElementById("dv");
+    btn1Obj.onclick = function () {
+        animate(divObj, 400);
+    };
+    btn2Obj.onclick = function () {
+        animate(divObj, 800);
+    };
+
+    //匀速平移动画函数封装
+    function animate(ele, target) {
+        //清除计时器
+        clearInterval(ele.timeId);
+        ele.timeId = setInterval(function () {
+            //获取当前位置
+            var current = ele.offsetLeft; //返回的是数字
+            //设置步数
+            var step = 10;
+            step = target > current ? step : -step;
+            if (Math.abs(target - current) > Math.abs(step)) {
+                current += step;
+                ele.style.left = current + "px";
+            } else {
+                clearInterval(ele.timeId);
+                current = target;
+                ele.style.left = current + "px";
+            }
+        }, 20);
+    }
+</script>
+</body>
+</html>

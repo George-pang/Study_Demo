@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            margin-left: 100px;
+            background-color: yellow;
+        }
+
+        body{
+            margin-left: 10px;
+            background-color: cornflowerblue;
+            height: 500px;
+        }
+        div{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            background-color: deeppink;
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    结果可以看出，当绝对定位的元素没有具有定位属性的父元素时，其是相对页面文档的边缘来进行定位的（html和body的外边距并没造成影响）。
+    <div>
+        测试绝对定位--无定位属性的父元素时的相对定位对象
+    </div>
+</body>
+</html>

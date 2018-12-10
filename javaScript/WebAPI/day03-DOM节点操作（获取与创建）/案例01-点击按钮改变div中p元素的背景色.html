@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #dv{
+            width: 150px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="变色" id="btn"/>
+<div id="dv">
+    <span>这是span</span>
+    <p>这是p</p>
+    <span>这是span</span>
+    <p>这是p</p>
+    <span>这是span</span>
+    <p>这是p</p>
+    <span>这是span</span>
+    <a href="http://www.baidu.com">百度</a>
+</div>
+<script>
+    var divObj=document.getElementById("dv");
+    var nodes=divObj.childNodes;
+    document.getElementById("btn").onclick=function () {
+        for(var i=0;i<nodes.length;i++){
+            if (nodes[i].nodeType == 1 && nodes[i].nodeName == "P") {    //如果是标签节点，且节点名字是P
+                nodes[i].style.backgroundColor="red";
+            }
+        }
+    };
+
+</script>
+
+</body>
+</html>

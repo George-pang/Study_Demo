@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>H5新增标签测试-页面展示效果</title>
+	</head>
+	<body>
+		<!--可以看作body的头部部分-->
+		<p>语义元素清楚地向浏览器和开发者描述其意义。 非语义元素的例子：div 和 span - 无法提供关于其内容的信息。 语义元素的例子：form、table 以及 img - 清晰地定义其内容。</p>
+		<header>H5新增header标签，定义页面的头部/页眉部分，个人认为可以看作是页面可见部分(body)的头部区域</header>
+		<nav>nav标签语义，定义页面的导航栏</nav>
+		<section>section标签，定义文档的节。<strong>根据 W3C 的 HTML 文献：“节（section）是有主题的内容组，通常具有标题”。</strong></section>
+		<footer>footer标签，定义页面的底部/页脚部分,可看作是body的底部区域</footer>
+		<article>article标签语义:定义文章。</article>
+		<aside>aside标签语义：定义页面的侧边栏</aside>
+		<hr />
+		
+			datalist新标签要和linput标签配合使用。
+		<br/>
+		<input type="text" value="请输入明星" list="star"/>
+		<datalist id="star">	
+			<option value="刘亦菲">刘亦菲</option>
+			<option value="刘若英">刘若英</option><!-- value必须赋值才有效果-->
+			<option value="刘星">刘星</option>
+			<option value="刘惠">刘惠</option>
+			<option value="赵丽颖">赵丽颖</option>
+			<option value="周润发">周润发</option>
+			<option value="周星驰">周星驰</option>
+			<option value="周华健">周华健</option>	
+		</datalist>
+		
+		<hr />
+		<!--field标签将表单元素分组-->
+		<fieldset id="">
+			<legend>这是一个测试field标签效果的分组表单</legend>
+			用户名：<input type="text" />
+			<br/>
+			密码：<input type="password"  />
+			
+		</fieldset>
+	</body>
+</html>

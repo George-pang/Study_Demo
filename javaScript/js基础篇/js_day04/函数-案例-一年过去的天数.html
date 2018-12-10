@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--案例-输入年月日判断是一年的第多少天-scr视频day04-09</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//输入年月日
+			function getDays(year,month,day){
+				var days=day;
+				if (month==1){//假设是一月份，则日期即为天数
+					return days;
+				}
+				//假设是平年
+				var months=[31,28,31,30,31,30,31,31,30,31,30,31];
+				for(var i=0;i<month-1;i++){
+					days+=months[i];//初始days值为day，即输入的当月日期
+				}//end for
+				if(isLeapYear(year)&&month>2){//函数内部调用其他函数
+					//如果是闰年且月份大于2月天数加1
+					days++;
+				}//end if
+				return days;
+			}	
+			console.log(getDays(2012,2,18));
+			
+			function isLeapYear(year){
+				if (year%4==0&&year%100!==0||year%400==0) {
+					return true;
+				} else{
+					return false;
+				}
+			//return year%4==0&&year%100!==0||year%400==0;//直接这样写逻辑表达式也行
+			//逻辑或条件表达式的值为true或false
+			}
+			
+		</script>
+	</body>
+</html>

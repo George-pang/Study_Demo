@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页版计算器</title>
+    <style type="text/css">
+        table{
+            background-color: pink;
+            margin: 100px auto;
+            width: 300px;
+            height: 300px;
+        }
+        td input{
+            width: 100%;
+            height: 100%;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" value="" id="resultIpt"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1"  onclick="clickNum('1')"></td>
+            <td><input type="button" value="2"  onclick="clickNum('2')"></td>
+            <td><input type="button" value="3"  onclick="clickNum('3')"></td>
+            <td><input type="button" value="+"  onclick="clickNum('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4"  onclick="clickNum('4')"></td>
+            <td><input type="button" value="5"  onclick="clickNum('5')"></td>
+            <td><input type="button" value="6"  onclick="clickNum('6')"></td>
+            <td><input type="button" value="-"  onclick="clickNum('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7"  onclick="clickNum('7')"></td>
+            <td><input type="button" value="8"  onclick="clickNum('8')"></td>
+            <td><input type="button" value="9"  onclick="clickNum('9')"></td>
+            <td><input type="button" value="*"  onclick="clickNum('*')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="0"  onclick="clickNum('0')"></td>
+            <td><input type="button" value="."  onclick="clickNum('.')"></td>
+            <td><input type="button" value="/"  onclick="clickNum('/')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="Del" onclick="clickClear()"></td>
+            <td colspan="2"><input type="button" value="=" onclick="clickEqual()"></td>
+        </tr>
+    </table>
+    <script>
+        var res_value;
+
+        function clickNum(nums) {
+            var resultIpt=document.getElementById("resultIpt");
+            res_value=resultIpt.value;
+            res_value = res_value + nums;
+            resultIpt.value=res_value;
+        }
+        function clickClear() {
+            var resultIpt=document.getElementById("resultIpt");
+            resultIpt.value="";
+
+        }
+        function clickEqual() {
+            var resultIpt=document.getElementById("resultIpt");
+            res_value=resultIpt.value;
+            resultIpt.value=eval(res_value);
+        }
+    </script>
+</body>
+</html>

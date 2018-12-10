@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="创建一个p" id="btn"/>
+<div id="dv">
+</div>
+<script>
+    document.getElementById("btn").onclick=function () {
+        document.getElementById("dv").innerHTML="<p>这是一个p</p>";      //---innerHTML放在body里和document.write()一样会覆盖页面内容
+    };
+
+</script>
+</body>
+</html>

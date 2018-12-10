@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三组基本动画--显示、隐藏</title>
+    <style>
+        div{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="显示"/>
+    <input type="button" id="btn2" value="隐藏"/>
+    <div>
+
+    </div>
+
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("input").eq(0).click(function () {
+                //show(speed)
+                //speed:动画的持续时间  可以是毫秒值 还可以是固定字符串
+                //fast:200ms   normal:400ms   slow:600
+
+                $("div").show();//不带参数，不加动画时间
+                $("div").show(1000);//带参数--毫米数-动画持续的时间
+                $("div").show("normal");//带参数--固定字符串：normal、fast、slow，其他字符串默认为normal；400ms
+                // show([speed], [callback])
+                $("div").show(1000,function () { //两个可选参数，一个动画时间、一个匿名回调函数
+                    console.log("呵呵，我显示啦！");
+                })
+            });
+            $("input:eq(1)").click(function () {
+                $("div").hide();
+            });
+        });
+    </script>
+</body>
+</html>

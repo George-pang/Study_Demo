@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>DOM 浏览器窗口网页尺寸</title>
+</head>
+<body>
+<script type="text/javascript">
+//浏览器窗口可视区域大小
+//不同浏览器均实用的写法
+var w=document.documentElement.clientWidth||document.body.clientWidth;
+var h=document.documentElement.clientHeight||document.body.clientHeight;
+document.write("可视区域的宽为："+w+"&nbsp"+"可视区域的高为："+h+"<br/>");
+
+//浏览器窗口的内部宽度（包含竖拉条的宽度） IE9+、Chrome、Firefox、Opera 以及 Safari
+var w=window.innerWidth;
+//浏览器窗口的内部高度（包含横拉条的高度）
+var h=window.innerHeight;
+document.write("可视区域的宽为："+w+"&nbsp"+"可视区域的高为："+h+"<br/>");
+
+//HTML文档所在窗口的当前宽度（不包含竖拉条的高度）
+var w=document.documentElement.clientWidth;
+//clientHeight：HTML文档所在窗口的当前高度（不包含横拉条的高度）
+var h=document.documentElement.clientHeight;
+document.write("可视区域的宽为："+w+"&nbsp"+"可视区域的高为："+h+"<br/>");
+
+//HTML文档所在窗口的当前宽度减去默认的margin和padding的值后的宽度
+var w=document.body.clientWidth;
+//获取body文档当前的高，随内容变化。
+var h=document.body.clientHeight;
+document.write("可视区域的宽为："+w+"&nbsp"+"可视区域的高为："+h+"<br/>");
+
+//网页内容高度和宽度（不包含滚动条和边框）
+//浏览器兼容
+var w=document.documentElement.scrollWidth||document.body.scrollWidth;
+var h=document.documentElement.scrollHeight||document.body.scrollHeight;
+document.write("网页内容的宽为："+w+"&nbsp"+"网页内容的高为："+h+"<br/>");
+//法一
+var w=document.documentElement.scrollWidth;
+var h=document.documentElement.scrollHeight;
+document.write("网页内容的宽为："+w+"&nbsp"+"网页内容的高为："+h+"<br/>");
+//法二
+var w=document.body.scrollWidth;
+var h=document.body.scrollHeight;
+document.write("网页内容的宽为："+w+"&nbsp"+"网页内容的高为："+h+"<br/>");
+
+//网页内容宽度和高度（包含滚动条和边框）
+//兼容性
+var w=document.documentElement.offsetWidth||document.body.offsetWidth;
+var h=document.documentElement.offsetHeight||document.body.offsetHeight;
+document.write("网页内容的宽（包含滚动条+边框）为："+w+"&nbsp"+"网页内容的高（包含滚动条+边框）为："+h+"<br/>");
+
+//方法一
+var w=document.documentElement.offsetWidth;
+var h=document.documentElement.offsetHeight;
+document.write("网页内容的宽（包含滚动条+边框）为："+w+"&nbsp"+"网页内容的高（包含滚动条+边框）为："+h+"<br/>");
+//方法二
+var w=document.body.offsetWidth;
+var h=document.body.offsetHeight;
+document.write("网页内容的宽（包含滚动条+边框）为："+w+"&nbsp"+"网页内容的高（包含滚动条+边框）为："+h+"<br/>");
+
+</script>
+</body>
+</html>

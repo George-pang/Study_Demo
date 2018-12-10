@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        #div2{
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+        #div3{
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
+
+    <script>
+        //如果元素间存在层次关系，且嵌套元素绑定了同一事件，当事件触发时，会发生事件冒泡
+        var div1Obj=document.getElementById("div1");
+        var div2Obj=document.getElementById("div2");
+        var div3Obj=document.getElementById("div3");
+        
+        div1Obj.onclick=function () {
+            console.log(this.id);
+            console.log(arguments.length);   //所有函数内部都有个arguments对象，存储这传入的实参
+        };
+        div2Obj.onclick=function () {
+            console.log(this.id);   //结果为1,证明点击事件触发时传入了一个实参---事件对象
+        };
+        div3Obj.onclick=function () {
+            console.log(this.id);
+        }
+    </script>
+</body>
+</html>

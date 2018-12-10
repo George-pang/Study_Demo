@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>是否开启地理定位？</p>
+    <input type="button" value="开启定位">
+    <p class="location"></p>
+    <p>h5地理定位api获取的是谷歌地图，在国内需要翻墙，所以我们一般使用第三方地图，如百度地图比较多！</p>
+
+    <script>
+        console.dir(navigator);
+        var inputObj = document.querySelector("input");
+        var pObj = document.querySelector(".location");
+        inputObj.onclick = function () {
+            // 如果浏览器支持这个属性navigator.geolocation--navigator 对象提供了与浏览器有关的信息。
+            if (navigator.geolocation) {
+                // getCurrentPosition参数1：获取成功的callback，参数2：获取失败的callback
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else { // 如果设备不支持  就返回这句话  当前浏览器不支持 地理定位
+                pObj.innerHTML = "Geolocation is not supported by this browser.";
+            }
+
+            /* 当成功获取地理信息后，会调用succssCallback，并返回一个包含位置信息的对象position。
+                position.coords.latitude 纬度
+                position.coords.longitude经度
+                position.coords.accuracy精度
+                position.coords.altitude海拔高度 
+            */
+            function showPosition(position) {
+                pObj.innerHTML = "latitude:" + position.coords.latitude + "\n" + "longitude:" + position.coords.longitude;
+            }
+            // 当获取地理信息失败后，会调用errorCallback，并返回错误信息error
+            function showError(error) {
+                // 获取地理信息失败的4种情况
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        pObj.innerHTML = "User denied the request for Geolocation."
+                        // 用户无法定位的要求
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        pObj.innerHTML = "Location information is unavailable."
+                        // 位置信息不可用
+                        break;
+                    case error.TIMEOUT:
+                        pObj.innerHTML = "The request to get user location timed out."
+                        // 获取用户位置的请求超时。
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        pObj.innerHTML = "An unknown error occurred."
+                        // 发生了一个不明错误
+                        break;
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>

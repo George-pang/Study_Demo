@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="创建一个p" id="btn"/>
+    <div id="dv">
+    </div>
+    <script>
+        document.getElementById("btn").onclick=function () {
+            document.write("<p>这是一个p</p>");         //页面加载后这种方式创建会干掉页面所有内容
+        };
+        // document.write("<p>这是一个p</p>"); ---页面加载时不会干掉页面内容
+    </script>
+</body>
+</html>

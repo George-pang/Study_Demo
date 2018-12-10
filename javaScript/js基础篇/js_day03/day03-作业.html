@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>day03-作业</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//	* 所有的全部三遍
+//  * 03break和04continue文件
+//  * 08遍历数组
+//  * 09数组案例和10数组案例文件
+//  * 11冒泡排序
+//  * 16函数案例
+//  一遍----尝试的做出来
+//  求整数1～100的累加值，但要求碰到个位为3的数则停止累加
+//  求1-100之间不能被7整除的整数的和（用continue）
+//  求200-300之间所有的奇数的和（用continue）
+//  - 求2个数中的最大值
+//  - 求3个数中的最大值
+//  - 判断一个数是否是素数(质数)
+
+//  * 08遍历数组
+			var arr=[10,30,20,40];
+			for(var i=0;i<arr.length;i++){
+				console.log(arr[i]);
+			}
+//  * 11冒泡排序
+		  var arr2=[10,20,30,40,60,33,22];
+		  for(var i=0;i<arr2.length-1;i++){ //控制比较轮数
+		  	for (var j=0;j<arr2.length-1-i;j++) { //控制每轮比较次数
+		  		if(arr2[j]>arr2[j+1]){
+		  			var temp=arr2[j];
+		  			arr2[j]=arr2[j+1];
+		  			arr2[j+1]=temp;
+		  		}
+		  	}
+		  }
+		  console.log(arr2);
+//  求整数1～100的累加值，但要求碰到个位为3的数则停止累加
+			var sum=0;
+			for (var i=1;i<=100;i++) {
+				if(i%10==3){
+					continue;
+				}
+				sum +=i;
+			}
+			console.log(sum);
+			
+//  求1-100之间不能被7整除的整数的和（用continue）
+			var sum1=0;
+			for (var i=1;i<=8;i++) {
+				if (i%7==0) {
+					continue;		
+				}
+				sum1 +=i;
+			}
+			console.log(sum1);
+			
+//  求200-300之间所有的奇数的和（用continue）
+			var sum2=0;
+			for (var i=200;i<=300;i++) {
+				if(i%2==0){
+					continue;
+				}
+				sum2 +=i;
+			}
+			console.log(sum2);
+//  - 求2个数中的最大值
+		  console.log(100>10?100:10);
+//  - 求3个数中的最大值
+			console.log(100>10?(100>50?100:50):(10>100?10:100));
+//  - 判断一个数是否是素数(质数)
+			function isPrime(num){
+				for(var i=2;i<num;i++){
+					if(num%i==0){
+						console.log(num+"不是个素数！");
+						break;
+					}
+					else{
+						console.log(num+"是个素数！");
+						break;
+					}
+				}
+			}
+			isPrime(10);
+		</script>
+	</body>
+</html>

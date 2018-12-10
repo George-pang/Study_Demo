@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //方式一：字面量方式创建对象
+    var per1={
+        name:"小明",
+        age:18,
+        sex:"男",
+        eat:function () {
+            console.log("吃饭");
+        },
+        sleep:function () {
+            console.log("一天要睡够8小时！");
+        }
+    };
+    per1.height=180;
+    console.log(per1.height);
+
+
+    //方式二：系统构造函数方式创建对象
+    var per2=new Object();
+    per2.name="小张";
+    per2.age=22;
+    per2.play=function () {
+        console.log("打豆豆！");
+    };
+    per2.play();
+
+
+    //方式三：自定义构造函数方式创建对象
+    function Person(name,age,sex) { 
+        this.name=name;   //构造函数中的this是指当前的实例对象
+        this.age=age;
+        this.sex=sex;
+        this.eat=function () {
+            console.log("吃肉肉！");
+        };
+        this.play=function () {
+            console.log("今晚吃鸡！");
+        }
+    }
+    var per3=new Person("小杨",28,"女");
+    console.log(per3.name);
+    per3.play();
+
+
+    console.log(per3 instanceof Person);  //判断是否是对象的一个实例
+
+</script>
+</body>
+</html>

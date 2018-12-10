@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+
+    /*
+    *
+    * 所有的案例一遍
+    *
+    * Math对象的案例
+    * 格式化的日期的案例
+    * string中的案例
+    * 将一个字符串数组输出为|分割的形式，比如“刘备|张飞|关羽”。使用两种方式实现
+    * 将一个字符串数组的元素的顺序进行反转。["a", "b", "c", "d"] -> [ "d","c","b","a"]。使用两种种方式实现。提示：第i个和第length-i-1个进行交换
+    *
+    * 工资的数组[1500, 1200, 2000, 2100, 1800],把工资超过2000的删除
+    * ["c", "a", "z", "a", "x", "a"]找到数组中每一个a出现的位置
+    *
+    *
+    * 编写一个方法去掉一个数组的重复元素
+    *
+    *
+    * Math和Date和String和Array中的所有的方法,全部一遍
+    *
+    * */
+
+    /*
+    *
+    * Ctrl+鼠标左键---转到定义----适合没有网络,自己写代码,看结果,总结
+    * MDN---在线文档，查结果----初级学习
+    * 百度----一定要多查----对比的看
+    * 谷歌----百度没有的,去谷歌---多对比
+    *
+    * */
+   
+   //第2题：将一个字符串数组输出为|分割的形式，比如“刘备|张飞|关羽”。使用两种方式实现
+    //方式1：
+   var arr=["张三","赵四","王五","李六","钱七"];
+   var str1="";
+   for(var i=0;i<arr.length-1;i++){
+   	str1+=arr[i]+"|";
+   }
+   str1+=arr[arr.length-1];
+   console.log(str1);
+    //方式2：
+    var str2=arr.join("|");
+    console.log(str2);
+    
+    //第2题：将一个字符串数组的元素的顺序进行反转。["a", "b", "c", "d"] -> [ "d","c","b","a"]。使用两种种方式实现。提示：第i个和第length-i-1个进行交换
+   var arr2=["a", "b", "c", "d"];
+     //方式1：
+     var temp=0;
+     for(var i=0;i<arr2.length/2;i++){//第一位与最后一位换位，类似需要互换arr.length/2次
+     	temp=arr2[i];
+     	arr2[i]=arr2[arr2.length-1-i];
+     	arr2[arr2.length-1-i]=temp;
+     }
+     console.log(arr2);
+     //方式2：
+     console.log(arr2.reverse());
+     
+     
+    //第3题：工资的数组[1500, 1200, 2000, 2100, 1800],把工资超过2000的删除
+    var arr3=[1500, 1200, 2000, 2100, 1800];
+    console.log(arr3.filter(function (ele,index){//这里用得是filter方法
+    	return ele<=2000;
+    }))
+    
+    //第4题：["c", "a", "z", "a", "x", "a"]找到数组中每一个a出现的位置
+    
+	//   var arr4=["c", "a", "z", "a", "x", "a"];//我的代码
+	//   arr4.forEach(function (ele,index,arr){//遍历数组对象，相当于for循环
+	//   	if (ele=="a"){
+	//   		console.log(index);
+	//   	}
+	//   });
+	
+	     //案例代码--do-while循环
+	     var array = ['c', 'a', 'z', 'a', 'x', 'a'];
+	     do {
+	     	var index = array.indexOf('a', index + 1);
+	     	if(index != -1) {//如果找到了。为-1是没找到"a"元素的意思
+	     		console.log(index);
+	     	}
+	     } while (index > 0);
+     
+     //第5题：编写一个方法去掉一个数组的重复元素(有点难，还没理解)
+	     var array =  ['c', 'a', 'z', 'a', 'x', 'a'];
+				function clear() {
+					var o = {};
+					for(var i = 0; i < array.length; i++) {
+						var item = array[i];
+						if(o[item]) {//在数组元素第二次出现的时候，因为第一次出现的时候新对象里面没有，但是else后会添加进对象中，并且是item:1这种，然后第二次出现的时候，o[item]就存在为true
+							o[item]++;
+						} else {
+							o[item] = 1;
+						}
+					}//end for
+					var tmpArray = [];
+					for(var key in o) { //对创建后的对象遍历
+						if(o[key] == 1) {//如果值为1，说明他在原数组中只出现一次并存入新数组中
+							tmpArray.push(key);
+						} else {
+							if(tmpArray.indexOf(key) == -1) {//如果值不为1并且新数组中不存在则这个值也存入新数组中
+								tmpArray.push(key);
+							}
+						}
+					}//end for
+					return tmpArray;
+				}//end function
+				
+				console.log(clear(array));
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图片放大案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            margin: 100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        .mask {
+            width: 175px;
+            height: 175px;
+            background: rgba(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            cursor: move;
+            display: none;
+        }
+
+        .small {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="small"><!--小层-->
+        <img src="images/small.png" width="350" alt=""/>
+        <div class="mask"></div><!--遮挡层-->
+    </div><!--小图-->
+    <div class="big"><!--大层-->
+        <img src="images/big.jpg" width="800" alt=""/><!--大图-->
+    </div><!--大图-->
+</div>
+<script>
+    //获取所有元素
+    var box = document.getElementById("box");
+    var small = box.children[0];
+    var big = box.children[1];
+    var mask = small.children[1];
+    var bigImg = big.children[0];
+
+    //注册鼠标移入事件
+    box.onmouseover = function () {
+        //显示遮挡层
+        mask.style.display = "block";
+        //显示大图
+        big.style.display = "block";
+    };
+    box.onmouseout = function () {
+        //隐藏遮挡层
+        mask.style.display = "block";
+        //隐藏大图
+        big.style.display = "block";
+    };
+
+    //鼠标移动事件--只在小图的范围上移动
+    small.onmousemove = function (e) {
+        //让鼠标在遮挡层的中心位置
+        var x = e.clientX - mask.offsetWidth / 2;  //除了行内样式，ele.style.width是获取不到属性的值的
+        var y = e.clientY - mask.offsetHeight / 2;
+        x = x - 100;  //这里，mask是相对box定位，而clientX是页面可视区横坐标，所以要减去box的外边距
+        y = y - 100;
+        //设置鼠标移动的范围--虽然移动事件是绑定在small上，但由于遮挡层的存在，鼠标移出，small层也未能及时察觉
+        //设定最小值
+        x = x > 0 ? x : 0;
+        y = y > 0 ? y : 0;
+        //设定最大值
+        var x_max = small.offsetWidth - mask.offsetWidth;
+        var y_max = small.offsetHeight - mask.offsetHeight;
+        x = x < x_max ? x : x_max;
+        y = y < y_max ? y : y_max;
+        mask.style.left = x + "px";
+        mask.style.top = y + "px";
+
+        //根据对应比例计算大图对应的移动距离
+        //小图的移动距离/大图的移动距离=小图的最大移动距离/大图的最大移动距离
+        var maxMoveX = bigImg.offsetWidth - big.offsetWidth; //大图的宽-大图显示区域的宽
+        console.log(maxMoveX);
+        console.log(x_max);
+        // var maxMoveY=bigImg.offsetHeight-big.offsetHeight;
+        var scale = maxMoveX / x_max;
+        console.log(scale);
+        bigImg.style.marginLeft = -x * scale + "px";
+        bigImg.style.marginTop = -y * scale + "px";
+    }
+
+</script>
+
+
+</body>
+</html>

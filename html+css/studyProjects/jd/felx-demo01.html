@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>flex弹性布局实现圣杯布局效果</title>
+		<style type="text/css">
+			header,footer{
+				height: 200px;
+				background-color: #338FFF;
+			}
+			.main{ /*flex容器*/
+				display: flex;
+			}
+			.main-left,.main-right{
+				width: 200px;
+				height: 500px;
+				background-color: #33BB00;
+			}
+			.main-center{
+				flex: 1; /*flex是三个flex项属性（flex-grow、flex-shrink、flex-basis）的简写，后两个是可选属性，意思是将剩余空间分为1份，他占了1份（100%）*/
+				background-color: pink;
+				margin: 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			header
+		</header>
+		<div class="main">
+			<div class="main-left">
+				
+			</div>
+			<div class="main-center">
+				
+			</div>
+			<div class="main-right">
+				
+			</div>
+		</div>
+		<footer>
+			footer
+		</footer>
+	</body>
+</html>

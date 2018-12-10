@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组案例--求总成绩</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//案例：提示用户输入学生人数及成绩，计算总成绩、平均成绩、最高分、最低分
+			var perCount=parseInt(prompt("请输入学生人数："));//用户输入的是字符串类型，转换为整数类型
+		    var perScores=[];
+		    var sum=0;
+		    var avg=0;
+		    for(var i=0;i<perCount;i++){
+		    	//用数组长度作为下标，适用于空数组循环赋值
+                perScores[perScores.length]=parseInt(prompt("请输入第"+(i+1)+"个学生的成绩；"));
+
+		    }
+		    var max=perScores[0];
+		    var min=perScores[0];
+		    for(var i=0;i<perScores.length;i++){//注意:到这里数组长度已经固定了
+		    	sum+=perScores[i];
+                if(max<perScores[i]){
+                	max=perScores[i];
+                }
+                if(min>perScores[i]){
+                	min=perScores[i];
+                }
+		    }		    
+		    avg=sum/perScores.length;
+		    console.log("总成绩为："+sum);
+		    console.log("平均成绩为："+avg);
+		    console.log("最高分为："+max);
+		    console.log("最低分为："+min);
+		    
+		</script>
+	</body>
+</html>

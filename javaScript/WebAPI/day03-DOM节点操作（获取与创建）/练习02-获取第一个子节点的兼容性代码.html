@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="u-list">
+        <li>第一个</li>
+        <li>第二个</li>
+        <li>第三个</li>
+        <li>第四个</li>
+        <li>第五个</li>
+    </ul>
+    <script>
+        var ulObj=document.getElementById("u-list");
+        //获取第一个子元素兼容代码
+        function getFirstChild(element){
+            //如果支持firstElementChild属性
+            if (typeof element.firstElementChild!=="undefined") {
+                return element.firstElementChild;
+            }else{
+                // return element.firstChild;   ---其实这一句也就可以啦，IE8不支持firtElementChild属性，并且firstChild会找到第一个子元素
+                var node = element.firstChild();
+                while (node && node.nodeType != 1) {  //如果节点有意义，且非标签节点
+                    node=node.nextSibling;   //取其下一个兄弟节点
+                }
+                return node;
+            }
+        }
+
+
+        //获取最后一个子元素兼容代码
+        function getFirstChild(element){
+            //如果支持lastElementChild属性
+            if (typeof element.lastElementChild!=="undefined") {
+                return element.lastElementChild;
+            }else{
+                // return element.lastChild;   ---为了确保某些浏览器最后一个字节点不是其最后一个子元素（不具备IE8的这个特性）
+                var node = element.lastChild();
+                while (node && node.nodeType != 1) {  //如果节点有意义，且非标签节点
+                    node=node.previousSibling;   //取其下一个兄弟节点
+                }
+                return node;
+            }
+        }
+    </script>
+</body>
+</html>

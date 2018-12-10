@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习-在线计算器</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+    <div class="cal-container">
+        <table class="cal">
+            <tbody>
+            <tr id="tr1">
+                <td colspan="4"><input type="text" value="0" readonly id="resultIpt"></td>
+            </tr>
+            <tr  id="tr2">
+                <td><input type="button" value="AC" class="spe-operator" id="btn-clear"></td>
+                <td><input type="button" value="+/-" class="spe-operator" id="btn-negate"></td>
+                <td><input type="button" value="%" class="spe-operator" id="btn-percent"></td>
+                <td><input type="button" value="÷" style="color: #fff;" class="operator"></td>
+            </tr>
+            <tr  id="tr3">
+                <td><input type="button" value="7"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="8"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="9"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="×"  style="color: #fff;" class="operator"></td>
+            </tr>
+            <tr id="tr4">
+                <td><input type="button" value="4"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="5"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="6"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="-"  style="color: #fff;" class="operator"></td>
+            </tr>
+            <tr id="tr5">
+                <td><input type="button" value="1"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="2"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="3"  style="color: #fff;" class="num"></td>
+                <td><input type="button" value="+"  style="color: #fff;" class="operator"></td>
+            </tr>
+            <tr id="tr6">
+                <td colspan="2"><input type="button" value="0" style="color: #fff;" id="zero" class="num"></td>
+                <td><input type="button" value="." style="color: #fff;" id="decimal-point" class="num"></td>
+                <td><input type="button" value="=" style="color: #fff;" class="btn-equal"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>

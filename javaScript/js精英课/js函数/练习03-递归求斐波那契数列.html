@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 递归求斐波那契数列 */
+        function fb(num){
+            if(num==1||num==2){
+                return 1;
+            }
+            return fb(num-1)+fb(num-2);
+        }    
+        console.log(fb(4));
+    </script>
+</body>
+</html>

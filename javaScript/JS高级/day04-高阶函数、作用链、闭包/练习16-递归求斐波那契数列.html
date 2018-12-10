@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归求斐波那契数列案例</title>
+</head>
+
+<body>
+    <script>
+        /*
+          1、找规律--fb(n)=fb(n-1)+fb(n-2)
+          2、递归出口--递归结束条件
+        */
+
+        function fb(n){
+            // 出口
+            if(n==1||n==2){
+                return 1;
+            }
+            // 规律
+            return fb(n-1)+fb(n-2)
+        }
+        console.log(fb(10));
+    </script>
+</body>
+
+</html>

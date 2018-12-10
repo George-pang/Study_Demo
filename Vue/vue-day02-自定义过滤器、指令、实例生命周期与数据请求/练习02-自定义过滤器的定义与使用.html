@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+ <div id="app">  <!--V层-->
+    <p>
+        {{ msg | msgFormat("疯狂")|line }}    <!--调用的时候带小括号可以传参，只有第一个默认参数则不需要写-->
+    </p>
+ </div>
+    <script>
+        //定义过滤器--Vue.filter()方法--参数1：过滤器名称，参数2：过滤器处理函数
+        Vue.filter("msgFormat",function (msg,arg) {     //处理函数第一个参数固定，就是需要过滤的那个数据
+            // return msg.replace("单纯","疯狂"); //只替换了第一个匹配字符
+            // return msg.replace(/单纯/g,"疯狂"); //利用正则，全局匹配替换
+            return msg.replace(/单纯/g,arg);         //替换内容用变量传参，使用更灵活
+        });
+
+        Vue.filter("line",function (msg) {
+           return msg+"=======";
+        });
+
+        var vm=new Vue({       /*VM调度者 */   //创建Vue实例，并传入一个配置对象参数
+            el:"#app",
+            data:{
+             msg:"我曾经单纯地以为，自己是个非常单纯的男人，后来我发现自己并没有那么单纯，现在想想当初的自己真是有够单纯的！",
+            },
+        });
+
+    </script>
+</body>
+</html>

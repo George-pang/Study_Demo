@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #dv {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="平移400px" id="btn1"/>
+<input type="button" value="平移800px" id="btn2"/>
+<div id="dv">
+
+</div>
+<script>
+    var btn1Obj = document.getElementById("btn1");
+    var btn2Obj = document.getElementById("btn2");
+    var divObj = document.getElementById("dv");
+    btn1Obj.onclick = function () {
+        animate(divObj,"width", 400);
+    };
+    btn2Obj.onclick = function () {
+        animate(divObj,"top",  800);
+    };
+
+    //获取任意元素的任意属性值，返回的是字符串
+    //参数1：元素;参数2：属性名（string）
+    function getStyle(element,attr) {
+        //判断浏览器是否支持这个方法
+        return window.getComputedStyle? window.getComputedStyle(element,null)[attr]:element.currentStyle[attr];
+    }
+
+
+    //缓动平移动画函数封装-从快到慢
+    //获取任意元素的任意属性的当前值，并达到目标的值
+    function animate(ele, attr,target) {
+        //清除计时器
+        clearInterval(ele.timeId);
+        ele.timeId = setInterval(function () {
+            //获取当前位置
+            var current = parseInt(getStyle(ele,attr)); //将getStyle方法返回的字符串转为整数
+            //设置步数
+            var step = (target-current)/10;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            current+=step;
+            ele.style[attr]=current+"px";   //因为attr是字符串，所以这里没用点语法，而是用访问对象属性的另一种方法
+            if (current==target){
+                clearInterval(ele.timeId);
+            }
+            // 测试代码
+            console.log("当前位置："+current+",目标位置："+target+"每次移动的步数："+step);
+        }, 20);
+    }
+</script>
+</body>
+</html>

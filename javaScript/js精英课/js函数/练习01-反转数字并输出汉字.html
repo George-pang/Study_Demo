@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 练习：定义一组函数，反转输入的数字，并输出汉字 */
+        var num = window.prompt("请输入一组数字："); //结果为数字字符串
+        // 函数--单一职责原则
+        function reverse(num) {
+            var str = ""
+            for (var i = num.length - 1; i >= 0; i--) { //倒序输出
+                str += transfer(num[i]);
+            }
+            return str;
+        }
+
+        function transfer(num) {
+            switch (num) {
+                case "1":
+                    return "壹"; //return后面代码不再执行，所以可以省略break
+                case "2":
+                    return "贰";
+                case "3":
+                    return "叁";
+                case "4":
+                    return "肆";
+                case "5":
+                    return "伍";
+                case "6":
+                    return "陆";
+                case "7":
+                    return "柒";
+                case "8":
+                    return "捌";
+                case "9":
+                    return "玖";
+            }
+        }
+        document.write(reverse(num));
+        console.log(reverse(num));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 光标聚焦事件 </title>
+  <script type="text/javascript">
+    function message(){
+	  alert("请选择，您现在的职业！");
+	}
+  </script>
+</head>
+<body>
+请选择您的职业：<br>
+  <form>
+    <select name="career" onfocus="message()"> <!--获取焦点，可以不通过鼠标来操作也可以获取，但是鼠标移入事件则必须用鼠标操作。-->
+      <option>学生</option> 
+      <option>教师</option> 
+      <option>工程师</option> 
+      <option>演员</option> 
+      <option>会计</option> 
+    </select>
+    <!--点击一个文本框，文本框中有光标闪烁，这就叫做获取焦点，"获取焦点" 也可以通过TAB键获取焦点。-->
+    <!--此时在其它地方鼠标点击，就会失去焦点，触发onblur事件-->
+  </form>
+</body>
+</html>

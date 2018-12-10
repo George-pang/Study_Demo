@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五星评分案例--练习</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .pj li{
+            float: left;
+            font-size: 30px;
+            color: #e22b18;
+        }
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="pj">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //1.鼠标移入时，自身和前面的五角星变实心，后面的全变空心
+            $(".pj>li").on("mouseenter",function () {
+                $(this).text("★").prevAll().text("★");      //后面不能再链式下去啦，原因prevAll（）返回的dom对象集合已经改变啦
+                $(this).nextAll().text("☆");
+
+                //要想继续链式编程，可以使用end（）方法
+                //end()方法：会改变jQuery对象（DOM对象集合）里的DOM对象，回复到上一次的状态，并且返回匹配元素之前的状态。
+                console.log($(this).text("★").prevAll().text("★"));
+                // $(this).text("★").prevAll().text("★").end().nextAll().text("☆");
+            });
+
+            //2.鼠标移出ul时，所有五角星变空心
+            $(".pj").on("mouseleave",function () {
+                $(this).children("li").text("☆");
+                //再做一件事件，找到current，让current和current前面的变成实心就行。
+                $("li.current").text("★").prevAll().text("★");
+            });
+
+            //3.鼠标点击时，前面五角星实心，后面空心，移出ul不变化
+            $(".pj>li").on("click",function () {
+                $(this).addClass("current").siblings().removeClass("current");  //排他,防止同时存在多个current类
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery属性操作</title>
+</head>
+<body>
+    <img src="04.gif" alt="图片加载失败" title="错错错错">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //思路分析：
+            $("img").mouseenter(function () {
+                //设置单个属性
+                $("img").attr("alt","图片挂了");
+                //设置多个属性
+                $("img").attr({
+                    alt:"图片又挂啦！",
+                    title:"对对对对！"
+                })
+                //获取属性
+                console.log($("img").attr("alt"));
+            });
+         });
+    </script>
+</body>
+</html>

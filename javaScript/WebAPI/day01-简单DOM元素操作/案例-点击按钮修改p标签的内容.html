@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮修改p标签的内容</title>
+</head>
+<body>
+    <input type="button" value="点击修改" id="btn"/>
+    <p id="p">这是一个p标签！</p>
+    <script>
+        //凡是成对的标签,设置中间文本内容的时候,都使用innerText这个属性的方式
+        //获取对象，注册事件，添加事件处理函数
+        document.getElementById("btn").onclick=function () {
+            document.getElementById("p").innerText="我是一个P！";
+        }
+
+    </script>
+</body>
+</html>

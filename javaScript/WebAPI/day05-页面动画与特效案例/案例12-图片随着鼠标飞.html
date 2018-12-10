@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/bird.png" alt="" id="im">
+    
+<script>
+    //给文档对象注册鼠标移动事件，添加事件处理函数
+    var imgObj=document.getElementById("im");
+    document.onmousemove=function (e) {         //这里直接用document是因为html和body的高度是填充起来的
+        imgObj.style.left=e.clientX+"px"; //可视区域的横坐标
+        imgObj.style.top=e.clientY+"px";  //可视区域的纵坐标
+    }
+</script>
+</body>
+</html>

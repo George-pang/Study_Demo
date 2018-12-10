@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归求阶乘案例</title>
+</head>
+
+<body>
+    <script>
+        // 递归求阶乘思想：n的阶乘=n 乘以 n-1的阶乘
+        /*
+          1、找规律
+          2、递归出口--递归结束条件
+        */
+
+        function mul(n){
+            // 
+            if(n==1){
+                return 1;
+            }
+            return n*mul(n-1);
+        }
+         var num=mul(5);
+         console.log(num);
+    </script>
+</body>
+
+</html>

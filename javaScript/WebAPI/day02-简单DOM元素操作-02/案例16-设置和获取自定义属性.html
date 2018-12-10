@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul{
+           list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="u-list">
+        <li class="item">小陈的成绩</li>
+        <li class="item">小杨的成绩</li>
+        <li class="item">小孔的成绩</li>
+        <li class="item">小苏的成绩</li>
+        <li class="item">小林的成绩</li>
+    </ul>
+    <script>
+        //标签上自定义属性只能通过getAttribute()方法获取，不能直接DOM点语法获取
+        var lis=document.getElementById("u-list").getElementsByTagName("li");
+        for (var i=0;i<lis.length;i++){
+            lis[i].setAttribute("score",(i+100)/10);
+            //为每个li注册点击事件
+            lis[i].onclick=function () {
+                console.log(this.getAttribute("score"));
+                console.log(this.getAttribute("class"));  //此方法也可以获取系统原有的属性
+            }
+        }
+    </script>
+</body>
+</html>

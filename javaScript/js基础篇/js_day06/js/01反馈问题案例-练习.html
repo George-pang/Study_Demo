@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>问题反馈--</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	     //一、模拟数组的sort方法排序--冒泡排序
+	     function MyArray(){
+	     	this.sort=function (array){
+	     		for(var i=0;i<array.length-1;i++){//冒泡排序
+	     			for (var j=0;j<array.length-1-i;j++) {
+	     				if(array[j]>array[j+1]){
+	     					var temp =array[j];//变量交换
+	     					array[j]=array[j+1];
+	     					array[j+1]=temp;
+	     				}//end if
+	     				
+	     			}//end for
+	     		}//end for
+	     		return array;//这句代码在这里可要可不要，因为array是个对象。
+	     	};
+	     }//end function
+	      var myArr=new MyArray();//自定义构造函数创造对象
+	      console.log(myArr.sort([29,40,10,34,99,59]));
+	     
+	     
+	     
+	     //二、清空数组 (将数组的长度赋值为0)
+	      //方式1：
+		     var arr=[1,3,5,6,7,8];
+		     console.log(arr.length);
+		     arr.length=0;
+		     console.log(arr);
+		  //方式2：
+		     var arr2=[1,3,5,6,7,8];
+		     //splice()方法--删除/添加元素
+		     arr2.splice(0,arr2.length);//从索引0开始删除数组长度个元素
+		     console.log(arr2);
+	     
+	     //将毫秒数转化为日期对象
+		     var dt=new Date();
+		     var dt2=dt.valueOf();
+		     console.log(dt2);
+		     var dt3=new Date(dt2);//转换为Date对象
+		     console.log(dt3);
+		     
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素移动动画封装</title>
+    <style type="text/css">
+        #dv {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动到400px" id="btn1"/>
+<input type="button" value="移动到800px" id="btn2"/>
+<div id="dv">
+
+</div>
+
+<script>
+    var btn1Obj = document.getElementById("btn1");
+    var btn2Obj = document.getElementById("btn2");
+    var divObj = document.getElementById("dv");
+    // btn1Obj.onclick = animate(divObj, 400);  //这么写，点击事件没触发就直接执行啦
+    btn1Obj.onclick =function(){
+        animate(divObj, 400);
+    };
+
+    btn2Obj.onclick =function(){
+        animate(divObj, 800);
+    };
+
+    function animate(ele, target) {
+        //确保即使点击多次也只有一个计时器
+        clearInterval(ele.timeId);  //防止多次点击计时器重复--因为对象属性点语法动态添加，所以这里可以直接用，不用声明
+        //定时器的id值存储到对象的一个属性值上
+        ele.timeId = setInterval(function () {
+            //获取当前位置
+            var current = ele.offsetLeft;      //返回的是数字
+            //设置步数
+            var step = 10;
+            step = (current < target) ? step : -step;
+            if (Math.abs(target - current) > Math.abs(step)) {
+                current += step;
+                ele.style.left=current+"px";
+            }else{
+                clearInterval(ele.timeId);
+                current=target;
+                ele.style.left=current+"px";
+            }
+        }, 20);
+
+    }
+
+
+</script>
+</body>
+</html>

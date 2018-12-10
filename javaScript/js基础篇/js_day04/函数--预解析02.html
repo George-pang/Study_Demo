@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数预解析--案例2</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//函数预解析--例子
+            function f1() {
+            	console.log("小陈好猥琐！");
+            }
+            f1();//函数名加（） 调用函数
+            function f1(){
+            	console.log("小林比小陈还要猥琐！");
+            }
+            f1();
+            
+                //预解析后执行顺序如下：
+//		            function f1() {
+//		            	console.log("小陈好猥琐！");
+//		            }//这里函数声明没有提前
+//		            function f1(){
+//		            	console.log("小林比小陈还要猥琐！");
+//		            }//函数声明提前了，将前一个同名函数覆盖
+//		            f1();//所以下面2次调用输出结果一致	            
+//		            f1();    
+
+        //预解析--例子3
+           f2();
+           var myNum=20;
+           function f2(){
+           	console.log(myNum);//undefined
+           }
+             //预解析后代码执行过程如下：
+//            var myNum;//变量声明提前
+//            function f2(){//函数声明提前
+//	           	console.log(myNum);//undefined
+//	           }
+//             f2();
+//	          myNum=20;//变量赋值没有提前，故undefined
+	           
+		</script>
+	</body>
+</html>

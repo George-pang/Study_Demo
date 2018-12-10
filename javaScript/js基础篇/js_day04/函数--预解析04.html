@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--预解析--报错案例</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			f1();
+			console.log(c);//9
+			console.log(b);//9
+			console.log(a);//此处报错
+			
+			function f1() {
+				var a = b = c = 9;//这种写法 可转化为：var a;a=9;b=9;c=9;
+				console.log(a);
+				console.log(b);
+				console.log(c);
+			}
+			
+			//预解析后代码执行过程如下；
+//			function f1() {
+//				var a;//局部变量
+//				c=9;//隐式全局变量
+//				b=9;//隐式全局变量
+//				a=9;
+//				console.log(a);//9
+//				console.log(b);//9
+//				console.log(c);//9
+//			}
+//			f1();
+//			console.log(c);//9
+//			console.log(b);//9
+//			console.log(a);//报错
+			
+			
+		</script>
+	</body>
+</html>

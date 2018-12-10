@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> DOM 添加表格行、删除表格行、鼠标移入高亮 </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+  <script type="text/javascript">  
+	 window.onload = function(){  //网页加载事件
+		Highlight();
+	 }  
+	 
+	 function Highlight(){
+	 	//<table>里面装的不一定就直接是<tr>，现代浏览器为适应w3c标准会在解析的时候自动套一个<tbody>。
+     	var tbody = document.getElementById('table').lastChild;	//现代浏览器为适应w3c标准会在解析的时候自动套一个<tbody>，所以table节点的最后一个子节点不是最后一个tr节点。
+		trs = tbody.getElementsByTagName('tr');   
+		for(var i =1;i<trs.length;i++){    
+			trs[i].onmouseover = function(){           //这种写法
+				this.style.backgroundColor ="#f2f2f2";  //this对象？？DOM中背景色注意用backgroundColor
+			} 
+			trs[i].onmouseout = function(){
+				this.style.backgroundColor ="#fff";
+			} 
+		}  
+	 }
+	 	 
+	 function addOne(obj){ 
+	    var tbody = document.getElementById('table').lastChild;  
+		var tr = document.createElement('tr');  
+		 
+		 var td = document.createElement("td");
+		 td.innerHTML = "<input type='text'/>";  //<input type='text'/>这种写法？作用：把元素内容设置为文本输入框
+		 tr.appendChild(td);
+		 
+		 td = document.createElement("td");	 
+		 td.innerHTML = "<input type='text'/>";  //HTMLDOM 中 innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML。
+		 tr.appendChild(td);
+		 
+		 td = document.createElement("td");	
+		 td.innerHTML = "<a href='javascript:;' onclick='deleteRow(this)'>删除</a>";//innerHTML赋值可直接在引号内输入HTML代码？？
+		 tr.appendChild(td);   
+		 
+		 tbody.appendChild(tr);   
+		Highlight();              //也有鼠标移入背景变色效果
+   	 }
+
+	 function deleteRow(obj){
+	    var tbody = document.getElementById('table').lastChild;   //现代浏览器为适应w3c标准会在解析的时候自动套一个<tbody>，所以table节点的最后一个子节点不是最后一个tr节点。
+		var tr = obj.parentNode.parentNode;  //删除这个a元素节点的祖节点即为tr元素节点
+		 tbody.removeChild(tr);          //在table中，tr的父节点是tbody，即使tbody标签没有显性标出
+	 }
+
+
+  </script> 
+ </head> 
+ <body> 
+	   <table border="1" width="50%" id="table">
+	   <tr>
+		<th>学号</th>
+		<th>姓名</th>
+		<th>操作</th>
+	   </tr>  
+
+	   <tr>
+		<td>xh001</td>
+		<td>王小明</td>
+		<td><a href="javascript:;" onclick="deleteRow(this)">删除</a></td>   <!--this参数代表当前，其在此处具体的指代？删除所在的a元素节点？-->
+	   </tr>
+
+	   <tr>
+		<td>xh002</td>
+		<td>刘小芳</td>
+		<td><a href="javascript:;" onclick="deleteRow(this)">删除</a></td>
+	   </tr>  
+
+	   </table>
+	   <input type="button" value="添加一行" onclick="addOne()" />
+ </body>
+</html>

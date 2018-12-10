@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创建对象/也叫实例化一个对象</title>
+	</head>
+	<body>
+	     <script type="text/javascript">
+		  //方法一：调用系统的构造函数来创建对象
+			  var obj=new Object();//实例化一个对象
+			  //添加对象的属性
+			  obj.name="小陈";
+			  obj.age=28;
+			  obj.sex="女";
+			  //添加对象的方法
+			  obj.eat=function (){//函数表达式的方式来定义函数
+			  	console.log("吃饭");
+			  	return true;
+			  };  //这里要加分号
+			  obj.cook=function(){
+			  	console.log("我不会做饭！");
+			  };
+			  console.log(obj.eat);//函数名，输出函数的代码
+			  console.log(obj.eat());
+			  console.log(obj.age);//28
+		
+		 //练习:有一个黄色的小狗,叫大黄,今年已经三岁了,250斤的重量每次走路都很慢,喜欢吃大骨头
+			 var dog=new Object();
+			 dog.color="黄色";
+			 dog.age=3;
+			 dog.name="大黄";
+			 dog.weight="250斤";
+			 dog.walk=function (){
+			 	console.log("是魔鬼的步伐！");
+			 };//分号要加
+			 dog.eat=function (){
+			 	console.log("我爱吃大骨头！");
+			 };
+			 dog.eat();//对象方法调用
+			 console.log(dog.name);
+
+		//练习:创建一个手机对象,手机有型号,有颜色,可以打电话和发短信
+		var phone=new Object();
+		phone.type="iPhone X";
+		phone.color="银色";
+		phone.call=function (){//函数表达式方式定义函数
+			console.log("给小陈打电话！");
+		};//分号加上
+		phone.sendMessage=function (){
+			console.log("What are you doing now？");
+		};
+		phone.sendMessage();//对象方法调用
+		console.log(phone.type);
+
+
+		  
+		 </script>
+	</body>
+</html>

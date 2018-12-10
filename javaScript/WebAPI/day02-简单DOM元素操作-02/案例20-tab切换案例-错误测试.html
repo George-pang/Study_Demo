@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab栏切换案例</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background-color: #f5f5f5;
+        }
+        .container{
+            width: 500px;
+            height: 450px;
+            margin: 100px auto;
+            background-color: #fff;
+        }
+        #hd{
+            overflow: hidden;
+        }
+        #hd ul li{
+            float: left;
+            width: 80px;
+            margin: 0 10px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #fff;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        #hd ul .cur{
+            color: red;
+            border-bottom: 2px solid red;
+        }
+        #bd ul li{
+            height: 400px;
+            padding: 16px;
+            background-color: pink;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            display: none;
+        }
+        #bd ul .current{
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+         <div id="hd">
+             <ul>
+                 <li class="cur">公告</li>
+                 <li>规则</li>
+                 <li>论坛</li>
+                 <li>安全</li>
+                 <li>公益</li>
+             </ul></div>
+         <div id="bd">
+             <ul>
+                 <li class="current">我是公告内容</li>
+                 <li>我是规则内容</li>
+                 <li>我是论坛内容</li>
+                 <li>我是安全内容</li>
+                 <li>我是公益内容</li>
+             </ul>
+         </div>
+    </div>
+
+    <script>
+        var lis1=document.getElementById("hd").getElementsByTagName("li");
+        //要想下面tab对应切换，这里要有个索引--测试直接用i作为下层数组的索引是否可行
+        for(var i=0;i<lis1.length;i++){
+            lis1[i].onclick = function () {
+                //被点击时，显示当前类样式，这里有个排他--先去除所有样式，再为当前设置样式
+                for (var j=0;j<lis1.length;j++){
+                    // this.className="";   也行
+                    lis1[j].removeAttribute("class");//只有点击事件的对象才能用this,循环体内部不能用this
+                }
+                // this.className="cur";
+                this.setAttribute("class","cur");
+                var num=i;
+                var lis2=document.getElementById("bd").getElementsByTagName("li");
+                //排他，先移除所有，再单独赋样式
+                for (var k=0;k<lis2.length;k++){
+                    lis2[k].removeAttribute("class");
+                }
+                lis2[num].setAttribute("class","current");   //结论---报错
+            };
+        }
+    </script>
+</body>
+</html>

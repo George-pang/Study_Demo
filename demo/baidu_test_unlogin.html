@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度账号登陆后百度首页</title>
+		<style>
+
+			 .n_r{float:right;}
+			 ul li{
+			 	float: left;
+			 	list-style-type:none; /*去除小圆点*/
+			 	margin-right: 10px;}
+			 ul li a{
+			 	color: #333;
+			 	font-weight: bold;
+			 }
+			 .more_products{
+			 	background-color: #3385FF;
+			 }
+			 
+			 .more_products a{
+			 	color: #F8F8FF ;
+			 	padding: 5px;
+			 }
+			 
+			 .search_img{
+			 	clear: both;
+			    text-align: center;
+			 }
+			
+			 .search_img img{
+			 	width:300px;
+			 	
+			 }
+			 .search_form{
+			 	width:500px;
+			 	margin:0 auto;
+			 	min-height: 300px;
+			 }
+
+			 #keyword{
+			 	width:78%;
+			 	padding: 0;
+		        margin: 0;
+			 	height: 36px;
+			 	background: #fff;
+                margin-right: 0;
+                border-right-width: 0;
+                border-color: #4791ff;
+			 }
+			 #submit{
+			 	width: 20%;
+			 	height: 40px;
+			 	border:0;
+			 	padding: 0;
+			 	margin-left: -6px;
+			 	background-color: #3385FF;
+			 	color: #fff;
+			 	font-size: 15px;
+                letter-spacing: 1px;
+			 }
+			 
+			 .guanzhu_img{
+			    text-align: center;
+			 }
+			 .guanzhu_img img{
+			 	width: 60px;
+			 	height: 60px;
+			 }
+			 .guanzhu_img p {
+			 	padding: 0;
+			 	margin: 0;
+                line-height: 23px;
+                font: 12px arial;
+                color: #666;
+                font-weight: 700;
+			 }
+			 
+			 p{
+			 	padding: 0;
+			 	margin: 0;
+			 	display: block; /*	此元素将显示为块级元素，此元素前后会带有换行符*/
+			 	text-align: center;
+			 	-webkit-margin-before: 1em; /*摘自百度，这是CSS3.0的对于文章段P容器的定义方法语句！*/
+                -webkit-margin-after: 1em;/*Webkit内核浏览器才支持*/
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+			 }
+			 p a{
+			 	color: #999999;
+			 	margin-left:25px ;
+			 }
+			 #set_hpage{
+			 	margin-left: 0;
+			 }
+			 #footer{
+			 	color: #999999;
+			 }
+		</style>
+	</head>
+	<body>
+		<ul class="n_r">
+			<li class=""><a href="http://news.baidu.com/">新闻</a></li>
+			<li><a href="https://www.hao123.com/">Hao123</a></li>
+			<li><a href="https://map.baidu.com/">地图</a></li>
+			<li><a href="http://v.baidu.com/">视频</a></li>
+			<li><a href="http://tieba.baidu.com/">贴吧</a></li>
+			<li><a href="http://xueshu.baidu.com/">学术</a></li>
+			<li><a href="https://passport.baidu.com/v2/?login&tpl=mn&u=http%3A%2F%2Fwww.baidu.com%2F&sms=5">登录</a></li>
+			<li><a href="http://www.baidu.com/gaoji/preferences.html">枫芒</a></li>
+			<li class="more_products"><a href="">更多产品</a></li>
+		</ul>
+		<div class="search_img">
+			<img src="img/bd_logo1.png"/>
+		</div>
+		<div class="search_form">
+			<form >
+				<input id="keyword"  type="text" name="keyword"/>
+				<input id="submit" type="submit" value="百度一下"/>
+			</form>
+		</div>
+		
+		<div class="guanzhu_img">
+			<img src="img/bd_qrcode.png" />
+			<p>手机百度</p>
+		</div>
+        
+        <p> <a id="set_hpage" href="https://www.baidu.com/cache/sethelp/help.html">把百度设为首页</a> 
+        	<a href="http://home.baidu.com/">关于百度</a>
+        	<a href="http://ir.baidu.com/">About&nbsp;&nbsp;Baidu</a>
+        	<a href="http://e.baidu.com/?refer=888">百度推广</a>
+        </p>
+        <p id="footer">
+        	©2018&nbsp;Baidu&nbsp;
+        	<a>使用百度前必读</a>
+        	<a>意见反馈</a>
+        	&nbsp;京ICP证030173号&nbsp;
+        	<a>京公网安备11000002000001号</a>
+        </p>
+		   
+	</body>
+</html>

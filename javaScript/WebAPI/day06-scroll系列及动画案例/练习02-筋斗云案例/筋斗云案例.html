@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .nav {
+            position: relative;
+            width: 800px;
+            height: 42px;
+            margin: 100px auto;
+            background: url(images/rss.png) right center no-repeat;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .nav li {
+            width: 83px;
+            height: 42px;
+            text-align: center;
+            line-height: 42px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .nav span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+
+        ul {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <span id="cloud"></span>
+    <ul id="navBar">
+        <li>北京校区</li>
+        <li>上海校区</li>
+        <li>广州校区</li>
+        <li>深圳校区</li>
+        <li>武汉校区</li>
+        <li>关于我们</li>
+        <li>联系我们</li>
+        <li>招贤纳士</li>
+    </ul>
+</div>
+<script>
+    //关键--通过变量记录上次点击的位置
+
+    //缓动平移动画函数封装-从快到慢
+    function animate(ele, target) {
+        //清除计时器
+        clearInterval(ele.timeId);
+        ele.timeId = setInterval(function () {
+            //获取当前位置
+            var current = ele.offsetLeft; //返回的是数字
+            //设置步数
+            var step = (target - current) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            current += step;
+            ele.style.left = current + "px";
+            if (current == target) {
+                clearInterval(ele.timeId);
+            }
+            // 测试代码
+            console.log("当前位置：" + current + ",目标位置：" + target + "每次移动的步数：" + step);
+        }, 20);
+    }
+
+    var cloud = document.getElementById("cloud");
+    var ulObj = document.getElementById("navBar");
+    var lis = ulObj.children;
+
+    //这个动画的效果是：鼠标移入，云移到当前位置，点击时，记录此时点击的位置，当鼠标移开后，云移到上次点击的位置，而不是点击时移到相应位置
+
+    //遍历注册事件
+    for (var i = 0; i < lis.length; i++) {   //遍历时事件处理函数最好使用命名函数，节省性能，避免反复存储
+        //注册鼠标移入事件
+        lis[i].onmouseover=mouseoverHandle;
+        //注册鼠标点击事件
+        lis[i].onclick = clickHandle;
+        //注册鼠标移出事件
+        lis[i].onmouseout = mouseoutHandle;
+    }
+
+    function mouseoverHandle() {
+        animate(cloud, this.offsetLeft);     //定位时，offsetLeft只跟left和自己margin有关，margin为0，所以这里的offsetLeft就是left
+    }
+
+    //点击的时候，记录此次点击的位置
+    var lastPos = 0;
+    function clickHandle() {
+        lastPos = this.offsetLeft;
+    }
+
+    //鼠标移出时返回上一次点击的位置，初始值是0
+    function mouseoutHandle() {
+        animate(cloud, lastPos);
+    }
+
+
+</script>
+</body>
+</html>

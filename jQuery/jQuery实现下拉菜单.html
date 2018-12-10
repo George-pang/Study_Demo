@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery实现下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 330px;
+            height: 30px;
+            margin: 100px auto 0;
+            padding-left: 10px;
+            background-image: url(img/bg.jpg);
+        }
+
+        .wrap li {
+            background-image: url(img/libg.jpg);
+        }
+
+        .wrap > ul > li {
+            float: left;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .wrap a {
+            display: block;
+            height: 30px;
+            width: 100px;
+            text-decoration: none;
+            color: #000;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .wrap li ul {
+            position: absolute;
+            top: 30px;
+            display: none;
+        }
+
+        .wrap li ul li{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li>
+            <a href="#">一级菜单</a>
+            <ul class="none">
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">一级菜单</a>
+            <ul class="none">
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">一级菜单</a>
+            <ul class="none">
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+                <li>
+                    <a href="#">二级菜单</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+    //入口函数
+    $(function () {
+        var $li=$(".wrap>ul>li");
+        //不论鼠标穿过被选元素还是其子元素，都会触发mouseover事件
+        // $li.mouseover(function () {
+        //     $(this).children("ul").show();
+        //     console.log("触发了mouseover事件");
+        // });
+        // $li.mouseout(function () {
+        //     $(this).children("ul").hide();
+        // });
+
+        //只有在鼠标指针穿过被选元素时，才会触发mouseenter事件
+        //mouseover和mouseout,mouseenter和mouseleave成对使用
+        $li.mouseenter(function () {
+            // $(this).children("ul").slideDown(); //bug:动画还没执行完(默认normal：400ms)，下个动画已经触发
+            $(this).children("ul").stop().slideDown(); //.stop()停止当前正在执行的动画，立即执行自己的动画
+            // $(this).children("ul").slideDown().stop();  //这么写：自己的动画刚开始执行就给停止啦
+            console.log("触发了这个事件");
+        });
+        $li.mouseleave(function () {
+            $(this).children("ul").stop().slideUp();
+        });
+    });
+</script>
+</body>
+</html>

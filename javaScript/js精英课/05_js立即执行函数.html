@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 立即执行函数 -->
+    <script>
+    /* 立即执行函数：此类函数没有声明，执行完毕后立即销毁。
+        ---只有表达式才能被执行符号()执行，而函数声明不能被执行符号执行
+        两种写法：
+        (function (){}())---W3C推荐第一种，第一种方法最外层()后执行将function (){}()变为表达式，所以function (){}可以被()执行
+        (function (){})()----第2种方法(function (){})--外层括号将函数声明function (){}变为表达式，所以可以被()执行
+
+        立即执行函数忽略函数名，通过函数名调用会报错
+    */
+
+    (function test(){
+        console.log("立即执行函数忽略函数名！")
+    }());
+
+
+
+    +function test2(){
+        console.log("+运算(其他运算符同理)也将函数声明转为了表达式，也是立即执行函数")
+    }();
+
+    test();//这一步会报错---证明：立即执行函数忽略函数名(无效)
+    </script>
+</body>
+</html>

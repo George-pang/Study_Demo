@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq事件的解绑与触发</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            height: 300px;
+            width: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="触发" id="btn">
+    <div>
+        <p>我是一个段落</p>
+    </div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("p").on("click",function () {
+                alert("我是p元素的点击事件");  //当点击p元素时，div元素的点击事件也触发了--事件冒泡
+            });
+            $("div").on("click",function () {
+                alert("我是div元素的点击事件");
+            });
+            //解绑事件
+            $("p").off("click");   //不带参数时解绑所有事件
+            //触发事件
+            $("#btn").on("click",function () {
+                //方式1：直接调用事件方法(不带参数)---带参数就是注册简单事件，参数为事件处理方法，需要触发
+                // $("div").click();
+                //方式2：trigger（）方法
+                $("div").trigger("click");
+            });
+        });
+    </script>
+</body>
+</html>

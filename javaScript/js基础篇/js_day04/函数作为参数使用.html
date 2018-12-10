@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数可以作为参数使用</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//如果一个函数作为参数使用，那么我们就说这个函数是回调函数
+			function f1(f2){//把函数f2的函数名作为参数使用
+				f2();	
+		    }
+			console.log(f1);
+			function f2(){
+				console.log("Hello World！");
+			}
+			f1(f2);//函数f1调用
+		</script>
+	</body>
+</html>

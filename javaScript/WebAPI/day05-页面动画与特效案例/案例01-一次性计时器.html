@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="清理计时器" id="btn"/>
+<script>
+    var btnObj = document.getElementById("btn");
+
+    //设置计时器--一次性
+    var timeId = window.setTimeout(function () {
+        alert("这是个一次性计时器！");
+    }, 1000);
+
+    //清除计时器---一次性计时器虽然不用清除也只执行一次，但不清楚仍然会占用内存空间，所以需要清除
+    btnObj.onclick = function () {
+        clearTimeout(timeId);
+    };
+</script>
+</body>
+</html>

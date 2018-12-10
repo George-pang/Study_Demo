@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数案例--冒泡排序--从大到小/从小到大</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[12,33,24,53,32,51,99,71];
+			var max=arr[0];
+			for(var i=0;i<arr.length-1;i++){  //冒泡排序比较 .length-1轮
+				for (j=0;j<arr.length-1-i;j++) {//每轮比较的次数是.length-1-i
+					if(arr[j]>arr[j+1]){
+					temp=arr[j];  //变量交换
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+					}
+				}
+			}
+			console.log(arr);
+			
+			//表格版乘法口诀表
+		document.write("<table border='1' cellpadding='5' cellspacing='1'>");
+		for (var i=1;i<=9;i++) {
+			document.write("<tr>");
+			for (var j=1;j<=9;j++) {
+				document.write("<td>");
+				document.write(j+"*"+i+"="+i*j);
+				document.write("</td>");
+			}
+			document.write("</tr>");
+		}
+			document.write("</table>");
+		</script>
+	</body>
+</html>

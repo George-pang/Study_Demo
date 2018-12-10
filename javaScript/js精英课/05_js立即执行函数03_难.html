@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x=1;
+        if(function f(){}){ //function f(){}作为（）内的条件，把它变成了表达式，不再是函数定义，因此变量f不存在
+            x +=typeof(f); //typeof(f)特例，未声明的变量返回"undefined"
+        }
+        console.log(typeof(x)+":"+x);
+
+    </script>
+</body>
+</html>

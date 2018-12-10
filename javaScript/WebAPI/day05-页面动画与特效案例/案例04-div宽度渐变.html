@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #dv {
+            width: 200px;
+            height: 150px;
+            margin-top: 20px;
+            background-color: pink;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="显示效果" id="btn"/>
+<div id="dv">
+
+</div>
+
+<script>
+    var btnObj = document.getElementById("btn");
+    btnObj.onclick = function () {
+        var width = 200;
+        var timeId = setInterval(function () {
+            width += 20;
+            document.getElementById("dv").style.width = width + "px";
+            if (width >= 1000) {
+                clearInterval(timeId);
+            }
+            console.log("hahah");
+        }, 200);
+    };
+</script>
+</body>
+</html>

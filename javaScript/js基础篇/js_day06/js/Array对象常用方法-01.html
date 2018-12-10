@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Array对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">	
+// Array.isArray(对象)---->判断这个对象是不是数组
+// instanceof关键字
+// .concat(数组,数组,数组,...) 组合一个新的数组
+// .every(函数)--返回值是布尔类型,函数作为参数使用,函数中有三个参数,第一个参数是元素的值，第二个参数是索引值,第三个参数是原来的数组(没用)
+//              如果这个数组中的每个元素的值都符合条件,最后才返回的是true
+// .filter(函数);返回一个新的数组，返回数组中每一个元素都符合条件的元素,并组成一个新的数组
+
+
+			//一.判断是不是一个数组
+			 //方法1、instanceOf
+			 var arr=[];//字面量方式创建数组
+			 console.log(arr instanceof Array);//true
+			 
+			 //方法2、 Array.isArray()方法 (静态方法)
+			 console.log(Array.isArray(arr));//true
+			 
+			//二、数组连接  .concat()方法
+			var arr2=[2,3,5,6,8];
+			console.log(arr2.concat([22,33,55],[333,33,55]));
+			
+			
+			//三、every()方法  参数为回调函数callback，返回值为布尔类型
+			var arr3=["小马马222","小屁屁111","小丫丫333","小绿萝1"];
+			console.log(arr3.every(function (ele,index){
+				return ele.length>5;//数组元素长度均大于5返回true
+			}))
+			
+			//四、filter（）方法 参数为回调函数，返回值为新的数组
+			
+			var arr4=[20,0,29,0,32,0,82,0,99];
+			var newArr=arr4.filter(function (ele,index){
+				return ele!=0;//返回通过函数检测的所有元素的数组
+			})
+			console.log(newArr);
+			
+		</script>
+	</body>
+</html>

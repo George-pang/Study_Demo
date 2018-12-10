@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数--练习02</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//求两个数的差
+            /**
+			 *
+             * @param x
+             * @param y
+             * @returns {number}
+             */
+			function getSub(x,y){
+				var sub;
+				return x>y?(sub=x-y):(sub=y-x);
+			}
+			console.log(getSub(49,99));
+			
+			//求一组数字的最大值
+			function getArrayMax(array){
+				var max=array[0];//假设array[0]是最大值
+				for(var i=0;i<array.length;i++){
+					if(max<array[i]){
+						max=array[i];
+					}
+				}
+				return max;
+			}
+			var arr=[12,232,3334,43,343,546,29];
+		    console.log(getArrayMax(arr));
+		    
+		    //求一组数字的最小值
+		    function getArrayMin(array){
+		    	var min=array[0];
+		    	for (var i=0;i<array.length;i++) {
+		    		if(min>array[i]){
+		    			min=array[i];
+		    		}	
+		    	}
+		    	return min;
+		    }
+		    console.log(getArrayMin([12,23,343,433,2,434,5443,232]));
+		</script>
+	</body>
+</html>

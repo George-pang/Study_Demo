@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue  v-for指令--循环</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+<script>
+    var app4=new Vue({
+        el:"#app-4",
+        data:{
+            todos:[            //对象数组
+                {text:"学习javascript"},
+                {text:"学习Vue"},
+                {text:"做牛逼的vue项目"}
+            ]
+        }
+    })
+    app4.todos.push({text:"添加一个新项目"})
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Number() */
+        var num=Number(undefined);
+        console.log(typeof(num)+"："+num);    //number：NaN
+        var num=Number(null);
+        console.log(typeof(num)+"："+num);    //number：0---注意 null转换后为0
+        var num=Number(NaN);
+        console.log(typeof(num)+"："+num);    //number：NaN
+        var num=Number("undefined");
+        console.log(typeof(num)+"："+num);    //number：NaN
+        var num=Number("123");
+        console.log(typeof(num)+"："+num);    //number：123
+        var num=Number("123.4");
+        console.log(typeof(num)+"："+num);    //number：123.4
+        var num=Number(123.4);
+        console.log(typeof(num)+"："+num);    //number：123.4
+        var num=Number("123.4abc");
+        console.log(typeof(num)+"："+num);    //number：NaN
+        var num=Number("abc123");
+        console.log(typeof(num)+"："+num);    //number：NaN
+
+        // parseInt()与Number()的区别：--- null的转化结果为NaN
+        var num=parseInt(undefined);
+        console.log(typeof(num)+"："+num);    //number：NaN
+        var num=parseInt(null);
+        console.log(typeof(num)+"："+num);    //number：NaN
+
+        // String()
+        var num=String(undefined);
+        console.log(typeof(num)+"："+num);    //string：undefined
+        var num=String(null);
+        console.log(typeof(num)+"："+num);    //string：null
+        // toString()---调用形式不同以及在undefined和null转换上的区别，toString()报错
+        // var num=undefined.toString();
+        // console.log(typeof(num)+"："+num);    //报错
+        var num=null.toString();
+        console.log(typeof(num)+"："+num);    //报错
+
+
+
+
+    </script>
+</body>
+</html>

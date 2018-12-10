@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        (function (win) {
+            //自定义构造函数
+            function Random() {
+            }
+            //给构造函数的原型对象添加方法
+            Random.prototype.getRandom=function (min,max) {
+              return Math.floor(Math.random()*(max-min)+min);  //随机产生2个数之间的随机数
+            };
+
+            //将构造函数传给window对象,作为全局构造函数
+            window.random=Random;
+            //把随机数实例对象传给window对象的一个属性，作为全局对象
+            window.random2=new Random();
+        })(window);
+
+        var rm=new random;
+        console.log(rm.getRandom(5, 10));
+        var rm2=random2;
+        console.log(rm2.getRandom(10,20));
+    </script>
+</body>
+</html>

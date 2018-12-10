@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>CSS3 :nth-of-type选择器-匹配同类型中的第n个同级兄弟元素</title>
+    <style>
+        /* 1、数字 */
+        .list1 li:nth-of-type(3){ /* 选择类型为li的第3个同级兄弟元素 */
+            background-color: aquamarine;
+        }
+        .list1 :nth-child(3){ /* 选择父元素的第3个子元素 */
+            background-color: red;
+        }
+        .list1 li:nth-child(3){ /* 选择父元素的第3个子元素，且这个元素类型为li */
+            background-color: pink;
+        }
+
+        /* 2、关键字 */
+        .list2 li:nth-of-type(odd){ /* 奇数 */
+            background-color: yellow;
+        }
+        .list2 li:nth-of-type(even){ /* 偶数 */
+            font-style: italic;
+            background-color: blueviolet;
+        }
+
+        /* 3、公式 */
+        .list3 li:nth-of-type(2n+1){ /* 选取类型为li的第1 3 5 7...个同级兄弟元素 */
+            background-color: pink;
+            font-size: 22px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <h3>1、参数为数字</h3>
+    <ul class="list1">
+        <li>1</li>
+        <li>2</li>
+        <p>这是一个p元素</p>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <p>这是一个p元素</p>
+    </ul>
+    <hr>
+    <h3>2、参数为关键字(odd/even)，索引从1开始</h3>
+    <ul class="list2">
+        <p>我是p</p>
+        <li>这是第1个li元素</li>
+        <li>这是第2个li元素</li>
+        <li>这是第3个li元素</li>
+        <li>这是第4个li元素</li>
+        <p>我是p</p>
+        <li>这是第5个li元素</li>
+        <li>这是第6个li元素</li>
+        <li>这是第7个li元素</li>
+        <li>这是第8个li元素</li>
+        <p>我是p</p>
+    </ul>
+    <hr>
+    <h3>3、参数为公式-使用公式（an+ b）.描述：a代表一个循环的大小，N是一个计数器（从0开始），以及b是偏移量。</h3>
+    <ul class="list3">
+        <p>ppppp</p>
+        <li>这是第1个li元素</li>
+        <li>这是第2个li元素</li>
+        <a href="javascript:;">我是a</a>
+        <li>这是第3个li元素</li>
+        <li>这是第4个li元素</li>
+        <li>这是第5个li元素</li>
+        <p>我是p</p>
+        <li>这是第6个li元素</li>
+        <li>这是第7个li元素</li>
+        <li>这是第8个li元素</li>
+        <p>我是p</p>
+    </ul>
+</body>
+
+</html>

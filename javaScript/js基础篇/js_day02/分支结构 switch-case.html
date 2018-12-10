@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分支结构之switch-case语句</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//例：输出成绩级别
+		var score="C";
+			switch(score) {
+				case "A": //switch语句值比较用得是严格模式的等于，除了值相等，数据类型也要相等
+					console.log("A级");
+					break;
+				case "B":
+					console.log("B级");
+					break;
+				case "C":
+					console.log("C级");
+					break;
+				case "D":
+					console.log("D级");
+					break;
+				default:
+					console.log("E级");
+		    }
+			
+		//例：月份天数判定
+		var month=parseInt(prompt("请输入0~12之间的月份："));//将输入框返回的字符类型转换成数字类型
+		switch (month){
+			case 1:       //严格的===，数据类型也得相等
+			case 3:
+			case 5:
+			case 7:       //break省略了，还会执行下面console.log(month+"月份有31天！");
+			case 8:
+			case 10:
+			case 12:  //多case对应一个代码块的例子，没有case（1,3,5）这样的写法
+				console.log(month+"月份有31天！");
+				break;//break可省略，但省略后就会继续往下执行代码，不会跳出此代码块
+		    case 4:
+		    case 6:
+		    case 9:
+		    case 11:
+				console.log(month+"月份有30天！");
+				break;			
+			case 2:
+				console.log(month+"月份有28天！");
+				break;	
+		}
+		
+		//根据数字写出对应的星期
+		var num=parseInt(prompt("请输入一个0~6之间的数字："));
+			switch(num) {
+				case 0:
+					console.log("星期日");
+					break;
+				case 1:
+					console.log("星期一");
+					break;
+				case 2:
+					console.log("星期二");
+					break;
+				case 3:
+					console.log("星期三");
+					break;
+				case 4:
+					console.log("星期四");
+					break;
+				case 5:
+					console.log("星期五");
+					break;
+				case 6:
+					console.log("星期六");
+					break;
+			}
+		
+		//如果有多个分支,是针对范围的判断一般选择if-else if的语句
+        //如果有多个分支,是针对具体的值判断,一般选择用switch-case语句
+        
+         /*default后面的break是可以省略的
+	     * default也可以省略
+	     *
+	     * switch-case 语句中和case后面的值比较的时候使用的是严格的相等模式（===除了值等，类型也要等）
+	     * break是可以省略
+	     */
+		</script>
+	</body>
+</html>

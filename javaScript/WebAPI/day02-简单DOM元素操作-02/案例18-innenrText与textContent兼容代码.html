@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="获取文本" id="btn1" />
+    <input type="button" value="设置文本" id="btn2" />
+    <p>我是一个p</p>
+    <script>
+        //兼容代码
+        //获取文本：应该用textContext属性(火狐提出的)，谷歌、火狐、都支持，但IE8不支持
+        //可以用innerText属性(IE提出的),但低版本火狐浏览器不支持
+        //也可以innerHTML设置内容，获取时看情况，因为会获取其中的标签，推荐使用，不用担心兼容问题
+        //如果浏览器不支持某个属性，name这个属性的数据类型是undefined
+        //注意：typeof方法返回的是字符串,字符串里面包含着数据类型，但返回值仍是个字符串
+
+        //设置任意标签的任意文本内容
+        function setInnerText(element,txt) {
+            if (typeof element.textContent == "undefined"){  //如果浏览器不支持元素的textContext属性
+                element.innerText=txt;
+            }else{
+                element.textContent=txt;
+            }
+
+
+        }
+
+        //获取任意标签的内容
+        function getInnerText(element) {
+            if (typeof element.textContent == "undefined"){
+                return element.innerText;
+            }else{
+                return element.textContent;
+            }
+        }
+       
+        document.getElementById("btn1").onclick=function () {
+            console.log(getInnerText(document.getElementsByTagName("p")[0]));
+        };
+        document.getElementById("btn2").onclick=function () {
+            setInnerText(document.getElementsByTagName("p")[0],"我现在从一个p变成了一个大p");
+        }
+    </script>
+</body>
+</html>

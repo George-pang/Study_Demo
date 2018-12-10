@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部变量变为全局变量---将局部变量赋给window对象的属性</title>
+</head>
+<body>
+    <script>
+        //函数的自调用---一次性的
+        (function () {
+            var num=10;
+            // console.log(num);
+        })();
+
+
+        (function (win) { //形参
+            var num=10;//局部变量
+            win.num=num;
+        })(window);//实参
+
+        console.log(window.num);
+        console.log(num);//window对象可省略
+    </script>
+</body>
+</html>

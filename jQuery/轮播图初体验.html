@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图初体验</title>
+    <link rel="stylesheet" href="css/swiper.css" type="text/css">
+    <style type="text/css">
+        .swiper-container {
+            width: 600px;
+            height: 300px;
+        }
+        img{
+        	width: 100%;
+        	height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(img/01.jpg);background-size: cover;background-position: center;">Slide 1</div>
+            <div class="swiper-slide"><img src="day02-jQuery操作/05-美女相册/images/2-small.jpg" alt="" />Slide 2 </div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <script src="js/swiper.js"></script>
+    <script>
+        //用于初始化一个Swiper，返回初始化后的Swiper实例。
+        //new Swiper(swiperContainer, parameters)
+        //swiperContainer : Swiper容器的css选择器，HTMLElement or string，必选。
+        //parameters : Swiper的个性化配置，object类型，可选。
+        var mySwiper = new Swiper ('.swiper-container', {
+            // direction: 'vertical',  //垂直方向轮播图
+            loop: true,
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
+    </script>
+</body>
+</html>

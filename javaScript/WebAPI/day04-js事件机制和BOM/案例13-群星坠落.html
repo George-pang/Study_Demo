@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #dv{
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin-top: 10px;
+            border: 1px solid pink;
+            background-color: #000;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        #dv span{
+            position: absolute;
+            font-size: 30px;
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="星陨" id="btn1"/>
+    <input type="button" value="停止" id="btn2"/>
+    <div id="dv"></div>
+    <script>
+        var btn1Obj=document.getElementById("btn1");
+        var btn2Obj=document.getElementById("btn2");
+        var divObj=document.getElementById("dv");
+        var timeId=""; //计时器id初始值--全局变量
+        btn1Obj.onclick=function () {
+            //设置计时器
+            timeId=setInterval(function () {
+                // var spanObj=document.createElement("span");
+                // spanObj.innerHTML="★";
+                // divObj.appendChild(spanObj);            ---不会覆盖原有的，页面会出现多个星星
+
+                divObj.innerHTML="<span>★</span>";
+                var x=parseInt(Math.random()*570);
+                var y=parseInt(Math.random()*570);
+                // spanObj.style.left=x+"px";
+                // spanObj.style.top=y+"px";
+                divObj.firstElementChild.style.left=x+"px";
+                divObj.firstElementChild.style.top=y+"px";
+            },10);
+        };
+        btn2Obj.onclick=function () {
+          clearInterval(timeId);
+        };
+    </script>
+</body>
+</html>

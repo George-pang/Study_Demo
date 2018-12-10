@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX 返回数据问题</title>
+</head>
+<body>
+  <script>
+
+    // 封装者
+    // =============================
+
+    function ajax (method, url, params, done) {
+      method = method.toUpperCase()
+      var xhr = new XMLHttpRequest()
+
+      //如果传的参数不是键=值的形式，而是类似json对象的形式
+      if (typeof params === 'object') {
+        var tempArr = []
+        for (var key in params) {
+          var value = params[key]
+          tempArr.push(key + '=' + value)
+        }
+        params = tempArr.join('&')
+      }
+
+      if (method === 'GET') {
+        url += '?' + params
+      }
+
+      xhr.open(method, url, true) //异步执行
+
+      var data = null
+      if (method === 'POST') {
+        //post请求要设置请求头
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        data = params
+      }
+      xhr.send(data)
+      //事件触发执行，所以前后顺序可以调换
+      xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return
+        // 不应该在封装的函数中主观的处理响应结果
+        // console.log(this.responseText)
+        // 你说我太主观，那么你告诉我应该做什么
+        done(this.responseText)
+      }
+
+    }
+
+    // 调用者
+    // ============================
+
+    var onDone = function (res) {
+      console.log('hahahahaha')
+      console.log('hohohohoho')
+      console.log(res)
+      console.log('做完了')
+    }
+
+    ajax('get', 'time.php', {}, onDone)
+
+  </script>
+</body>
+</html>

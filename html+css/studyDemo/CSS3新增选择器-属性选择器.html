@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3新增选择器--属性选择器</title>
+		<style type="text/css">
+			/*选择所有带class属性的元素*/
+			p[class]{ 
+				background-color: pink;
+			}
+			/*选择class属性值开始位置为text的元素*/
+			p[class^=text]{ 
+				background-color: gray;
+			}
+			/*选择class属性值结束位置为text的元素*/
+			p[class$=text]{
+				font-size: 30px;
+			}
+			/*选择属性值中有text的元素*/
+			p[class*=text]{
+				font-weight: 900;
+				font-style: italic;
+			}
+		</style>
+	</head>
+	<body>
+		<!--2、属性选择器，用[]-->
+		<div>
+			<p class="text">锄禾日当午,</p>
+			<p class="text1">汗滴禾下土。</p>
+			<p class="mytext">谁知盘中餐,</p>
+			<p class="mytext04">粒粒皆辛苦！</p>
+			<p class="jj">好湿好湿！</p>
+		</div>
+		
+	</body>
+</html>

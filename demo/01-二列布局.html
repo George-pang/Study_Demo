@@ -1,0 +1,33 @@
+<!DOCTYPE HTML >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>二列布局</title>
+		<style type="text/css">
+         body{margin: 0;padding: 0;} /*清除默认样式*/
+        .main{
+        	width: 700px;
+        	margin: 0 auto;
+        	background: blue;
+        }
+        .left{
+        	width:20%;
+        	height:400px;
+        	background: #CCC;
+        	float:left;/*向左侧浮动*/
+        }
+        .right{
+        	width:80%;
+        	height: 400px;
+        	background-color: #DDD;
+        	float:right; /*向右侧浮动，因为和上一个宽度没有超出100%，所以一行显示*/
+        }
+		</style>
+	</head>
+	<body>
+		<div class="main">
+		  <div class="left"></div>
+		  <div class="right"></div>
+		</div>
+	</body>
+</html>

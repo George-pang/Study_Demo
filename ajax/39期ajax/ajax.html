@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+</head>
+<body>
+    <input type="button" value="显示效果" id="btn"/>
+    <p>需要用内置web服务器打开html文件</p>
+    <div id="dv"></div>
+    <script>
+        $("#btn").on("click",function(){
+            var temp=$.get("./1.txt",function(res,status){
+                // success 回调函数会传入返回的数据，是根据MIME类型的响应，它可能返回的数据类型包括XML根节点, 字符串, JavaScript 文件, 或者 JSON 对象。 
+                //同时还会传入描述响应状态的字符串。
+                $("#dv").text(res);
+                console.log(typeof res);//string
+                console.log(status); //success
+            });
+            // 从jQuery 1.5开始，所有jQuery的Ajax方法都返回一个XMLHTTPRequest对象的超集。
+            //这个通过$.get()方法返回的jQuery XHR对象，或“jqXHR，”实现了 Promise 接口，使它拥有 Promise 的所有属性，方法和行为.
+            console.log(typeof temp);   //object---证明jQuery Ajax方法返回的是个对象
+
+        });
+    </script>
+</body>
+</html>

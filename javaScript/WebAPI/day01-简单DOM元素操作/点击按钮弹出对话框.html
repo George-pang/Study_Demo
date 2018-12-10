@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="点击触发" id="btn">
+    <script>
+        //获取元素对象（事件源）
+        var btnObj=document.getElementById("btn");
+        //给获取的元素对象注册事件（onclicck），并添加事件处理函数（匿名函数--防止同名覆盖）
+        btnObj.onclick=function () {
+            //响应--做的事情--事件处理函数
+            alert("我被点击触发了！");
+        }
+    </script>
+</body>
+</html>

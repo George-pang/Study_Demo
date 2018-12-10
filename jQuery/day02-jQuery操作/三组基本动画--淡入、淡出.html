@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三组基本动画--淡入淡出</title>
+    <style>
+        div{
+            width: 400px;
+            height:400px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="淡入" id="btn1">
+    <input type="button" value="淡出" id="btn2">
+    <input type="button" value="切换" id="btn3">
+    <div></div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("input").eq(0).click(function () {
+                $("div").fadeIn(1000);//默认normal：400ms
+            });
+            $("input").eq(1).click(function () {
+                $("div").fadeOut(1000);//默认normal：400ms
+            });
+            $("input").eq(2).click(function () {
+                $("div").fadeToggle(1000,function () {
+                    console.log("呵呵！")
+                });//默认normal：400ms
+            });
+        });
+    </script>
+</body>
+</html>

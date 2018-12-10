@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建正则表达式对象</title>
+</head>
+<body>
+    <script>
+
+        //1、利用构造函数创建正则表达式对象
+        //创建正则表达式对象，且有正则表达式
+        var reg=new RegExp(/\d{4}/);
+        var str="小陈2代的幸运数字是：666";
+        var str2="小陈2代的幸运数字是：6666";
+        //实例对象调用test()方法匹配字符串
+        console.log(reg.test(str));//false
+        console.log(reg.test(str2));//true
+
+
+        //2、字面量方式创建正则表达式对象
+        var reg2=/\d{4}/;   //js里正则表达式放在//里写
+        var str3="小陈的幸运数字是：3333";
+        console.log(reg2.test(str3));//true
+        console.log(reg2.test("中国电信：10000"));//true
+
+    </script>
+</body>
+</html>

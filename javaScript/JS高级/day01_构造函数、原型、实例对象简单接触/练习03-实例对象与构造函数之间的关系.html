@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数与实例对象间的关系</title>
+</head>
+<body>
+<script>
+    //自定义构造函数
+    function Animal(age,sex,name) {
+        this.age=age;
+        this.sex=sex;
+        this.name=name;
+        this.eat=function () {
+            console.log("吃骨头！");
+        }
+    }
+
+    //实例化一个对象
+    var dog=new Animal(3,"公","来福");
+    dog.eat();
+
+    //console.dir()方法用于在控制台显示一个对象的详细信息(所有的属性和方法)
+    console.dir(dog);       //Animal---//实例对象会指向自己的构造函数(暂时理解,是错误的)
+    console.dir(Animal);    //ƒ Animal(age,sex,name)
+
+
+    //实例对象的构造器(构造函数)
+    //实例对象的构造器是指向Person的,结果是true,所以,这个实例对象per就是通过Person来创建的
+    console.log(dog.constructor==Animal);//
+
+    console.log(dog.__proto__.constructor==Animal);
+    console.log(dog.__proto__.constructor==Animal.prototype.constructor);
+
+    console.log(dog.__proto__.constructor==Person);
+    console.log(dog.__proto__.constructor==Animal);
+
+
+    //判断这个对象是不是这种数据类型
+    console.log(dog.constructor==Animal);
+
+    console.log(dog instanceof Person);
+
+
+    //总结:
+    /*
+    * 实例对象和构造函数之间的关系:
+    * 1. 实例对象是通过构造函数来创建的---创建的过程叫实例化
+    * 2.如何判断对象是不是这个数据类型?
+    *  1) 通过构造器的方式 实例对象.构造器==构造函数名字
+    *  2) 对象 instanceof 构造函数名字
+    *  尽可能的使用第二种方式来识别,为什么?原型讲完再说
+    *
+    *
+    *
+    * */
+</script>
+</body>
+</html>

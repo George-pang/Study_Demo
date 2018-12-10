@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 150px;
+            height: 200px;
+            border: 1px dashed pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="创建一个p" id="btn"/>
+    <div id="dv"></div>
+
+    <script>
+        var btnObj=document.getElementById("btn");
+        btnObj.onclick=function(){
+            //第一步：页面中创建元素
+            var pObj=document.createElement("p");
+            //第二步：添加元素内容
+            pObj.innerHTML="这是一个p";
+            //第三步:将新增元素追加到父元素上
+            document.getElementById("dv").appendChild(pObj);
+
+        };
+
+
+    </script>
+
+</body>
+</html>

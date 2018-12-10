@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击修改a标签的链接和热点文字</title>
+</head>
+<body>
+    <input type="button" value="点击修改"id="btn"/>
+    <a id="link" href="https://www.baidu.com">百度</a>
+
+    <script>
+        document.getElementById("btn").onclick = function () {
+            var aObj = document.getElementById("link"); //优化写法，避免一个对象反复查找获取
+            aObj.href = "https://www.jiumodiary.com/";
+            aObj.innerText = "鸠摩搜书";
+        };
+    </script>
+</body>
+</html>

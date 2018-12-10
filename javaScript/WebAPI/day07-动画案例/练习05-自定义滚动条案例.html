@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 5px 18px 5px 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        .scroll {
+            width: 18px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #eee;
+        }
+
+        .bar {
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="content" id="content">
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜
+        床前明月光啊，明月光，疑是地上霜啊，地上霜嘿嘿
+
+    </div><!--文字内容-->
+    <div id="scroll" class="scroll"><!--装滚动条的层-->
+        <div class="bar" id="bar"></div><!--滚动条-->
+    </div>
+</div>
+<script>
+//获取元素
+    var box=document.getElementById("box");
+    var content=document.getElementById("content");
+    var scroll=document.getElementById("scroll");
+    var bar=document.getElementById("bar");
+
+    //根据比例计算滚动条的高度---box/content=bar/scroll
+    height=box.offsetHeight/content.offsetHeight*scroll.offsetHeight;
+    bar.style.height=height+"px";
+
+    //注册鼠标按下事件
+    bar.onmousedown=function (e) {
+        // 获取鼠标按下时在滚动条上的位置
+        console.log(e.clientY);
+        console.log(bar.offsetTop); //offset 相对定位的父级偏移
+        var spaceY=e.clientY-bar.offsetTop;
+
+        console.log("space:"+spaceY);
+        console.log(scroll.offsetTop);//0
+        console.log(box.offsetTop);//100
+        document.onmousemove=function (e) {
+            //bar不是相对scroll定位的吗？所以这里应该要减去box的顶部偏移啊。例子中没减去怎么也没影响？-因为scroll.offsetTop为0
+            //因为offset时相对有定位的父级计算偏移的，所以spaceY的值比实际要大100,所以这里不需要再减去box的顶部偏移100啦
+            var y=e.clientY-spaceY;
+
+            //设置移动区间
+            y_max=scroll.offsetHeight-bar.offsetHeight;
+            y=y<0?0:y;
+            y=y>y_max?y_max:y;
+            bar.style.top=y+"px";
+
+            //文字内容对应滚动
+            //比例：文字的移动距离=滚动条的移动距离/滚动条的最大移动距离*文字的最大移动距离
+            var maxMoveY=content.offsetHeight-box.offsetHeight;
+            moveY=y/y_max*maxMoveY;
+            content.style.marginTop=-moveY+"px";
+
+            //拖拽时文字不能点击
+            window.getSelection?window.getSelection().removeAllRanges():document.selection().empty();
+        };
+
+    };
+    document.onmouseup=function () {
+      document.onmousemove=null;
+    };
+</script>
+
+</body>
+</html>

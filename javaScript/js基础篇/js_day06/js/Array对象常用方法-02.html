@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Array对象常用方法-四个需要记住的</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//	 * .push(值);--->把值追加到数组中,加到最后了---返回值也是追加数据之后的数组长度
+//   * .pop();--->删除数组中最后一个元素,返回值就是删除的这个值
+//   * .shift();--->删除数组中第一个元素,返回值就是删除的这个值
+//   * .unshift();--->向数组的第一个元素前面插入一个新的元素,----返回值是插入后的数组长度
+		
+			
+			var arr1=[10,20,30,40,50];
+			console.log(arr1.push(60));//追加最后一个数组元素，返回的是新数组的长度
+			console.log(arr1);
+			
+			var arr2=[10,20,30,40,50];
+			console.log(arr2.pop());//删除最后一个数组元素，返回的是删除的这个数组元素
+			console.log(arr2);
+			
+			var arr3=[10,20,30,40,50];
+			console.log(arr3.shift());//删除第一个数组元素，返回的被删除的这个数组元素
+			console.log(arr3);
+			
+			var arr4=[10,20,30,40,50];
+			console.log(arr4.unshift(100));//插入第一个数组元素，返回的是新数组长度
+			console.log(arr4);
+		</script>
+	</body>
+</html>

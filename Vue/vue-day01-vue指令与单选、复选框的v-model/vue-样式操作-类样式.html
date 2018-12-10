@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-样式操作-类样式</title>
+    <script src="vue.js"></script>
+    <style type="text/css">
+        .xi{
+            font-weight: 200;
+        }
+        .hong{
+            color: red;
+        }
+        .large{
+            font-size: 30px;
+        }
+        .xie{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+   <!--第一种：数组方式-->
+    <!--<p id="app" v-bind:class="['xi','hong','large','xie']">若为君故，沉吟至今！</p> -->   <!--必须要带引号，否则会从data中寻找数据-->
+
+   <!--第二种：三元表达式方式-->
+    <!--<p id="app" v-bind:class="['xi','hong','large',flag?'xie':'']">若为君故，沉吟至今！</p>-->
+
+   <!--第三种：数组中嵌套对象，在数组中使用 对象来代替三元表达式，提高代码的可读性-->
+    <!--<p id="app" v-bind:class="['xi','hong','large',{'xie':flag}]">若为君故，沉吟至今！</p>-->
+
+
+   <!--第四种：直接使用对象 -->
+   <!-- <p id="app" v-bind:class="{red:true,hong:true,large:true,xie:true}">若为君故，沉吟至今！</p> -->
+         <!--这里键名可以不加引号，但如果是多字，则必须加上引号-->
+         <!--在为 class 使用 v-bind 绑定 对象的时候，对象的属性是类名，由于 对象的属性可带引号，也可不带引号；属性的值 是一个标识符-->
+   <!--<p id="app" v-bind:class="{'red':true,'hong':true,'large':true,xie:true}">若为君故，沉吟至今！</p>-->
+
+   <!--第五种：将样式对象存在data中，通过变量名引用 -->
+   <p id="app" v-bind:class="classObj">若为君故，沉吟至今！</p>       <!--把对象放到data中去-->
+
+
+   <script>
+       var vm=new Vue({
+           el:"#app",
+           data:{
+               flag:false,
+               classObj:{'red':true,'hong':true,large:true,xie:true},   //对象属性引号可加可不加，但若多字，则需加上
+           },
+           methods:{
+
+           }
+        })
+    </script>
+</body>
+</html>

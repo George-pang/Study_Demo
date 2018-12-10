@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮显示图片</title>
+</head>
+<body>
+    <input type="button" value="点击显示" id="btn">
+    <img src="" alt="" id="img">
+    <script>
+        document.getElementById("btn").onclick=function () {
+            //事件处理函数--触发时做的事
+            var imgObj=document.getElementById("img");
+            imgObj.src="img/boduo.jpg";
+            imgObj.width="200";
+            imgObj.height="300"; //元素属性里不用加单位px，在style里需要加单位px
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-案例-跑马灯</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="浪起来" v-on:click="lang"/>
+    <input type="button" value="低调" v-on:click="stop"/>
+    <p>{{ msg }}</p>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "猥琐发育，别浪！",
+            intervalId: null
+        },
+        methods: {    //Methods中的方法中的this会被vue自己绑定到当前vm实例上
+            // 注意：在 VM实例中，如果想要获取 data 上的数据，或者 想要调用 methods 中的 方法，必须通过 this.数据属性名
+            // 或  this.方法名 来进行访问，这里的this，就表示 我们 new 出来的  VM 实例对象
+            lang: function () {            //ES6写法--- lang(){}
+                if (this.intervalId != null) {
+                    return;   //后面代码不执行，计时器已经启动，再次点击就不执行后面代码
+                }
+                //箭头函数看上去是匿名函数的一种简写，但实际上，箭头函数和匿名函数有个明显的区别：箭头函数内部的this是词法作用域，由上下文确定。
+                this.intervalId = setInterval(() => {        //箭头函数内部的this永远与外部的this保持一致
+                    var start = this.msg.substr(0, 1);   //得到的是新字符串
+                    var end = this.msg.substr(1);
+                    this.msg = end + start;                 //字符串拼接,并重新赋值（必须）
+                }, 400)                                 //js里只有函数内部是局部变量（带var）
+            },
+            stop: function () {
+                clearInterval(this.intervalId);                         //根据计时器id清除计时器
+                this.intervalId = null                                    //复原初始状态,否则清除计时器后id永不为null
+            }
+        }
+    })
+    console.log(vm.msg);
+</script>
+</body>
+</html>

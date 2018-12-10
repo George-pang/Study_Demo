@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS网页布局测试01(绝对定位)</title>
+		<style type="text/css">
+			.head,.container,.foot{
+				margin: 10px auto;
+				padding:0;
+				width:900px;
+				border: 1px gray solid;
+				text-align: center;
+			}
+			.container{
+				border: 0;
+				padding: 0;
+				height: 500px;
+				position: relative;
+			}
+			.content{
+				border: 1px gray solid;
+				width:600px;
+				padding: 0;
+				margin-left: 0;
+				position: absolute;
+				height: 480px;				
+			}
+			.side{
+				width:150px;
+				padding: 0;
+				background-color: #0000FF;
+                margin-left:750px ;
+				height:250px;	
+			}
+			.foot{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">head</div>
+		<div class="container">
+			<div class="content">content</div>
+			<div class="side">side</div>
+		</div>
+		<div class="foot">foot</div>
+	</body>
+</html>

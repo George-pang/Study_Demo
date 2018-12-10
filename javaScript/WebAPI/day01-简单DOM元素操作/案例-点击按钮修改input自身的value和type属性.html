@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮修改input的value和type属性值</title>
+</head>
+<body>
+<input type="button" value="点击修改" id="btn1"/>
+<script>
+    var inputObj=document.getElementById("btn1");
+    inputObj.onclick=function () {
+        // inputObj.value="谁点我我就赖上谁啦！";
+        // inputObj.type="type";
+        // inputObj.id="btn2";
+
+        //在某个元素对象的事件中,自己的事件处理函数中(对自身进行的操作)的this就是当前的这个元素对象
+
+        this.value="谁点我我就赖上谁啦！";
+        this.type="type";
+        this.id="btn2";
+    }
+</script>
+</body>
+</html>

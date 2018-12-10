@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击多个图片跳出对话框</title>
+</head>
+<body>
+    <img src="img/1.jpg" alt="" width="420" height="400"> <!--img标签这里不需要加单位px，style里需要加单位px-->
+    <img src="img/2.jpg" alt="" width="420" height="400">
+    <img src="img/3.jpg" alt="" width="420" height="400">
+    <script>
+        var imgObjs=document.getElementsByTagName("img");
+        // 遍历注册点击事件，添加事件处理函数
+        for (var i=0;i<imgObjs.length;i++){
+            imgObjs[i].onclick=function () {
+                alert("我被点啦！啊哈哈");
+            }
+        }
+    </script>
+</body>
+</html>

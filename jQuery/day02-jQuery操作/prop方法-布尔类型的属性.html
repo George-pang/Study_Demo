@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prop方法</title>
+</head>
+<body>
+    <input type="button" value="选中" id="btn1"/>
+    <input type="button" value="反选" id="btn2"/>
+    <input type="checkbox" value="" id="ck" />
+
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //思路分析：
+             //用attr()方法对checked属性操作只能生效一次
+             // $("#btn1").click(function () {
+             //     // $("#ck").attr("checked","true");
+             //     $("#ck").attr("checked",true);//true不能加引号
+             // });
+             // $("#btn2").click(function () {
+             //     $("#ck").attr("checked",false);
+             // });
+
+
+             //对于布尔类型的属性，不要用attr方法，应该用prop方法。 prop用法跟attr方法一样。
+             $("#btn1").click(function () {
+                 // $("#ck").attr("checked","true");
+                 $("#ck").prop("checked",true);//true不能加引号
+             });
+             $("#btn2").click(function () {
+                 $("#ck").prop("checked",false);
+             });
+         });
+    </script>
+</body>
+</html>

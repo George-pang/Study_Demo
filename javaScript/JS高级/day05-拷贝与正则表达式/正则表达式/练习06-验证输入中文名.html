@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+请输入您的姓名：<input type="text" id="name">*<br/>
+
+<script>
+    var inputObj=document.getElementById("name");
+    inputObj.onblur=function () {
+      var reg=/^[\u4e00-\u9fa5]{2,6}$/;  //2-6位中文字符
+      if (reg.test(this.value)){
+          this.style.backgroundColor="green";
+      }else{
+          this.style.backgroundColor="red";
+      }
+    };
+
+    //[\u4e00-\u9fa5]    [一-龥]
+
+</script>
+</body>
+</html>

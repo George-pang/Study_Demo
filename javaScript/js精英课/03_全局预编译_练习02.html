@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(){
+            console.log(b);//undefined
+            if(a){  //不执行b=100，
+                var b=100; 
+            }
+            console.log(b);
+            c=234; 
+            console.log(c);//234
+        }
+        var a;
+        test();
+        a=10;
+        console.log(c);//234
+
+        //预编译过程分析：
+        /*1、全局预编译--创建GO对象
+            GO{
+                a:undefined,
+                test:f test(){...}
+            }
+         2、执行test(),先执行函数内预编译---if条件结构内的变量声明也会预解析
+            AO{
+                b:undefined
+            }
+         3、执行test()--c=234，隐式全局变量,给GO对象
+            GO{
+                a:undefined,
+                test:f test(){...}，
+                c：234,
+            }
+        4、执行a=10，
+        GO{
+            a:10,
+            test:f test(){...}，
+            c：234,
+        }
+        */
+    </script>
+
+</body>
+</html>

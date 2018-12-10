@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="跳转" id="btn1"/>
+<input type="button" value="前进" id="btn2"/>
+
+<script>
+    //window前缀可省略
+    var btnObj=document.getElementById("btn1");
+    var btn2Obj=document.getElementById("btn2");
+    btnObj.onclick=function () {
+        window.location.href="test.html";
+    };
+    btn2Obj.onclick=function () {
+        window.history.forward();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素移动动画函数封装</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #dv {
+            position: absolute;
+            top: 30px;
+            margin-top: 10px;
+            width: 150px;
+            height: 150px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动400px" id="btn1"/>
+<input type="button" value="移动800px" id="btn2"/>
+<div id="dv"></div>
+
+<script>
+    var btn1Obj = document.getElementById("btn1");
+    var btn2Obj = document.getElementById("btn2");
+    var divObj = document.getElementById("dv");
+    btn1Obj.onclick = function () {
+        animate(divObj,400);
+    };
+    btn2Obj.onclick = function () {
+        animate(divObj,800);
+    };
+
+    //参数1:元素对象;参数2：目标位置
+    function animate(ele, target) {
+        //清除重复的计时器
+        clearInterval(ele.timeId);  //利用对象属性点语法生成的特性,但不能直接用id,因为id属性原本就有
+        // var step = 10;           //每次移动的距离
+        ele.timeId = setInterval(function () {
+            var step = 10;           //每次移动的距离----必须放在这里，每次计时器都会初始化步数，否则回退时，步数会在正负间切换。
+            //获取元素对象当前的距离
+            var current = ele.offsetLeft;         //js三大家族，offset系列--页面的距离(返回的是数字)
+            console.log(current);
+            step = current < target ? step : -step;
+            // console.log(step);
+            if (Math.abs(target - current) > Math.abs(step)) {
+                current += step;
+                ele.style.left = current + "px";
+
+            } else {
+                clearInterval(ele.timeId);    //到达目标位置后清除计时器必不可少
+                current = target;
+                ele.style.left = current + "px";
+            }
+        }, 20);
+    }
+
+</script>
+</body>
+</html>

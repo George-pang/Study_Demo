@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="显示效果" id="btn"/>
+<input type="button" value="移除效果" id="btn2"/>
+
+<script>
+    //绑定事件兼容代码--为任意对象绑定任意类型事件
+    function addEventListener(ele,type,fn) {
+        if (ele.addEventListener){                 //不能带小括号，带括号就是判断其返回值是否为true
+            ele.addEventListener(type,fn,false);   //参数3：控制事件阶段--冒泡
+        }else if (ele.attachEvent) {
+            ele.attachEvent("on"+type,fn);
+        }else{
+            ele["on"+type]=fn;
+        }
+    }
+
+
+    //解绑事件兼容代码--为任意对象解绑任意类型事件---移除事件必须使用命名函数，因为匿名函数即使一样也不能说是同一个函数
+    function removeEventListener(ele,type,fn) {
+        if (ele.removeEventListener){
+            ele.removeEventListener(type,fn,false);
+        }else if (ele.detachEvent) {
+            ele.detachEvent("on"+type,fn);
+        }else{
+            ele["on"+type]=null;
+        }
+    }
+
+    function f1() {
+        alert("测试绑定事件的浏览器兼容性！");
+    }
+    function f2() {
+        console.log("移除事件");
+    }
+    var btnObj=document.getElementById("btn");
+    var btn2Obj=document.getElementById("btn2");
+    addEventListener(btnObj,"click",f1);
+    btn2Obj.onclick=function(){
+        console.log("22222");
+        removeEventListener(btnObj,"click",f1);
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: #DB192A;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen"><!--相框-->
+        <ul>
+            <li><img src="img/1.jpg" width="500" height="200"/></li>
+            <li><img src="img/2.jpg" width="500" height="200"/></li>
+            <li><img src="img/3.jpg" width="500" height="200"/></li>
+            <li><img src="img/4.jpg" width="500" height="200"/></li>
+            <li><img src="img/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <ol>
+        </ol>
+    </div>
+    <div id="arr">
+        <span id="left">&lt;</span>
+        <span id="right">&gt;</span>
+    </div>
+</div>
+<script>
+//1、获取所有元素
+    var box = document.getElementById("box");
+    var screen = box.children[0];
+    var ulObj = screen.children[0];
+    var liObjs = ulObj.children;
+    var olObj = screen.children[1];
+    var arrObj = document.getElementById("arr");
+    var leftObj = arrObj.children[0];
+    var rightObj = arrObj.children[1];
+    //自定义索引属性的存储变量
+    var num=0;
+    //相框宽度--每张图片移动距离
+    var imgWidth=screen.offsetWidth;
+    var timeId="";
+
+//2、滑动指示器
+for (var i=0;i<liObjs.length;i++){
+    var  liObj=document.createElement("li");
+    olObj.appendChild(liObj);
+    liObj.innerHTML=i+1;
+    liObj.setAttribute("index",i);
+    //初始显示第一张
+    olObj.children[0].className="current";
+    //为每个创建的li都注册鼠标移入事件
+    liObj.onmouseover=function () {
+        //获取index属性值
+        num=this.getAttribute("index");
+        animate(ulObj,-num*imgWidth);
+        //设置当前背景色-排他
+        for (var j=0;j<olObj.children.length;j++) {
+            olObj.children[j].removeAttribute("class");
+        }
+        this.className="current";
+    }
+
+}
+
+//无缝切换--最后面再加上第一张图
+var newLi=liObjs[0].cloneNode(true);
+ulObj.appendChild(newLi);
+
+//3、左右滑动控制
+//滑动块显示
+// box.onmouseover=function(){
+//     arrObj.style.display="block";
+// };
+// box.onmouseout=function(){
+//     arrObj.style.display="none";
+// };
+
+rightObj.onclick=clickHandle;
+function clickHandle() {
+    if (num==olObj.children.length){ //点击触发时，正显示最后一张图片时(指示器显示是第一张)，
+        num=0;
+        ulObj.style.left=0;         //点击触发时，先回到第一张图片
+    }
+    // 点击触发后的响应操作-实际执行了两步(最后1张到第1张，再立马到第2张)，但看上去像是从第1张到第2张
+    num++;
+    animate(ulObj,-num*imgWidth);   //再移到第2张图片
+
+    //设置指示器效果
+    //因为无缝切换，最后多了第一张图片，遍历排他设置没有设置最后一张图片的指示器样式，所以需要单独设置
+    if (num==olObj.children.length){    //显示最后一张图片时
+        //指示器效果看上去是第一张
+        olObj.children[olObj.children.length-1].removeAttribute("class");
+        olObj.children[0].className="current";
+    }else{   //显示当前背景-排他
+        for (var j=0;j<olObj.children.length;j++){
+            olObj.children[j].removeAttribute("class");
+        }
+        olObj.children[num].className="current";
+    }
+
+}
+leftObj.onclick=function () {
+    if (num==0){        //如果点击触发时,正显示第一张图片
+        num=olObj.children.length;      //点击触发时，先显示最后一张图片
+        ulObj.style.left=-num*imgWidth+"px";   //px单位不能少，0除外
+    }
+    num--;
+    animate(ulObj,-num*imgWidth);  //再显示倒数第2张图片--因为时间很短，所以看上去就像从第一张/最后一张切到倒数第2张
+
+    //设置指示器效果
+    //因为第一张和最后一张看起来是一张的效果，指示器样式没变化，所以这里不需要再单独设置
+    for (var j=0;j<olObj.children.length;j++){
+        olObj.children[j].removeAttribute("class");
+    }
+    olObj.children[num].className="current";
+};
+
+
+//4、自动切换--计时器--这里就相当于每隔2000ms触发一次向左点击事件
+    timeId=setInterval(clickHandle,2000);
+
+    //鼠标滑入暂停计时--清除计时器
+    box.onmouseover=function(){
+        arrObj.style.display="block";
+        clearInterval(timeId);
+    };
+    //鼠标移出开始计时--重设计时器
+    box.onmouseout=function(){
+        arrObj.style.display="none";
+        timeId=setInterval(clickHandle,2000);
+    };
+
+
+
+
+    //封装的元素移动-动画函数
+    //参数1:元素对象;参数2：目标位置
+    function animate(ele, target) {
+        //清除重复的计时器
+        clearInterval(ele.timeId);  //利用对象属性点语法生成的特性,但不能直接用id,因为id属性原本就有
+        // var step = 10;           //每次移动的距离
+        ele.timeId = setInterval(function () {
+            var step = 10;           //每次移动的距离----必须放在这里，每次计时器都会初始化步数，否则回退时，步数会在正负间切换。
+            //获取元素对象当前的距离
+            var current = ele.offsetLeft;         //js三大家族，offset系列--页面的距离(返回的是数字)
+            step = current < target ? step : -step;
+            // console.log(step);
+            if (Math.abs(target - current) > Math.abs(step)) {
+                current += step;
+                ele.style.left = current + "px";
+            } else {
+                clearInterval(ele.timeId);
+                current = target;
+                ele.style.left = current + "px";
+            }
+        }, 20);
+    }
+
+</script>
+</body>
+</html>

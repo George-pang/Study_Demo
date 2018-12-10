@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+<img src="images/bird.png" alt="" id="im">
+<script>
+    //整个页面中移动--而html和body的高度是填充起来的，所以用document对象
+    // document.onmousemove=function (e) {
+    //     var imObj=document.getElementById("im");
+    //     e=window.event||e;
+    //     console.log(e.clientX);
+    //     // imObj.style.left=e.clientX;       //返回的是数字，这里要加单位px
+    //     // imObj.style.top=e.clientY;
+    //
+    //     imObj.style.left=e.clientX+"px";
+    //     imObj.style.top=e.clientY+"px";
+    // };
+
+
+    //当出现滚动条时，可视区域的坐标和到页面的坐标就有差别了，页面坐标=可是区域坐标+滚动距离
+    
+    //这里用事件参数对象的pageX与pageY属性
+    //注意：IE里面不支持pageX和pageY属性
+
+    document.onmousemove=function (e) {
+        var imObj=document.getElementById("im");
+        e=window.event||e;
+        console.log(e.pageX);
+        // imObj.style.left=e.clientX;       //返回的是数字，这里要加单位px
+        // imObj.style.top=e.clientY;
+
+        imObj.style.left=e.pageX+"px";
+        imObj.style.top=e.pageY+"px";
+    }
+</script>
+</body>
+</html>

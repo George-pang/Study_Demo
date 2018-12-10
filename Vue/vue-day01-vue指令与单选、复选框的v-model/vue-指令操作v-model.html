@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue指令 v-model</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app-6">
+    <p>
+        {{message}}
+    </p>
+    <input type="text" v-model="message"/>   <!--v-model指令能轻松实现表单输入和应用状态之间的双向绑定-->
+    <!--可以实现 表单元素和 Model 中数据的双向数据绑定-->
+    <!--注意：v-model只能运用于表单元素-->
+</div>
+<script>
+    var app6=new Vue({
+        el:"#app-6",
+        data:{
+            message:"Hello Vue!"
+        }
+    })
+</script>
+</body>
+</html>

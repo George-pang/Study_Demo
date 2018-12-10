@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>continue案例</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//求100-200之间所有数的累加值，跳过个位数为3的数字（与10取余值为3）
+			var sum=0;
+			var i=100;
+			while(i<=200){
+				if(i%10==3){
+					i++;
+					continue;
+				}
+				sum +=i;
+				i++;//while循环这个可不能忘
+			}
+			console.log(sum);
+			
+		</script>
+	</body>
+</html>

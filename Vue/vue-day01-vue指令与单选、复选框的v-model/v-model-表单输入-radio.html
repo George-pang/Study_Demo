@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="radio" id="runoob" value="Runoob" v-model="picked" @click="console1">
+    <label for="runoob">Runoob</label>
+    <br>
+    <input type="radio" id="google" value="Google" v-model="picked" @click="console2">
+    <label for="google">Google</label>
+    <br>
+    <span>选中值为: {{ picked }}</span>
+</div>
+
+<script>
+    console.log(document.getElementById("runoob").value);
+    console.log(document.getElementById("google").value);
+    var vm=new Vue({
+        el: '#app',
+        data: {
+            picked : 'Runoob'
+        },
+        methods:{
+            console1(){
+                console.log(this.picked);
+            },
+            console2(){
+                console.log(this.picked);
+            },
+        }
+    })
+    console.log(vm.picked);
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>date对象常用方法</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var myDate=new Date();//首先，先实例化一个Date对象，其默认有初始值---当前时间
+			console.log(myDate);//当前时间
+			//带参数实例化对象
+			var myDate_01=new Date("2017-08-12");//带参数改变初始值
+			var myDate_02=new Date("2019/08/12");
+			var myDate_03=new Date("2020,07,12");
+			console.log(myDate_01);
+			console.log(myDate_02);
+			console.log(myDate_03);
+			
+			var myDate2=Date.now();
+			console.log(myDate2);//从1970年1月1日凌晨到现在的毫秒数
+			
+			console.log(myDate.getFullYear());//2018
+			console.log(myDate.getMonth()+1);//月份从0开始的，所以当前月份要加1
+			console.log(myDate.getDate());//29
+			console.log(myDate.getHours());//
+			console.log(myDate.getMinutes());//
+			console.log(myDate.getSeconds());//
+			console.log(myDate.getDay());//星期几，也是从0开始的，但是这里不用加1
+			
+		</script>
+	</body>
+</html>

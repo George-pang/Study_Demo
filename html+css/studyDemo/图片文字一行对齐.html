@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片文字对齐问题</title>
+		<style type="text/css">
+			div{
+				border: 1px solid red;
+			}
+			div img{
+				/*display: block;*/
+				/*vertical-align: top;*/
+				vertical-align: middle;/*只对行内元素或行内块元素起作用*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			<!--图片或者表单等行内块元素，他的底线会和父级盒子的基线对齐。这样会造成图片底侧会有一个空白缝隙。-->
+			<img src="img/mi.jpg"/>
+			小米，为发烧而生！
+		</div>
+		
+		<div class="div2">
+			<span>
+				<img src="img/mi.jpg"/>
+			</span>
+			<span>小米，为发烧而生！</span>
+		</div>
+	</body>
+</html>

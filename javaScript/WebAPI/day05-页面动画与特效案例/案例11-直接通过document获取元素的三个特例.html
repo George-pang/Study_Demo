@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //获取body--得到的是body元素
+    console.log(document.body);
+
+    //获取title--得到的是title标签的内容
+    console.log(document.title);
+    document.title="这是一个新的标题";
+    console.log(document.title);
+
+    //获取html--得到的是html元素
+    /*console.log(document.html); *///---这种写法错误，得到的值：undefined
+    console.log(document.documentElement); //这种写法才正确
+</script>
+</body>
+</html>

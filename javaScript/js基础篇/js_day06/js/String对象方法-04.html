@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String对象方法-04</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//大小写转换 去除两端空格
+			var str="HELLO！";
+			console.log(str.toLocaleLowerCase());//转小写 lower
+			console.log(str.toLowerCase());
+			
+			var str1="hello！";
+			console.log(str1.toUpperCase());//转大写 upper
+			console.log(str1.toLocaleUpperCase());
+			
+			//去除空格
+			var str2="   你好，我     十四年，安德鲁森    ";
+			console.log("=="+str2.trim()+"==");//去除两端的空格
+			console.log("=="+str2.trimLeft()+"==")//去除左端的空格
+			console.log("=="+str2.trimRight()+"==")//去除右端的空格
+		</script>
+	</body>
+</html>

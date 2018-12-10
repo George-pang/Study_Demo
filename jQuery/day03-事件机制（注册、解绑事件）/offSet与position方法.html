@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offSet和position方法</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .parent{
+            margin: 100px;
+            height: 400px;
+            width: 400px;
+            position: relative;
+            background-color: pink;
+        }
+        .son{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: red;
+        }
+        /*.son{*/
+            /*height: 200px;*/
+            /*width: 200px;*/
+            /*position: absolute;*/
+            /*top: 100px;*/
+            /*left: 100px;*/
+            /*background-color: red;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="son">
+
+        </div>
+    </div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //offset()方法   相对document（页面）的位置
+            console.log($(".son").offset());         //返回的是对象
+            console.log($(".son").offset().top);     //200,返回的是数字
+            console.log($(".son").offset().left);    //200
+
+            //position()方法 相对有定位的父元素的位置
+            console.log($(".son").position());        //返回的是对象，{top: 100, left: 100}
+        });
+    </script>
+</body>
+</html>

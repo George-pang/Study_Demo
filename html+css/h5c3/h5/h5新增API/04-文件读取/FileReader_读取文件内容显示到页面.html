@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- multiple属性可以多选文件 -->
+    <input type="file" id="fileLoad" multiple>
+    <div></div>
+
+    <script>
+        var inputObj = document.getElementById("fileLoad");
+        //document.querySelector("div")返回匹配到的第一个元素
+        var divObj = document.querySelector("div");
+
+        // 文件上传后与select标签一样发生change事件
+        inputObj.onchange = function () {
+            console.log(this.files); //this.files属性---所有上传文件的集合
+            // 1、实例化FileReader对象，使用其属性、方法及事件
+            var reader=new FileReader();
+            // 2、读取上传的第一个文件内容
+            // FileReader.readAsText()开始读取指定的Blob中的内容。一旦完成，result属性中将包含一个字符串以表示所读取的文件内容。
+            reader.readAsText(this.files[0]);
+            // 3、读取完成后（FileReader.onload事件），result属性获取读取到的内容---FileReader.onload该事件在读取操作完成时触发。
+            reader.onload=function(){
+                divObj.innerHTML=reader.result;
+            }
+
+        };
+    </script>
+</body>
+
+</html>

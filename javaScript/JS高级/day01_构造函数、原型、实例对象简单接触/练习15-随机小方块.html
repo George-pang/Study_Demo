@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .map{
+            width: 800px;
+            height: 600px;
+            background-color: #CCCCCC;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="map"> </div>
+    <script>
+        //自调用函数---产生随机数对象
+        //win--形参
+        (function (win) {
+            //自定义构造函数
+            function Random() {
+                
+            }
+            //构造函数的原型对象上添加方法--产生任意两个数之间的随机数
+            Random.prototype.getRandom=function (min,max) {
+                return Math.floor(Math.random()*(max-min)+min);
+            };
+            //把局部对象暴露给window的一个属性，作为全局对象存在
+            win.random=new Random();
+        })(window);//实参
+
+        //小方块对象
+        (function () {
+            //获取地图对象
+            var map=document.querySelector(".map");
+            
+            //自定义构造函数
+            function Food(width,height,color) {
+                this.width=width||20;  //默认没传实参时，width为20
+                this.height=height||20;
+                this.color=color;
+                this.x=0; //默认小方块的横坐标
+                this.y=0; //默认小方块的纵坐标
+                this.element=document.createElement("div"); //小方块元素
+            }
+            //原型对象添加方法
+            Food.prototype.init=function (map) {
+                //设置小方块的样式
+                var div=this.element; //将当前实例对象的element属性传给变量div
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.backgroundColor=this.color;
+                div.style.position="absolute";
+                //将div添加到地图中去
+                map.appendChild(div);
+                //在init实例对象方法中调用实例对象的另一个方法
+                this.render(map);
+            };
+            Food.prototype.render=function (map) {
+                //设置小方块的位置
+                var div=this.element;  //this指向当前实例对象
+                //调用全局随机数对象的getRandom()方法
+                var x=random.getRandom(0,map.offsetWidth/this.width)*this.width;
+                var y=random.getRandom(0,map.offsetHeight/this.height)*this.height;
+                div.style.left=x+"px";
+                div.style.top=y+"px";
+            };
+
+            //创建实例对象
+            var food=new Food(20,20,"green");
+            food.init(map);
+        })();
+
+
+
+    </script>
+</body>
+</html>

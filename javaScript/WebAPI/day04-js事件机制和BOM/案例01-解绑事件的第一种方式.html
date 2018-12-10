@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="小陈" id="btn"/>
+    <input type="button" value="解绑事件" id="btn2"/>
+
+    <script>
+        //第一种方式对应绑定事件的第一种方式
+        var btnObj=document.getElementById("btn");
+        var btn2Obj=document.getElementById("btn2");
+        btnObj.onclick=function () {
+            console.log("小陈好猥琐！");
+        }
+        btn2Obj.onclick=function () {
+            btnObj.onclick=null;
+        }
+    </script>
+</body>
+</html>

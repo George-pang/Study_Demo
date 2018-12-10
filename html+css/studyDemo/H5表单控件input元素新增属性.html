@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>H5表单input控件新增属性</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/*防止子元素浮动,父元素高度塌陷的一种方法*/
+			form{
+				width: 500px;
+				margin: 0 auto;
+				border: 1px solid gray;
+			}
+			dl{
+				overflow: hidden; 
+				height: 50px;
+			}
+			dt{
+				width: 100px;
+				float: left;
+			}
+			dd{
+				width: 200px;
+				float:left;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!--用dl写表单-->
+		<!--input控件新增type属性值-->
+		<!--input控件新增属性-->
+		<form action="">
+			<dl>
+				<dt>您的邮箱</dt>
+				<dd><input type="email" value="" placeholder="请输入邮箱"/></dd> <!--与value的区别：用户输入自动消失-->
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>您的号码</dt>
+		        <dd><input type="tel" value="" autofocus/></dd><!-- 页面加载自动获取焦点-->
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>网址</dt>
+				<!--必填项-只写属性名，个人理解就是其值就是其名-->
+	        <dd><input type="url" value=""required="required" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>邮政编码</dt>
+				<!--快捷键获取焦点-alt+快捷键-->
+				<dd><input type="number" value="" accesskey="a"/></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>搜索</dt>
+				<dd><input type="search" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>拖动滑块</dt>
+				<dd><input type="range" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>小时分钟</dt>
+				<dd><input type="time" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>年月日</dt>
+				<dd><input type="date" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>时间</dt>
+				<dd><input type="datetime" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+
+			<dl>
+				<dt>月年</dt>
+				<dd><input type="month" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			<dl>
+				<dt>星期年</dt>
+				<dd><input type="week" value="" /></dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+
+			<dl>
+				<dt></dt>
+				<dd>
+					<input type="submit" value="提交" />
+					<input type="reset" value="重置" />
+					<!--多文件上传-->
+					<input type="file" multiple/>
+				</dd>
+				<dd>* 注册后不可更改</dd>
+			</dl>
+			
+
+		</form>
+	</body>
+</html>

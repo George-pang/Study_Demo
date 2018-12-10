@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .container{
+            width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        textarea{
+            width: 400px;
+            height: 500px;
+            padding: 16px;
+            font-size: 16px;
+            line-height: 1.5em;
+            text-indent: 2em;
+        }
+        #btn{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea name="txtarea" id="txtarea" cols="30" rows="10">36氪传媒的愿景是打造互联网领先新商业媒体。其使命是“让一部分人先看到未来”-为中国科技、创业投资机构和专业人士提供具备全球视眼的全景式科技、创投最前沿的资讯。36氪传媒提供覆盖全球一级市场的宏观数据分析、政策解读、行业预测、投融资分析等资讯，聚焦全球创业公司、挖掘其投资价值。36氪传媒是深度参与科技创新产业链的内容服务商、产业链资源整合者、创新生活方式缔造者。就像有华尔街就有《华尔街日报》一样，有互联网和科技创新就有36氪传媒。</textarea>
+        <input type="button" value="请仔细阅读以上协议(30)" id="btn" disabled/>
+    </div>
+
+
+    <script>
+        var btnObj=document.getElementById("btn");
+        window.onload=function () {
+          var num=30;
+          var timeId=setInterval(function () {
+              num--;
+              btnObj.value="请仔细阅读以上协议("+num+")";
+              if (num<=0){
+                  //清除计时器
+                  clearInterval(timeId);  //清除计时器可以放在设置计时器的回调函数内部
+                  btnObj.value="同意";
+                  btnObj.disabled=false;
+              }
+          },1000)
+        };
+    </script>
+</body>
+</html>

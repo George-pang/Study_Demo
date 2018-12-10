@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr1=[
+        function () {
+            console.log("十一假期快乐！");
+        },
+        function () {
+            console.log("十一假期开心！");
+        },
+        function () {
+            console.log("十一假期如意！");
+        },
+        function () {
+            console.log("十一假期安全！");
+        },
+        function () {
+            console.log("十一假期顺心！");
+        }
+    ];
+
+    //数组中的函数调用--forEach()方法
+    arr1.forEach(function (ele) {
+        ele();
+    });
+
+    function f1() {
+        console.log("111");
+    }
+    console.log(typeof f1);  //函数的数据类型是function
+    console.log(f1 instanceof Object); //true---函数也是对象，所有的函数其实都是Function构造函数的一个实例对象
+
+</script>
+</body>
+</html>

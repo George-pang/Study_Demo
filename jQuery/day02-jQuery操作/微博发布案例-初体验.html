@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布案例--初体验</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        div{
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #cc6600;
+            padding: 20px;
+        }
+        textarea{
+            width: 450px;
+            height: 200px;
+            outline: none; /*去除输入时的蓝色轮廓*/
+            resize: none; /*不允许用户拖拽调整大小*/
+        }
+        ul{
+            padding-left: 80px;
+            width: 430px;
+        }
+        li{
+            line-height: 25px;
+            border-bottom:1px dashed #cccccc;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>微博发布</span>
+        <textarea name="txt" id="txt" cols="30" rows="10"></textarea>
+        <button id="btn1">发布</button>
+        <ul></ul>
+    </div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                //如果文本框内容为空，val()获取对象的内容，trim()去除首尾的空格
+                if($("#txt").val().trim().length==0){
+                    return;//return后面代码就不执行啦
+                }
+                //获取文本框的内容并写入新创建的li标签内，然后插入到ul标签中
+                $("<li></li>").text($("#txt").val()).prependTo($("ul"));
+                //清除输入框的内容
+                $("#txt").val("");
+            });
+
+        });
+    </script>
+</body>
+</html>

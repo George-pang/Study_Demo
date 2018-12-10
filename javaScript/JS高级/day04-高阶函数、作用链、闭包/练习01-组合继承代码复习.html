@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合继承</title>
+</head>
+
+<body>
+    <script>
+        // 原型的作用：数据共享、继承---目的：节省内存空间
+        function Animal(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Animal.prototype.eat = function () {
+            console.log("111");
+        }
+
+        function Dog(name, age, sex) {
+            Animal.call(this, name, age);
+            this.sex = sex;
+        }
+        //改变原型指向
+        Dog.prototype = new Animal();
+        Dog.prototype.play = function () {
+            console.log("打豆豆！");
+        };
+
+        var dog = new Dog("来福", "3", "公");
+        console.log(dog.name, dog.age, dog.sex);
+        dog.eat();
+        dog.play();
+        console.dir(dog);
+    </script>
+</body>
+
+</html>

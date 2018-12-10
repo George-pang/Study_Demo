@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function原型方法--bind()方法的使用</title>
+</head>
+
+<body>
+    <script>
+        //bind（）方法--复制一个函数，并把复制后的函数作为返回值返回
+
+        //一、普通函数bind的使用
+        function f1(x, y) {
+            console.log(this + "====" + (x + y));
+        }
+        //bind的使用--需要接收返回值
+        var ff = f1.bind();
+        ff();
+        console.log("=======传参");
+        var ff2=f1.bind(null,10,20);
+        ff2();
+
+        //二、对象方法bind的使用
+        function Person(name,sex){
+            this.name=name;
+            this.sex=sex;
+        }
+        Person.prototype.eat=function(x,y){
+            console.log(this+"====="+this.name+"----"+(x=y));
+        }
+        
+        function Student(name){
+            this.name=name;
+        }
+
+        console.log("========对象方法的bind使用");
+        var per=new Person("张三","男");
+        var stu=new Student("李四");
+        var f3=per.eat.bind(stu,39,41); //bind()参数中传入了stu对象-改变了this指向，所以this.name输出的是stu对象的name属性值
+        f3();
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+        .top {
+            width: 100%;
+        }
+        .top img{
+            width: 100%;
+        }
+        .nav {
+            margin: 0 auto;
+        }
+        .nav img{
+            width: 100%;
+        }
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="top" id="topPart">
+    <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+<script>
+
+
+    //封装函数--获取页面向上或者向左卷曲出去的距离的值
+    function getScroll() {
+        return {
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft||0,
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        };
+    }
+
+    // 注册滚动事件
+    window.onscroll=function () {
+        var topObj=document.getElementById("topPart");
+        var navObj=document.getElementById("navBar");
+        var mainObj=document.getElementById("mainPart");
+      if (getScroll().top>=topObj.offsetHeight){
+            navObj.className="nav fixed";
+            mainObj.style.marginTop=navObj.offsetHeight+"px";  //填补导航栏固定定位脱标后的高度塌陷
+      }else{            //复原
+            navObj.className="nav";
+            mainObj.style.marginTop="10px";
+      }
+    };
+
+
+
+
+</script>
+<script>
+
+
+    //获取浏览器向上卷曲出去的距离的值,向左卷曲出去的距离
+    //  function getScroll() {
+    //    var obj={};
+    //    var top1=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+    //    var left=window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft;
+    //    obj.left=left;
+    //    obj.top=top1;
+    //    return obj;
+    //
+    //  }
+
+    //  function getScroll() {
+    //    var obj={};
+    //    obj.left=window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft;
+    //    obj.top=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+    //    return obj;
+    //
+    //  }
+
+
+    //  function getScroll() {
+    //    var obj = {
+    //      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+    //      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+    //  };
+    //    return obj;
+    //
+    //  }
+
+
+
+    //浏览器的滚动事件
+    //  window.onscroll=function () {
+    //console.log(getScroll().top);
+    //  };
+
+    //向上卷曲出去的距离
+
+</script>
+
+</body>
+</html>

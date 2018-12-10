@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习-计算字符串的字节长度</title>
+</head>
+<body>
+    <script>
+        function getStringlen(str){
+            var sum=0;
+            for(var i=0;i<str.length;i++){
+                if(str.charCodeAt(i)<=255){ //<=255时为英文
+                    sum++;
+                }else{ //则为中文字符，占两个字节
+                    sum +=2;
+                }
+            }
+            return sum;
+        }    
+        var str="hello 老张";
+        console.log(getStringlen(str));
+    </script>
+</body>
+</html>

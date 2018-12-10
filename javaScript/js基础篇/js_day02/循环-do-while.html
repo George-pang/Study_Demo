@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环结构--do-while语句</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//用do-while语句输出10次 "hello world!"
+			var i=0;
+			//do-while循环不管循环条件是否成立，循环体内的代码都至少执行了一次
+			do{
+				console.log("Hello World!");
+				i++;
+			}while(i<10);
+
+			//
+			var result;
+			do{
+				result=prompt("你觉得我帅不帅？y/n");
+			}while(result!="y");
+			console.log("你真有眼光！");
+
+		</script>
+	</body>
+</html>

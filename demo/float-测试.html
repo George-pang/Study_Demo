@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{margin: 0;padding: 0;}
+			.main{
+				background:  #CCCCCC;
+				height: 800px;
+			}
+			.main-top{
+				width: 300px;
+				background: #F0E68C;
+				height: 200px;
+			}
+			.main-middle{  /*上一个块右侧有空间，但没有向上浮动。因为上一块没有脱离文档流中*/
+				width: 300px;
+				background: #0000FF;
+				height: 200px;
+				float:left;
+			}
+			.main-foot{
+				width: 300px;
+				background: #A0522D;
+				height: 200px;
+				float:left;
+			}
+			.main-footer{
+				width: 100px;
+				background: #FF0000;
+				height: 200px;
+				float:left;
+				clear:both/*清除了左右浮动，否则会跟在上一个块的右边*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="main-top"></div>
+			<div class="main-middle"></div>
+			<div class="main-foot"></div>	
+			<div class="main-footer">清除左右浮动测试</div>
+		</div>
+	</body>
+</html>

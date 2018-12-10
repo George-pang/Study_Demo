@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小米图片案例，实现悬浮边框半透明效果</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width:632px ;
+				height: 340px;
+				position: relative;
+				border-radius: 15px;
+				overflow: hidden;
+			}
+			div:hover::after{
+				content: ""; /*div内部元素内容后面插入个行内元素,内容为空*/
+				position: absolute; /*子绝父相*/
+				width: 100%; /*上句代码隐性改变为内联块,所以可以设置宽度*/
+				height: 100%;
+				top: 0;
+				left: 0;
+				border:20px solid rgba(255,255,255,.5);
+				box-sizing: border-box; /*CSS3盒模型--宽度内减模式*/
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="img/mi.jpg" alt="小米5X" />
+		</div>
+	</body>
+</html>

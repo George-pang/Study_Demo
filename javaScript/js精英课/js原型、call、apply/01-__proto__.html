@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Person.prototype.name="zhangsan";
+        function Person(){
+            /*new时的隐式操作： 
+            var this={
+                __proto__=Person.prototype;     ---实例对象的__proto__属性指向构造函数的prototype的原理--对象间传递的是引用
+            } */
+        }
+        var per=new Person();
+        var obj=new Object();
+        obj.name="sunny";
+        per.__proto__=obj;
+        console.log(per.name);  //sunny---改变了实例对象的原型指向
+    </script>
+</body>
+</html>

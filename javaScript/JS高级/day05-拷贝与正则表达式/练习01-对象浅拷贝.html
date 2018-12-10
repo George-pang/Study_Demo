@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象浅拷贝
+        var obj1={
+            name:"张三",
+            age:28,
+            cars:["奔驰","宝马","奥迪"]
+        };    
+
+        //封装函数--拷贝对象a的属性，并赋给b
+        function extend(a,b){
+            for(var key in a){
+                b[key]=a[key];
+            }
+            // return b;
+        }
+        var  obj2={};
+        extend(obj1,obj2);
+        console.dir(obj2);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>这是一个div</div>
+    <div>这是一个div</div>
+    <div>这是一个div</div>
+    <p>这是一个p</p>
+    <p>这是一个p</p>
+    <p>这是一个p</p>
+
+    <script>
+        // var getTag=10;
+        // var dvObjs=20;
+        // var pObjs=30;
+        // // 封装函数
+        // function getTag(tagName) {
+        //     return document.getElementsByTagName(tagName);
+        // }
+
+        // var dvObjs = getTag("div");
+        // var pObjs = getTag("p");
+
+        // //原生js遍历元素---利用for循环
+        // for (var i = 0; i < dvObjs.length; i++) {
+        //     dvObjs[i].style.border = "2px solid pink";
+        // }
+
+        // for (var i = 0; i < pObjs.length; i++) {
+        //     pObjs[i].style.border = "2px solid pink";
+        // }
+
+        // console.log(getTag);
+        // console.log(dvObjs);
+        // console.log(pObjs);
+
+
+        var getTag = 10;
+        var dvObjs = 20;
+        var pObjs = 30;
+
+        //沙箱---沙箱内的同名变量不再造成影响
+        (function () {
+            // 封装函数
+            function getTag(tagName) {
+                return document.getElementsByTagName(tagName);
+            }
+
+            // console.log(dvObjs);    //沙箱内可以访问外部全局变量
+            var dvObjs = getTag("div");
+            var pObjs = getTag("p");
+
+            //原生js遍历元素---利用for循环
+            for (var i = 0; i < dvObjs.length; i++) {
+                dvObjs[i].style.border = "2px solid pink";
+            }
+
+            for (var i = 0; i < pObjs.length; i++) {
+                pObjs[i].style.border = "2px solid pink";
+            }
+        }());
+
+        console.log(getTag);
+        console.log(dvObjs);
+        console.log(pObjs);
+    </script>
+</body>
+
+</html>

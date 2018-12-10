@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的执行顺序</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="创建p元素" id="btn">
+    <div>
+        <p>111</p>
+        <p>222</p>
+        <p>333</p>
+        <p>444</p>
+    </div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+         //入口函数
+         $(function () {
+             //当点击元素p时，事件的执行顺序是？
+             $("p").on("click",function () {
+                 alert("我是p自己的事件！");        //1
+             })
+             $("div").on("click",function () {
+                 alert("我是div自己的事件！");      //3
+             })
+             $("div").on("click","p",function () {
+                 alert("我是给div注册的委托事件")    //2
+             })
+             $("#btn").on("click",function () {
+                 $("<p>这是一个新的p元素</p>").appendTo($("div"));
+             })
+         });
+    </script>
+</body>
+</html>

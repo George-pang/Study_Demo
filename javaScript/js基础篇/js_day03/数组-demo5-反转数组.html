@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组-反转数组</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//案例：反转数组 （与倒序输出数组元素不同，反转改变了元素在数组中的位置）
+			//法1；借助第三方变量，元素互换位置
+			var myArr=[10,20,30,40,50];
+			for (var i=0;i<myArr.length/2;i++) {//互换次数
+				var temp=myArr[i];//变量互换（第三方）
+				myArr[i]=myArr[myArr.length-1-i];//如：第一个与最后一个互换位置
+				myArr[myArr.length-1-i]=temp;
+			}
+			console.log(myArr);
+			
+			//法2：Array对象 reverse()方法
+			var myArr2=[11,21,32,44,53,65,78];
+			    myArr2.reverse();
+			console.log(myArr2);
+		</script>
+	</body>
+</html>

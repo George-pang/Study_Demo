@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪元素结合字体图标使用</title>
+		<style type="text/css">
+			@font-face {
+				font-family: 'icomoon';
+				src: url('fonts/icomoon.eot?92md5e');
+				src: url('fonts/icomoon.eot?92md5e#iefix') format('embedded-opentype'), 
+				url('fonts/icomoon.ttf?92md5e') format('truetype'), 
+				url('fonts/icomoon.woff?92md5e') format('woff'), 
+				url('fonts/icomoon.svg?92md5e#icomoon') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+			div{
+				width: 200px;
+				height: 30px;
+				margin: 50px auto;
+				border: 1px solid #ccc;
+				position: relative;
+				font-family: icomoon;
+			}
+			div::before{ /*是一个能插入元素的选择器*/
+				content: "\ea53";
+				position: absolute;
+				top: 5px;
+				right: 10px;
+			}
+			div:hover{
+				border: 1px solid red;
+				/*color: red;*/
+			}
+			div:hover::before{  /*上面：：before已插入伪元素,所以这里是伪元素悬浮状态时*/
+				color: red;
+				transform: rotate(180deg); /*旋转*/
+			}
+			p{
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div >
+			
+		</div>
+		<p color="red">这是测试p标签内字体颜色的小测试</p> 
+		测试结果：p标签没有color属性，但有style属性，有style.prop.color特性
+	</body>
+</html>

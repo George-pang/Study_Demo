@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令v-cloak</title>
+    <style type="text/css">
+        [v-cloak]{   /*作为属性选择器起作用*/
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <p v-cloak>{{msg}}</p>      <!--数据绑定&#45;&#45;插值表达式&#45;&#45;只能解释为普通文本-->
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({           //新建Vue实例，并传入一个选项对象
+            el: "#app",
+            data: {                 //挂载数据
+                msg: "利用v-cloak解决插值表达式闪烁问题"        //网速过慢时，js引入文件未完成，插值表达式的数据绑定有个过渡闪烁的过程
+            }
+        });
+    </script>
+</body>
+</html>

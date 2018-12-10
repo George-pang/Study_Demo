@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web存储之sessionStorage初体验</title>
+    <style>
+        #inputTxt{
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="inputTxt">
+    <br />
+    <input type="button" value="设置数据" id="setBtn">
+    <input type="button" value="获取数据" id="getBtn">
+    <input type="button" value="移除数据" id="removeBtn">
+    <input type="button" value="清空数据" id="clearBtn">
+    <script>
+        var setBtn = document.getElementById("setBtn");
+        var getBtn = document.getElementById("getBtn");
+        var removeBtn = document.getElementById("removeBtn");
+        var clearBtn = document.getElementById("clearBtn");
+
+        // 找到对象，注册简单事件，添加事件处理函数
+
+        // 存储数据项
+        setBtn.onclick = function () {
+            var value_1 = document.getElementById("inputTxt").value;
+            //    window.sessionStorage.setItem("name",value_1);
+            sessionStorage.setItem("name", value_1); //window可省略
+            window.sessionStorage.setItem("age", 18);
+        }
+
+        //获取数据项的数据
+        getBtn.onclick = function () {
+            alert(window.sessionStorage.getItem("name"));
+            alert(window.localStorage.getItem("userage"));
+        };
+
+        //移除数据
+        removeBtn.onclick = function () {
+            window.sessionStorage.removeItem("name");
+        };
+
+        //清空数据
+        clearBtn.onclick = function () {
+            window.sessionStorage.clear();
+        };
+
+        /* 
+            与cookies的区别：cookies的最大存储空间只有4k，且每次都需要后台服务器请求
+
+            本地web存储Storage的特性： 1、设置、读取方便、页面刷新不丢失数据
+                                     2、容量较大，sessionStorage约5M、localStorage约20M
+                                     3、只能存储字符串，可以将对象JSON.stringify() 编码后存储
+
+
+            sessionStorage的特性：最大存储空间5M，生命周期为页面关闭(页面关闭即清除数据)，同一页面下可以共享数据
+        */
+    </script>
+</body>
+
+</html>

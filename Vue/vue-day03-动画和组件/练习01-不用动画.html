@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="toggle" @click="flag=!flag"/>
+        <h3 v-show="flag">不用动画的显示隐藏</h3>
+    </div>
+
+    <script>
+        //初始化Vue实例
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                flag:true,
+            }
+        });
+    </script>
+</body>
+</html>

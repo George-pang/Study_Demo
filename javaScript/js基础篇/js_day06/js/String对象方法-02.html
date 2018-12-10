@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String对象方法-02</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//indexOf()、lastIndexOf()、replace()方法
+		//.indexOf(要找的字符串,从某个位置开始的索引);返回的是这个字符串的索引值,没找到则返回-1
+		//.lastIndexOf(要找的字符串);从后向前找,但是索引仍然是从左向右的方式,找不到则返回-1
+		//.replace("原来的字符串","新的字符串");用来替换字符串的
+
+			
+			var str1="Hello World! HAHAHAHA";
+			console.log(str1.indexOf("A"));//14，返回字符首次出现的位置索引，空格也算字符串
+			console.log(str1.lastIndexOf("A"));//20,从左往右开始找，但是索引顺序依旧是从左到右的
+			
+			var str2="逗比陶真是一个心机Boy！";
+			if(str2.indexOf("真")!=-1){//判断"真"字符串是否存在
+			   console.log(str2.replace("真","就"));//字符串替代
+			}else{
+				console.log("不存在的")
+			}
+
+		</script>
+	</body>
+</html>

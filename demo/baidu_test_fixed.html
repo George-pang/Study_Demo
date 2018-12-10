@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度一下，你就知道</title>
+		<style>
+
+			 .n_r{float:right;}
+			 ul li{
+			 	float: left;
+			 	list-style-type:none; /*去除小圆点*/
+			 	margin-right: 10px;}
+			 ul li a{
+			 	color: #333;
+
+			 }
+			 .more_products{
+			 	background-color: #3385FF;
+			 }
+			 
+			 .more_products a{
+			 	color: #F8F8FF ;
+			 	padding: 5px;
+			 }
+			 
+			 
+			 .search_img{
+			 	clear: both;
+			    text-align: center;
+			 }
+			
+			 .search_img img{
+			 	width:300px;
+			 	
+			 }
+			 .search_form{
+			 	width:500px;
+			 	margin:0 auto;
+			 	min-height: 100px;
+			 }
+
+			 #keyword{
+			 	width:78%;
+			 	padding: 0;
+		        margin: 0;
+			 	height: 36px;
+			 	background: #fff;
+                margin-right: 0;
+                border-right-width: 0;
+                border-color: #4791ff;
+			 }
+			 #submit{
+			 	width: 20%;
+			 	height: 40px;
+			 	border:0;
+			 	padding: 0;
+			 	margin-left: -6px;
+			 	background-color: #3385FF;
+			 	color: #fff;
+			 	font-size: 15px;
+                letter-spacing: 1px;
+			 }
+			 
+			 
+			 .main{
+			 	display: block;
+			 	border: 1px #EEEEEE solid;
+			 	margin:30px auto;
+			 	width: 800px;
+			 	height: 500px;
+			 	
+			 }
+			 .main_nav{
+			 	border: 1px #EEEEEE solid;
+			 	width: 100%;
+			 	height: 50px;
+			 	line-height:30px;
+			 }
+			 .main_nav ul{
+			 	float:left;
+			 	margin: 10px 5px 10px 20px;
+			 	padding: 0;
+			 	
+			 }
+			 #selected{
+			    background-color: #9a9da2 !important;
+			 	padding:0 10px;
+			 	color:#FFFFFF;
+			 	line-height: 30px;
+			 	font-weight: bold;
+			 }
+			 
+			 
+			 .bottom_left{
+			 	width:65%;
+			 	float:left;
+			 	height: 450px;
+			 	
+			 }
+            .demo_line_02 {  /*与下个选择器样式组合展现分割线效果，代码来自网络*/
+            	height: 1px;
+            	border-top: 1px solid #ddd;
+            	text-align: center;
+            }
+            
+            .demo_line_02 span {
+                position: relative;
+            	top: -8px;
+            	font-size: 14px;
+            	color: rgba(0, 0, 0, .4);
+            	background: #fff;
+            	padding: 0 20px;
+            }
+            .bottom_left div{
+            	padding-left: 20px;
+            }
+            .bottom_left a{
+            	font-size: 18px;
+            	font-family: arial,
+            	'Microsoft Yahei';
+            	color: #666;
+            	font-weight: bold;
+            	line-height: 40px;
+            	text-decoration: none;
+            }
+            .bottom_left img{
+            	width: 30%;
+            }
+            .bottom_left span{
+            	color: rgba(0, 0, 0, 0.4);
+            	height: 15px;
+            	line-height: 15px;
+            	font-size: 13px;
+            }
+            
+            
+			 .bottom_right{
+			 	width:20%;
+                position: fixed;
+                top:28%;
+                right:23%;
+			 	height: 450px;
+			 }
+			 .hot_refresh{
+			 	height: 40px;
+
+			 }
+			 .bottom_right p{
+			 	float: left;
+			 	height: 20px;
+			 	width: 94px;
+			 	margin-bottom: 0;
+			 	padding-top: 3px;
+			 	font-size: 14px;
+			 	font-weight: bold;
+			 }
+			 .bottom_right span{
+			    float: right;
+			 	width: 94px;
+			 	height: 20px;
+			 	text-align: center;
+			 	padding-top: 3px;
+			 	margin-top: 14px;
+			 	font-size: 14px;
+			 }
+
+			 .bottom_right ul{
+			 	width:110px;
+			 	line-height: 1.5em;
+			 	list-style:none;
+			 	margin: 5px;
+			 	padding-left: 5px;
+			 }
+			 .bottom_right li{
+			 	font-size: 12px;
+			 	width:105px;
+			 	margin-right: 0;
+			 }
+             .hot_left{
+             	float: left; /*非ul标签选择器，故不是所有的ul标签都浮动，所以要重加*/
+             }
+			 .hot_right{
+			 	float: right;
+			 }
+			 .bottom_right img{
+			 	clear: both;
+			 	width: 90%;
+			 	margin-top: 30px;
+			 	text-align: center;
+			 }
+			 
+			 
+			 .guanzhu_img{
+			 	clear: both;
+			    text-align: center;
+			 }
+			 .guanzhu_img img{
+			 	width: 60px;
+			 	height: 60px;
+			 }
+			 .guanzhu_img p {
+			 	padding: 0;
+			 	margin: 0;
+                line-height: 23px;
+                font: 12px arial;
+                color: #666;
+                font-weight: 700;
+			 }
+			 
+			 p{
+			 	padding: 0;
+			 	margin: 0;
+			 	display: block; /*	此元素将显示为块级元素，此元素前后会带有换行符*/
+			 	text-align: center;
+			 	-webkit-margin-before: 1em; /*摘自百度，这是CSS3.0的对于文章段P容器的定义方法语句！*/
+                -webkit-margin-after: 1em;/*Webkit内核浏览器才支持*/
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+			 }
+			 p a{
+			 	color: #999999;
+			 	margin-left:25px ;
+			 }
+			 #set_hpage{
+			 	margin-left: 0;
+			 }
+			 #footer{
+			 	color: #999999;
+			 }
+		</style>
+	</head>
+	<body>
+		<ul class="n_r">
+			<li><a href="http://news.baidu.com/">新闻</a></li>
+			<li><a href="https://www.hao123.com/">Hao123</a></li>
+			<li><a href="https://map.baidu.com/">地图</a></li>
+			<li><a href="http://v.baidu.com/">视频</a></li>
+			<li><a href="http://tieba.baidu.com/">贴吧</a></li>
+			<li><a href="http://xueshu.baidu.com/">学术</a></li>
+			<li><a href="https://passport.baidu.com/v2/?login&tpl=mn&u=http%3A%2F%2Fwww.baidu.com%2F&sms=5">登录</a></li>
+			<li><a href="http://www.baidu.com/gaoji/preferences.html">设置</a></li>
+			<li class="more_products"><a href="">更多产品</a></li>
+		</ul>
+		<div class="search_img">
+			<img src="img/bd_logo1.png"/>
+		</div>
+		<div class="search_form">
+			<form >
+				<input id="keyword"  type="text" name="keyword"/>
+				<input id="submit" type="submit" value="百度一下"/>
+			</form>
+		</div>
+		<div class="main">
+			<div class="main_nav">
+				<ul>
+					<li>我的关注</li>
+					<li id="selected">推荐</li>
+					<li>导航</li>
+				</ul>
+			</div>
+			<div class="main_bottom">
+				<div class="bottom_left">
+					<p class="demo_line_02"><span>以下信息根据您的兴趣推荐</span></p>
+					<div>
+						<a href="https://www.baidu.com/">冯骥才：一个大国，不能靠糟蹋文化来赚钱！</a>
+						<br />
+					    <img src="img/demo_1.jpg" />
+					    <img src="img/demo_2.jpg" />
+					    <img src="img/demo_3.jpg" />
+					    <br />
+					    <span>搜狐新闻&nbsp;&nbsp;06-11&nbsp;3:33</span>
+					</div>
+					<div>
+						<a href="https://www.baidu.com/">世事 | 毕业季，别忘了这个</a>
+						<br />
+					    <img src="img/demo_4.jpg" />
+					    <img src="img/demo_5.jpg" />
+					    <img src="img/demo_6.jpg" />
+					    <br />
+					    <span>凤凰新闻&nbsp;&nbsp;06-11&nbsp;13:28</span>
+					</div>
+				</div>
+				<div class="bottom_right">
+					<div class="hot_refresh">
+					   <p>实时热点</p>
+					   <span>换一换</span>
+					</div>
+					<div>
+					   <ul class="hot_left">
+						  <li>二孩满月随份子</li>
+						  <li>天安门将启动修缮</li>
+						  <li>广电起诉广东电信</li>
+						  <li>赵本山女儿恋情</li>
+						  <li>杜兰特35岁退役</li>
+					   </ul>
+					   
+				        <ul class="hot_right">
+                          <li>曝A妹订婚</li>
+                          <li>哈尔滨降暴雨</li>
+                          <li>唐嫣入驻蜡像馆</li>
+                          <li>影帝大骂特朗普</li>
+                          <li>选A或B均给6分</li>
+                        </ul>
+                   </div>
+					<img src="img/demo_7.jpg"/>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="guanzhu_img">
+			<img src="img/bd_qrcode.png" />
+			<p>手机百度</p>
+		</div>
+        
+        <p> <a id="set_hpage" href="https://www.baidu.com/cache/sethelp/help.html">把百度设为首页</a> 
+        	<a href="http://home.baidu.com/">关于百度</a>
+        	<a href="http://ir.baidu.com/">About&nbsp;&nbsp;Baidu</a>
+        	<a href="http://e.baidu.com/?refer=888">百度推广</a>
+        </p>
+        <p id="footer">
+        	©2018&nbsp;Baidu&nbsp;
+        	<a>使用百度前必读</a>
+        	<a>意见反馈</a>
+        	&nbsp;京ICP证030173号&nbsp;
+        	<a>京公网安备11000002000001号</a>
+        </p>
+		   
+	</body>
+</html>

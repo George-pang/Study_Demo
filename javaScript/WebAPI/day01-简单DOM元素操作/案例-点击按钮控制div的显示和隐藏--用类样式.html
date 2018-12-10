@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例--点击按钮用类样式来显示/隐藏div</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #dv{
+            width: 300px;
+            height: 300px;
+            border: 10px solid rgb(204, 204, 204);
+            background-color: pink;
+        }
+        .ds{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="隐藏" id="btn"/>
+    <div id="dv"></div>
+    <script>
+        function my$(id) {
+             return document.getElementById(id);
+        }
+        my$("btn").onclick=function () {
+            if (my$("dv").className!="ds"){
+                my$("dv").className="ds";
+                this.value="显示";
+            }else{
+                my$("dv").className="";
+                this.value="隐藏";
+            }
+        }
+    </script>
+</body>
+</html>

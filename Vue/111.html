@@ -1,0 +1,85 @@
+<!--实现页面主体功能的vue组件-->
+<template>
+    <div class="container" >
+        <div class="hy_text">欢迎来到笃天科技！</div>
+        <div class="login_register">
+            <div class="login"><a href="/pages/my/main"><div class="login-btn">登录</div></a></div>
+            <div class="register"><a href="/pages/work/main"><div class="login-btn">注册</div></a></div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    export default {
+        data () {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+
+        created () {  //data和methods已经初始化完毕时
+
+        }
+    }
+</script>
+
+<style scoped>
+    .container{
+        /*background-image: "url("/static/bg.jpg)";*/
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 0 30px;
+        height: 100vh;
+        justify-content: center;
+    }
+    .hy_text{
+        margin-top: 380px;
+        text-align: left;
+        align-self: flex-start;
+    }
+    .login_register{
+        margin-top: 50px;
+        width: 100%;
+        height: 45px;
+        border-radius: 22px;
+        border: solid 1px #6482fa;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: flex;
+    }
+    .login,.register{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login{
+        background-color: #6482fa;
+        color: #fff;
+        font-size: 18px;
+    }
+    .login a{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .login-btn{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .register{
+        font-size: 18px;
+        letter-spacing: 0px;
+        color: #6482fa;
+    }
+
+</style>

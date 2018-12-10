@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿腾讯滚动固定导航案例</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            vertical-align: top;
+        }
+        .top img,.nav img{
+            width: 100%;
+        }
+        .main{
+            margin: 10px auto 0;
+            width: 1190px;
+        }
+        .main img{
+            width: 100%;
+        }
+        .fixed{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <img src="img/top.png" alt="">
+    </div>
+    <div class="nav">
+        <img src="img/nav.png" alt="">
+    </div>
+    <div class="main">
+        <img src="img/main.png" alt="">
+    </div>
+
+    <script src="../../js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $(window).scroll(function () { //注册scroll事件
+                //判断卷去的高度超过topPart的高度
+                //1. 让navBar有固定定位
+                //2. 让mainPart有一个marginTop
+                if($(this).scrollTop()>=$(".top").height()){
+                    // console.log($(".top").height());
+                    $(".nav").addClass("fixed");
+                    $(".main").css("marginTop",$(".nav").height()+10);// css方法第2个参数也可以是数字
+                }else{
+                    $(".nav").removeClass("fixed");
+                    $(".main").css("marginTop","10px");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

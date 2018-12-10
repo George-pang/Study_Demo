@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery.color.js的使用--练习</title>
+    <!--jQuery不支持颜色的渐变，所以得引入插件-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jquery.color.js"></script>  <!--依赖于jQuery，所以得先引jQuery-->
+    <script>
+        $(function () {
+            // 颜色最好用16进制，颜色名部分可能无法识别，此时会变白色
+            $("div").animate({backgroundColor:"red"},3000,"linear",function () {
+                alert("hahaha");
+            })
+        });
+    </script>
+</body>
+</html>

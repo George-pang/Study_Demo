@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>函数声明和函数表达式的区别</title>
+</head>
+<body>
+<script>
+    //函数声明
+    if (true){
+        function f1() {
+            console.log("哈哈哈，我好帅！");
+        }
+    }else{
+        function f1() {
+            console.log("哈哈哈，我就是那么帅！");
+        }
+    }
+    //函数调用
+    f1();
+
+    //函数表达式
+    var ff;
+    if (true){
+        ff=function () {
+            console.log("哈哈哈，我好帅！");
+        }
+    }else{
+        ff=function () {
+            console.log("我就是那么帅！");
+        }
+    }
+    ff();
+
+    //函数声明方式在IE8中会执行else下的代码
+</script>
+</body>
+</html>

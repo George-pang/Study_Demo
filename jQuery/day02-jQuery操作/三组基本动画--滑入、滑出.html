@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三组基本动画--滑入滑出</title>
+    <style>
+        div{
+            width: 400px;
+            height:400px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="滑入" id="btn1">
+    <input type="button" value="滑出" id="btn2">
+    <input type="button" value="切换" id="btn3">
+    <div></div>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        //参数用法与show、hide方法一致，有默认值normal
+        $(function () {
+            $("input").eq(0).click(function () {
+                $("div").slideDown();//默认normal：400ms
+            });
+            $("input").eq(1).click(function () {
+                $("div").slideUp();//默认normal：400ms
+            });
+            $("input").eq(2).click(function () {
+                $("div").slideToggle();//默认normal：400ms
+            });
+        });
+    </script>
+</body>
+</html>

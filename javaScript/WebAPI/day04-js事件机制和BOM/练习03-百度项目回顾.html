@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 400px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        #container #txt {
+            float: left;
+            width: 350px;
+            height: 30px;
+            border: 1px solid #ccc;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        #container #btn {
+            float: left;
+            width: 50px;
+            height: 30px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background-color: cornflowerblue;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <input type="text" value="" placeholder="请输入搜索内容" style="color: #999;" id="txt"/>
+    <input type="button" value="搜索" id="btn"/>
+</div>
+
+
+<script>
+    //为输入框注册键盘抬起事件
+    var keyWords = ["小杨才是最纯洁的", "小杨才是最帅的", "小段是最猥琐的", "小超是最龌龊的", "传智播客是一个培训机构", "传说在传智有个很帅很纯洁的小杨", "苹果好吃", "苹果此次召回还是没有中国"];
+    var divObj = document.getElementById("container");
+    var txtObj = document.getElementById("txt");
+    var btnObj = document.getElementById("btn")
+
+    txtObj.onkeyup=function () {
+      if(document.getElementById("dv")){
+          divObj.removeChild(document.getElementById("dv"));
+      }
+      var text=this.value;
+      var tempArr=[];
+      for(var i=0;i<keyWords.length;i++){
+          if (keyWords[i].indexOf(text)==0){  //如果首部字符串匹配text，则存入临时数组中去
+              tempArr[tempArr.length]=keyWords[i];
+          }
+      }
+
+      if(tempArr.length==0||text.length==0){
+          divObj.removeChild(document.getElementById("dv"));
+          return;
+      }
+
+      var dvObj=document.createElement("div");
+      dvObj.id="dv";
+      dvObj.style.width="350px";
+      dvObj.style.border="1px solid green";
+      divObj.style.marginTop="30px";
+      divObj.appendChild(dvObj);
+      var ulObj=document.createElement("ul");
+      ulObj.style.listStyle="none";
+      dvObj.appendChild(ulObj);
+      for(var j=0;j<tempArr.length;j++){
+          var liObj=document.createElement("li");
+          liObj.style.marginTop="5px";
+          liObj.style.marginLeft="5px";
+          liObj.innerHTML=tempArr[j];
+          ulObj.appendChild(liObj);
+      }
+
+    };
+
+
+
+</script>
+
+</body>
+</html>

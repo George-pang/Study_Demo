@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度一下，你就知道</title>
+		<style>
+       table,th,td{
+       	border: 1px red solid;
+       	border-collapse: collapse;/*边框合并*/
+       	border-spacing: 5px;
+       }
+       table{
+       	background-color: gray;
+       }
+       .huanse{
+       	background-color: yellow;/*隔行换色*/
+       }
+       th{
+       	width: 50px;
+       }
+       td{
+       	padding: 5px;
+       	text-align: center;
+       }
+       
+       th+td{
+       	background-color: red;
+       	font-weight: bold;
+       }
+       th+th+th:hover{
+       	background-color: blue;
+       }
+		</style>
+	</head>
+	<body>
+     <table>
+     	<caption>这是一个测试表格</caption>
+     	<tbody>
+     		<tr class="huanse"><th>序号</th><th>学号</th><th>姓名</th><th>性别</th></tr>
+     		<tr><td>01</td><td>001</td><td>张三</td><td>男</td></tr>
+     		<tr class="huanse"><td>02</td><td>002</td><td>李四</td><td>女</td></tr>
+     		<tr><td>03</td><td>003</td><td>王五</td><td>男</td></tr>
+     		<tr><th>总计</th><td colspan="3">二男一女</td></tr>
+     	</tbody>
+     </table>
+		   
+	</body>
+</html>
+

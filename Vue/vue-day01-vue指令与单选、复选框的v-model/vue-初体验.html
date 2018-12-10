@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue！</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}    <!--数据绑定-插值表达式（双大括号） 方式-->   <!--双大括号会将数据解释为普通文本，而非 HTML 代码-->
+    </div>
+
+    <script>
+        var app=new Vue({     //构造函数方法创建一个Vue对象实例，并传入一个(配置)选项对象
+            el: "#app",      //el,不是e1--选择器找元素--要控制的区域
+            data: {           //存储要用到的数据，是个对象      this.变量名
+                message: "Hello Vue!"
+            },
+            methods:{        //存放定义的方法，也是个对象       this.方法名
+
+            }
+        })
+        app.message="This is my first Vue demo!";
+    </script>
+
+    <!--<div id="app">-->
+        <!--{{ message }}-->
+    <!--</div>-->
+    <!--<script>-->
+        <!--var app = new Vue({-->
+            <!--el: '#app',-->
+            <!--data: {-->
+                <!--message: 'Hello Vue!'-->
+            <!--}-->
+        <!--})-->
+    <!--</script>-->
+</body>
+</html>

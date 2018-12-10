@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<input type="button" id="btn" value="显示效果"/>
+<script>
+    /*
+*
+* 总结绑定事件的区别:
+* addEventListener();
+* attachEvent()
+*
+* 相同点: 都可以为元素绑定事件
+* 不同点:
+* 1.方法名不一样
+* 2.参数个数不一样addEventListener三个参数,attachEvent两个参数
+* 3.addEventListener 谷歌,火狐,IE11支持,IE8不支持
+*   attachEvent 谷歌火狐不支持,IE11不支持,IE8支持
+* 4.this不同,addEventListener 中的this是当前绑定事件的对象
+*   attachEvent中的this是window
+* 5.addEventListener中事件的类型(事件的名字)没有on
+*  attachEvent中的事件的类型(事件的名字)有on
+*
+*  现在遇到的逆境,都是以后成长的阶梯
+*
+*
+  //为元素绑定事件(DOM):一种,但是不兼容,有两种
+  //1 对象.addEventListener("事件类型",事件处理函数,false);--谷歌和火狐支持,IE8不支持
+  //2 对象.attachEvent("有on的事件类型",事件处理函数)--谷歌不支持,火狐不支持,IE8支持
+
+  //为按钮绑定点击事件
+  //参数1:事件的类型---事件的名字,没有on
+  //参数2:事件处理函数---函数(命名函数,匿名函数)
+  //参数3:布尔类型,目前就写false-----没有为什么,不解释,明天说
+
+
+  //参数1:事件类型---事件名字，有on
+  //参数2:事件处理函数---函数(命名函数,匿名函数)
+
+//  my$("btn").attachEvent("onclick",function () {
+//    console.log("小杨好帅哦1");
+//  });
+//
+//  my$("btn").attachEvent("onclick",function () {
+//    console.log("小杨好帅哦2");
+//  });
+//
+//  my$("btn").attachEvent("onclick",function () {
+//    console.log("小杨好帅哦3");
+//  });
+
+
+
+*
+*
+*
+*
+* */
+  //为同一个元素绑定多个相同的事件--
+  function my$(id){
+	  return document.getElementById(id);
+  }
+  
+ my$("btn").addEventListener("click",function () {
+   console.log("小苏猥琐啊");
+ },false);
+ my$("btn").addEventListener("click",function () {
+   console.log("小苏龌龊啊");
+ },false);
+ my$("btn").addEventListener("click",function () {
+   console.log("小苏邪恶啊");
+ },false);
+ my$("btn").addEventListener("click",function () {
+   console.log("小苏下流啊");
+ },false);
+ 
+ 
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用钩子函数模拟小球入场半场动画</title>
+    <script src="vue.js"></script>
+    <style type="text/css">
+        #ball {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="快到碗里来" @click="flag=!flag"/>
+    <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter">
+        <div id="ball" v-show="flag"></div>
+    </transition>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            flag: false,
+        },
+        methods: {
+            //入场动画开始时的状态--第一个参数为el，执行动画的那个元素，是个js DOM对象
+            beforeEnter: function (el) {
+                el.style.transform = "translate(0)";
+            },
+            //入场动画结束时的状态
+            enter: function (el, done) {
+                el.offsetWidth; //要想过渡起效果，这句代码得加上--可以是width，也可以是height、left、top
+                el.style.transform = "translate(150px,450px)";
+                //过渡时间
+                el.style.transition = "all 1s ease";
+                // 这里的 done， 其实就是 afterEnter 这个函数，也就是说：done 是 afterEnter 函数的引用
+                done();//立即执行aterEnter函数
+            },
+            afterEnter: function (el) {
+                //动画完成之后，会调用aterEnter函数
+                console.log("222");
+                this.flag = !this.flag; //获取data中的数据得加this--vue实例
+            },
+        }
+    });
+</script>
+</body>
+</html>

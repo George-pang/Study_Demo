@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>求100-200之间所有数的累加值，跳过个位数为3的数字（与10取余值为3）</title>
+	</head>
+	<body>
+			<script>
+				var sum=0;
+				var sum1=0;
+				for(var i=100;i<=200;i++){
+					if(i%10==3){
+						continue;
+					}
+					sum +=i;
+				}
+				console.log(sum);
+				
+				var i=100;
+				while(i<=200){
+					if(i%10==3){
+						i++;
+						continue;
+					}
+					sum1 +=i;
+					i++; //while循环计数器不能少
+				}
+				console.log(sum1);
+			</script>
+	</body>
+</html>

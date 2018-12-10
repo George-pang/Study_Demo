@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击按钮用类来设置div的样式</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .dv{
+            width: 300px;
+            height: 300px;
+            border: 10px solid rgb(204, 204, 204);
+            background-color: pink;
+        }
+        .dd{
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="设置样式" id="btn"/>
+<div id="dv" class="dd">1111</div>
+<script>
+    function my$(id) {
+        return document.getElementById(id);
+    }
+    my$("btn").onclick=function () {
+        // my$("dv").style.width="300px";
+        // my$("dv").style.height="300px";
+        // my$("dv").style.border="10px solid #ccc";
+        // my$("dv").style.backgroundColor="pink";
+
+        //优化，避免多次获取同一对象
+        // var divObj=my$("dv")
+        // divObj.style.width="300px";
+        // divObj.style.height="300px";
+        // divObj.style.border="10px solid #ccc";
+        // divObj.style.backgroundColor="pink";
+
+        //再优化：当样式过多时，直接添加一个类样式
+        var divObj=my$("dv");
+        //在js代码中DOM操作的时候,设置元素的类样式,不用class关键字,应该使用className
+        divObj.className="dv";    //divObj.class="dv"写法上没错，但浏览器不识别
+    }
+
+</script>
+</body>
+</html>

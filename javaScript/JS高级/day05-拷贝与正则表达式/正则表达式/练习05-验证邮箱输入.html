@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-验证邮箱输入</title>
+</head>
+<body>
+<span>请输入您的邮箱：</span><input type="text" id="email"/>*<br/>
+
+<script>
+    var inputObj = document.getElementById("email");
+    inputObj.onblur = function () {
+        var reg = /^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/;  //严格模式
+        // var reg = /^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/;
+        if (reg.test(inputObj.value)) {
+            this.style.backgroundColor = "green";
+        } else {
+            this.style.backgroundColor = "red";
+        }
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="dv"></div>
+
+<script>
+    var dvObj=document.getElementById("dv");
+    console.dir(dvObj);
+
+    //对象都有一个__proto__属性,指向其所在构造函数的prototype对象
+
+    /*
+    * dvObj.__proto__------> HTMLDivElement.prototype
+    *HTMLDivElement.prototype.__proto__---->HTMLElement.prototype
+    * HTMLElement.prototype.__proto__----->Element.prototype
+    * Element.prototype.__proto__----->Node.prototype
+    * Node.prototype.__proto__----->EventTarget.prototype
+    * EventTarget.prototype.__proto__----->Object.prototype
+    *Object.prototype没有__proto__对象属性，也就是说Object函数的prototype对象的__proto__是null
+    *
+    * */
+</script>
+</body>
+</html>

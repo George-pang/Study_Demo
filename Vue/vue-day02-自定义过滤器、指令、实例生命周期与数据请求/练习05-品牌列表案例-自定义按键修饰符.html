@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.3.7.css">
+    <!-- 需要用到Jquery吗？？？ -->
+</head>
+
+<body>
+<div id="app">
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">添加品牌</h3>
+        </div>
+        <div class="panel-body form-inline">
+            <label>
+                Id:
+                <input type="text" class="form-control" v-model="id">
+            </label>
+
+            <label>
+                Name:
+                <input type="text" class="form-control" v-model="name" @keyup.z="add">     <!-- 当enter键抬起触发add方法-->
+            </label>
+
+            <!-- 在Vue中，使用事件绑定机制，为元素指定处理函数的时候，如果加了小括号，就可以给函数传参了 -->
+            <input type="button" value="添加" class="btn btn-primary" @click="add()">
+
+            <label>
+                搜索名称关键字：
+                <input type="text" class="form-control" v-model="keywords">
+            </label>
+        </div>
+    </div>
+
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Ctime</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 之前， v-for 中的数据，都是直接从 data 上的list中直接渲染过来的 -->
+        <!-- 现在， 我们自定义了一个 search 方法，同时，把筛选的关键字，通过传参的形式，传递给了 search 方法 -->
+        <!-- 在 search 方法内部，通过 执行 for 循环， 把所有符合 搜索关键字的数据，保存到 一个新数组中，返回 -->
+        <tr v-for="item in search(keywords)" :key="item.id">   <!--keywords实参，从data中获取数据-->
+            <td>{{ item.id }}</td>
+            <td v-text="item.name"></td>
+            <td>{{ item.ctime|timeFormat}}</td>
+            <td>
+                <a href="" @click.prevent="del(item.id)">删除</a>  <!--把当前点击删除的item.id作为参数传进去-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<div id="app2">
+    这是用来测试私有过滤器的
+    <h3> {{ ctime | timeFormat}} </h3>
+</div>
+
+<script>
+    //创建全局过滤器
+    Vue.filter("timeFormat", function (ctime, pattern = "") {   //除了第一个默认参数外，传入一个带初始值的参数--否则值为undefined，调用toLowerCase()报错
+        var dt = new Date(ctime);
+        console.log(dt);
+        var y = dt.getFullYear(); //得到的是数字类型
+        //调用String.prototype.padStart()方法实现时间前缀0的补充
+        //padStart() 方法用另一个字符串填充当前字符串(重复，如果需要的话)，以便产生的字符串达到给定的长度。
+        //填充从当前字符串的开始(左侧)应用的。
+        var m = (dt.getMonth() + 1).toString().padStart(2, "0");
+        var d = dt.getDate().toString().padStart(2, "0");
+        var hh = dt.getHours().toString().padStart(2, "0");
+        var mm = dt.getMinutes().toString().padStart(2, "0");
+        var ss = dt.getSeconds().toString().padStart(2, "0");
+
+        // return y+"-"+m+"-"+d;
+        if (pattern.toLowerCase() == `yyyy-mm-dd`) {           //先统一转小写，再判断
+            return `${y}-${m}-${d}`;
+        } else {
+            return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+        }
+    });
+
+    //自定义全局按键修饰符
+    Vue.config.keyCodes.z = 90
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            id: "",
+            name: "",
+            keywords: "",
+            list: [
+                {id: 1, name: "奔驰", ctime: new Date()},
+                {id: 2, name: "宝马", ctime: new Date()}
+            ]
+        },
+        methods: {
+            add: function () {
+                //添加---this自动挂载到当前vue实例上
+                this.list.push({id: this.id, name: this.name, ctime: new Date()});
+                //清空输入数据
+                this.id = "";
+                this.name = "";
+            },
+            del: function (id) {
+                //Array.prototype.findIndex()方法会对每个数组元素执行一次回调函数，知道有一个元素通过函数测试，并返回该元素的索引
+                //其回调函数执行时会自动传入下面三个参数:element：当前元素，index：当前元素的索引，array：调用findIndex的数组。
+                var index = this.list.findIndex(ele => {
+                    //如果当前元素(对象)的id属性与传入的id相同
+                    if (ele.id == id) {
+                        return true;
+                    }
+                });
+                //利用Array.prototype.splice()方法删除此项
+                this.list.splice(index, 1);
+
+                //方法二：利用Array.prototype.some()方法
+                // this.list.some((ele,i)=>{
+                //     //如果当前元素(对象)的id属性与传入的id相同
+                //     if (ele.id==id){
+                //
+                //         this.list.splice(i,1);
+                //         return true;
+                //     }
+                // });
+            },
+            search: function (kw) {
+                //方法一：利用Array.prototype.forEach()方法---对数组中的每一个元素都执行一次提供的函数
+                // var newList=[];
+                // this.list.forEach(ele=>{
+                //    if (ele.name.indexOf(kw)!=-1){
+                //        newList.push(ele);
+                //    }
+                // });
+                // return newList;   //必须有返回值，不然search(keywords)值为空
+
+                //方法二：利用Array.prototype.filter()方法--创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。(过滤数组)
+                var newList = this.list.filter(ele => {
+                    if (ele.name.includes(kw)) {     //String.prototype.includes()用于判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false。
+                        return ele;
+                    }
+                });
+                return newList; //这个不能少
+                //默认没输入时，空字符关键字全匹配
+            }
+
+        }
+    });
+    var vm2 = new Vue({
+        el: "#app2",
+        data: {
+            ctime: new Date()
+        },
+        //定义私有过滤器
+        // 过滤器调用的时候，采用的是就近原则，如果私有过滤器和全局过滤器名称一致了，这时候 优先调用私有过滤器
+        filters: {
+            timeFormat: function (ctime, pattern = "") {
+                var dt = new Date(ctime);
+                console.log(dt);
+                var y = dt.getFullYear();
+                var m = (dt.getMonth() + 1).toString().padStart(2, "0");
+                var d = dt.getDate().toString().padStart(2, "0");
+                var hh = dt.getHours().toString().padStart(2, "0");
+                var mm = dt.getMinutes().toString().padStart(2, "0");
+                var ss = dt.getSeconds().toString().padStart(2, "0");
+
+                // return y+"-"+m+"-"+d;
+                if (pattern.toLowerCase() == `yyyy-mm-dd`) {           //先统一转小写，再判断
+                    return `${y}-${m}-${d}`;
+                } else {
+                    return `${y}-${m}-${d} ${hh}:${mm}:${ss}~~~~~`;
+                }
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        img{
+            width: 200px;
+            height: 300px;
+        }
+        div{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="摇起来" id="btn1"/>
+    <input type="button" value="停止" id="btn2"/>
+    <div id="dv">
+        <img src="images/linzhiling.jpg" alt=""/>
+        <img src="images/liuyan.jpg" alt=""/>
+    </div>
+
+    <script>
+        var btn1Obj=document.getElementById("btn1");
+        var btn2Obj=document.getElementById("btn2");
+        var timeId="";
+        btn1Obj.onclick=function(){
+            timeId=window.setInterval(function () {
+                var divObj=document.getElementById("dv");
+                divObj.style.top=parseInt(Math.random()*100+1)+"px";
+                divObj.style.left=parseInt(Math.random()*100+1)+"px";
+            },10);
+        };
+
+        btn2Obj.onclick=function () {
+            clearInterval(timeId);
+        }
+    </script>
+</body>
+</html>

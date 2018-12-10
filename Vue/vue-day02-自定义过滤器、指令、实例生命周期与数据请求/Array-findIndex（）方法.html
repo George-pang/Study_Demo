@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array对象 findIndex方法测试</title>
+</head>
+<body>
+
+<script>
+    var array1 = [5, 12, 130,8,  44];
+
+    function findFirstLargeNumber(element) { //执行时自动传入三个参数，第一个参数是当前元素，第2个元素是当前元素的索引，第三个是调用findIndex方法的数组
+        return element > 13;  //这里的参数element表示当前元素
+    }
+    //findIndex()方法遍历数组，返回数组中满足提供的测试函数的第一个元素的索引，参数为回调函数
+    // 会遍历数组，对每个元素执行一次回调函数，并返回第一个通过测试的元素索引，停止继续遍历
+    console.log(array1.findIndex(findFirstLargeNumber));
+    // expected output: 3
+
+</script>
+</body>
+</html>

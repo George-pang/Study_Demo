@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>day05作业回顾--第2遍</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//	* 三种方式各2遍  调用Object 自定义  字面量
+//  * 工厂模式一遍
+//  * 创建一个车的对象,有重量,颜色,牌子,可以载人,拉货
+//  * Math对象讲的方法---三遍
+
+//  * 创建一个车的对象,有重量,颜色,牌子,可以载人,拉货		
+		//系统构造函数法
+		var car=new Object();
+		car.weight="400公斤";
+		car.color="yellow";
+		car.brand="奥迪";
+		car.zaiRen=function (){
+			console.log("我可以一次拉6个人！num1");
+		};
+		car.laHuo=function (){
+			console.log("我一次能拉1吨货！");
+		};
+		console.log(car.color);
+		car.zaiRen();
+		
+		//自定义构造函数
+		function Car(weight,color,brand){
+			this.weight=weight;//this 当前对象
+			this.color=color;
+			this.brand=brand;
+			this.zaiRen=function (){
+				console.log("我一次荷载8人！");
+			};
+			this.laHuo=function (){
+				console.log("我最多只能拉1吨货");
+			};
+		}
+		var car1=new Car("200公斤","red","宝马");
+		console.log(car1.weight);
+		car1.laHuo();
+		
+		//字面量方式
+		var car={
+			weight:"250公斤",
+			color:"blue",
+			brand:"长城",
+			zaiRen:function (){
+				console.log("我是货车,暂不拉人");
+			},
+			laHuo:function (){
+				console.log("我一次能拉10吨货！");
+			}
+		};
+		console.log(car.brand);
+		
+		//拓展：工厂模式 (将其放入一个函数内,批量创建)
+		function createCar(weight,color,brand){
+			var car=new Object();
+			car.weight=weight;
+			car.color=color;
+			car.brand=brand;
+			car.zaiRen=function (){
+				console.log("载人可不是一件容易的事！");
+			};
+			car.laHuo=function (){
+				console.log("想拉货，先付钱！");
+			};
+			return car;//这一句不能少
+		}
+		var car01=createCar("300公斤","black","东风");
+		var car02=createCar("500斤","蓝色","一汽重卡");
+		console.log(car02.brand);
+		car01.zaiRen();
+		
+		
+		//Math 静态对象，不需要创建
+		console.log(Math.PI);
+		console.log(Math.E);
+		console.log(Math.abs(-199));
+		console.log(Math.ceil(8.1));
+		console.log(Math.floor(9.9));
+		console.log(Math.round(9.5));
+		console.log(Math.pow(2,3));
+		console.log(Math.sqrt(36));
+		console.log(Math.random());
+		console.log(Math.random()*5);
+		console.log(parseInt(Math.random()*5));
+		console.log(Math.max(33,43,56,22,44,45));
+		console.log(Math.min(33,43,56,22,44,45));
+		
+		//遍历对象
+		var json={
+			name:"小马",
+			age:31,
+			sex:"男"
+		};
+        
+        for (var key in json){
+        	console.log(key+"=====》"+json[key]);//[key]中key变量不能加引号，加了就为寻找name为key的值了
+//      	console.log(key+"=====》"+json.key);//这里也不能用点语法 ，因为js动态语言，这里会新建个key属性，但是没赋值
+        }
+		</script>
+	</body>
+</html>

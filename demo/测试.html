@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+          #1{
+          	width: 600px;
+          	height: 300px;
+          	background-color: greenyellow;
+          	margin:20px auto;
+          }
+          
+          .div1{
+          	width: 300px;
+          	height: 100px;
+          	background-color: greenyellow;
+          	margin:20px auto;
+          }
+          .2{
+          	width: 600px;
+          	height: 300px;
+          	background-color: yellow;
+          	margin:20px auto;
+          }
+          .div2{
+          	width: 700px;
+          	height: 100px;
+          	background-color: blue;
+          	float: left;
+          }
+          .div3{
+          	width:900px;
+          	height:150px;
+          	background-color: gold;
+          }
+		</style>
+	</head>
+	<body>
+	   <div id="1"> <!--id命名不能用数字开头，否则浏览器不起效果-->
+	   </div>
+	   <div class="div1">
+	   	
+	   </div>
+	   <div class="2"> <!--class命名也不能用数字开头，否则浏览器不起效果-->
+	   	
+	   </div>
+	   <div class="div2">
+	   	浮动的主要目的就是为了多个块级元素能同一行显示，案例：水平导航菜单、文字环绕效果
+	   </div>
+	   <div class="div3">
+	   	测试一下块浮动之后后面的块框及框内元素的显示效果。
+	   	如图，浮动脱离文档流，浮动块后面的块当其不存在，但后面块中的内容仍然为其让了位置。(所以float可以看作部分脱标)
+	   	另外，浮动的块覆盖在标准流块的上面(见颜色)，得出结论：<br />
+	   	<strong>堆叠顺序：</strong>最下面的是标准流，上一级是浮动，最上一级是定位。
+	   </div>
+	</body>
+</html>

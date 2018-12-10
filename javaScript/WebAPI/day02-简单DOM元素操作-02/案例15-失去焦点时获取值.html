@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" value="我是输入框内容" id="txt"/>
+<p>我是一个p</p>
+<script>
+    document.getElementById("txt").onblur=function () {
+        document.getElementsByTagName("p")[0].innerText=this.value;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="dv">哦哦
+        <span>这是div中的第一个span标签</span>
+        <p>这是div中的第二个元素,第一个p标签</p>
+        <ul id="uu">
+            <li>乔峰</li>
+            <li>鹿茸</li>
+            <li id="three">段誉</li>
+            <li>卡卡西</li>
+            <li>雏田</li>
+        </ul>
+    </div>
+
+    <script>
+        var ulObj=document.getElementById("uu");
+        var liObj=ulObj.getElementById("three");
+
+        //获取父节点
+        console.log(ulObj.parentNode);            //注意：后面不需要带小括号
+        //获取父元素
+        console.log(ulObj.parentElement);
+        //获取子节点
+        console.log(ulObj.childNodes);
+        //获取子元素
+        console.log(ulObj.children);
+
+        //后面开始考虑兼容性问题，获取节点在IE8中作用是获取子元素，获取元素不支持
+
+        //获取第一个子节点
+        console.log(ulObj.firstChild);             //-----IE8中是第一个子元素
+        //获取第一个子元素
+        console.log(ulObj.firstElementChild);      //-----IE8中不支持
+        //获取最后一个子节点
+        console.log(ulObj.lastChild);              //-----IE8中是最后一个子元素
+        //获取最后一个子元素
+        console.log(ulObj.lastElementChild);       //-----IE8中不支持
+        //获取前一个兄弟节点
+        console.log(liObj.previousSibling);
+        //获取前一个兄弟元素
+        console.log(liObj.previousElementSibling);
+        //获取后一个兄弟节点
+        console.log(liObj.nextSibling);
+        //获取后一个兄弟元素
+        console.log(liObj.nextElementSibling);
+
+    </script>
+</body>
+</html>

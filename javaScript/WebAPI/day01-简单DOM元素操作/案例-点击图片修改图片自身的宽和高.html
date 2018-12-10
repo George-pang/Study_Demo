@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-点击图片修改图片的宽高</title>
+</head>
+<body>
+<img src="img/liuyan.jpg" alt="" id="img"/>
+<script>
+    //获取对象
+    var imgObj=document.getElementById("img");
+    //注册事件，添加事件处理函数
+    imgObj.onclick=function () {
+        this.width="300";
+        this.height="400";
+    }
+</script>
+</body>
+</html>

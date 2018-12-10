@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全国天气预报</title>
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <script src="../jquery.js"></script>
+    <!-- 引入模板 handlebars.js -->
+    <script src="handlebars-v4.0.12.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
+    <!-- 预设引擎模板 -->
+    <script type="text/template" id="my-template">
+        <li>
+            <h3>城市:{{result.today.city}}</h3>
+        </li>
+         <li>
+            <h3>时间:{{result.today.date_y}}</h3>
+        </li>
+         <li>
+            <h3>星期:{{result.today.week}}</h3>
+        </li>
+         <li>
+            <h3>今日天气:{{result.today.weather}}</h3>
+        </li>
+        <li>
+            <h3>今日温度:{{result.today.temperature}}</h3>
+        </li>
+        <li>
+            <h3>今日风向:{{result.today.wind}}</h3>
+        </li>
+        <li>
+            <h3>今日穿衣指数:{{result.today.dressing_index}}</h3>
+        </li>
+        <li>
+            <h3>今日穿衣建议:{{result.today.dressing_advice}}</h3>
+        </li>
+        <li>
+            <ul>
+                <h3>未来几天天气</h3>
+                {{#each result.future}}
+                    <li>{{week}}---{{weather}}</li>
+                {{/each}}
+            </ul>
+        </li>
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 版心 S -->
+        <div class="w">
+            <!-- 版心 E -->
+            <!-- 头部 S -->
+            <div class="header">
+                <p class="headerText f_size26">全国城市天气查询</p>
+            </div>
+            <!-- 头部 E -->
+            <!-- 文本框 S -->
+            <div class="headerInput">
+                <input type="text" placeholder="请输入城市名称" id="headerGet">
+            </div>
+            <!-- 文本框 E -->
+            <!-- 内容 S -->
+            <div class="lists">
+                <!-- 引擎模板组合数据生成html代码渲染容器 -->
+                <ul id="ulLists">
+                </ul>
+            </div>
+            <!-- 内容 E -->
+        </div>
+        <!-- 版心 E -->
+    </div>
+    <script>
+        $(function () {
+            function getData(param) {
+                // 设置未传参时参数默认值
+                var param = param ? param : "北京";
+                var data;
+                // ajax请求第三方天气数据接口
+                $.ajax({
+                    // 第三方 聚合数据 api数据接口地址
+                    // url: "http://v.juhe.cn/weather/index?cityname=%E8%8B%8F%E5%B7%9E&key=eba1e7504d4366e36b3fe4b3bcaee95d",
+                    url: "http://v.juhe.cn/weather/index",
+                    type: "GET",
+                    data: { //调用数据接口的请求参数
+                        cityname: param,
+                        key: "eba1e7504d4366e36b3fe4b3bcaee95d" //注册聚合数据账号申请得到的接口key
+                    },
+                    dataType: "JSONP", //跨域请求的返回数据类型一定是JSONP
+                    success: function (res) {
+                        console.log(res);
+                        data = res;
+                        /* 在JavaScript中，使用Handlebars.compile来编译模板 */
+                        // 1、获取模板
+                        var source = document.getElementById("my-template").innerHTML;
+                        // 2、预编译模板----Handlebars.compile();参数即为获取到的模板
+                        var template = Handlebars.compile(source);
+                        // 3、利用模板解析数据---返回拼接好的字符串
+                        var html = template(data);
+                        // 4、向指定容器内渲染页面
+                        document.getElementById("ulLists").innerHTML = html;
+
+                    }
+                });
+                console.log(data); //undefined ---ajax是异步请求，这句代码先执行，此时成功回调还未执行
+            }
+            getData();
+
+            //获取用户输入内容显示对应城市天气
+            $("#headerGet").on("keydown", function (e) {
+                if (e.keyCode == 13) {
+                    console.log(1111);
+                    var cityName = $(this).val().trim();
+                    console.log(cityName);
+                    getData(cityName);
+                }
+            })
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

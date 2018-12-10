@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS内置对象--Math对象-常用方法及属性</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//Math对象无需创建
+			console.log(Math.PI);//π
+			console.log(Math.E);//数学中一个常数，约为2.71828
+			console.log(Math.ceil(10.1));//11  向上取整，取一个离他最近的整数(而不是四舍五入)
+			console.log(Math.ceil(10.9));//11
+			console.log(Math.ceil(10.5));//11
+			console.log(Math.ceil(10.7));//11
+			console.log(Math.floor(13.1));//13 向下取整
+			console.log(Math.floor(13.9));//13
+			console.log(Math.floor(13.5));//13
+			console.log(Math.floor(13.3));//13
+			console.log(Math.pow(2,3));//8  x的y次方
+			console.log(Math.sqrt(8));// 平方根
+			console.log(Math.round(6.5));//7 四舍五入 这种情况取+∞方向的数字值
+			console.log(Math.round(6.1));//6 
+			console.log(Math.round(6.8));//7
+			
+			console.log(Math.random());//0~1之间的(不包括1)随机数
+			console.log(parseInt(Math.random()*5));//取整，只能0~4之间的随机整数
+			console.log(parseInt(Math.random()*5+1));//取整，1~5之间的随机整数			
+			
+			//取一坨数字的最大值、最小值
+			console.log(Math.max(22,321,34,33,99));//Math.max()方法取最大值
+			console.log(Math.min(22,321,34,33,99));//Math.min()方法取最小值
+		</script>
+	</body>
+</html>
