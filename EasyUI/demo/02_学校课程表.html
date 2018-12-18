@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>EasyUI 创建学校课程表</title>
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+
+    <!-- 自定义样式 -->
+    <style>
+        .left {
+            width: 120px;
+            float: left;
+        }
+
+        .left table {
+            background: #E0ECFF;
+        }
+
+        .left td {
+            background: #eee;
+        }
+
+        .right {
+            float: right;
+            width: 600px;
+        }
+
+        .right table {
+            background: #E0ECFF;
+            width: 100%;
+        }
+
+        .right td {
+            background: #fafafa;
+            text-align: center;
+            padding: 2px;
+        }
+
+        .right td {
+            background: #E0ECFF;
+        }
+
+        .right td.drop {
+            background: #fafafa;
+            width: 100px;
+        }
+
+        .right td.over {
+            background: #FBEC88;
+        }
+
+        .item {
+            text-align: center;
+            border: 1px solid #499B33;
+            background: #fafafa;
+            width: 100px;
+        }
+
+        .assigned {
+            border: 1px solid #BC2A4D;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="width: 750px;">
+        <div class="left">
+            <table>
+                <!-- 课程项补充-->
+                <tr>
+                    <td>
+                        <div class="item">English</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">Science</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">Music</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">History</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">Computer</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">Mathematics</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">Arts</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">Ethics</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="right">
+            <table>
+                <!-- 时间表单元格 -->
+                <tr>
+                    <td class="blank"></td>
+                    <td class="title">Monday</td>
+                    <td class="title">Tuesday</td>
+                    <td class="title">Wednesday</td>
+                    <td class="title">Thursday</td>
+                    <td class="title">Friday</td>
+                </tr>
+                <tr>
+                    <td class="time">08:00</td>
+                    <td class="drop"></td>  <!-- drop预定义类设置可拖拽区域 -->
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">09:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">10:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">11:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">12:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">13:00</td>
+                    <td class="lunch" colspan="5">Lunch</td>
+                </tr>
+                <tr>
+                    <td class="time">14:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">15:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+                <tr>
+                    <td class="time">16:00</td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                    <td class="drop"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <script>
+        $('.left .item').draggable({
+            revert: true,
+            proxy: 'clone'
+        });
+        $('.right td.drop').droppable({
+            onDragEnter: function () {
+                $(this).addClass('over');
+            },
+            onDragLeave: function () {
+                $(this).removeClass('over');
+            },
+            onDrop: function (e, source) {
+                $(this).removeClass('over');
+                if ($(source).hasClass('assigned')) {
+                    $(this).append(source);
+                } else {
+                    var c = $(source).clone().addClass('assigned');
+                    $(this).empty().append(c);
+                    c.draggable({
+                        revert: true
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
